@@ -24,7 +24,7 @@ async function seed() {
         loop: true
       } ,
       scale: [0.3, 0.3, 0.3],
-      sourceViro3DObject: '../../assets/emoji_heart/emoji_heart.vrx' }),
+      sourceViro3DObject: `require('../../assets/emoji_heart/emoji_heart.vrx')` }),
   ]);
 
   console.log(`seeded ${users.length} users`);
