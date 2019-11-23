@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import {StyleSheet} from 'react-native';
 
 import {
@@ -21,6 +21,9 @@ import {
 } from 'react-viro';
 
 import ThreeDObject from '../../ARScenes/Portals/ThreeDObject'
+const elementId = 1
+
+
 
 class MainScene extends Component {
 
@@ -39,7 +42,7 @@ class MainScene extends Component {
               type="VRX" />
           </ViroPortal>
           <Viro360Video source={require('../res/Kaleidoscope.mp4')} loop={true} />
-          <ThreeDObject position={[2, 2, -3]} />
+          <ThreeDObject element = {elementId} position={[2, 2, -3]} />
         <ThreeDObject position={[1, 1.5, -5]} />
         <ThreeDObject position={[-1, 1, -4]} />
         </ViroPortalScene>

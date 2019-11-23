@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Vibration } from 'react-native';
 import { Viro3DObject, ViroAnimations } from 'react-viro';
+import axios from 'axios'
+
+
 const sourceViro3DObject = '../../assets/emoji_heart/emoji_heart.vrx'
 let resourceViro3DObject = ['../../assets/emoji_heart/emoji_heart_specular.png',
 '../../assets/emoji_heart/emoji_heart.png']
@@ -16,9 +19,11 @@ let resourceArr = []
 //Figure out how to map over multiple resources. Currently hard coding it.
 // resourceViro3DObject.forEach((resource) => resourceArr.push(require(resource)))
 
+
+
 export default class ThreeDObject extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       visibility: true,
       sourceViro3DObject: '../../assets/emoji_heart/emoji_heart.vrx',
@@ -34,7 +39,18 @@ export default class ThreeDObject extends Component {
     this._handleClick = this._handleClick.bind(this);
   }
 
+  getObjectData = async () =>{
+    try {
+    const { data } = await axios.get(`/api/elements/${this.props.elementId}`)
 
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+componentDidMount(){
+
+}
 
   _handleClick() {
     this.setState({
@@ -44,16 +60,20 @@ export default class ThreeDObject extends Component {
   }
 
   render() {
-    console.log('this.state.sourceViro3DObject', sourceViro3DObject)
+    // console.log('this.state.sourceViro3DObject', sourceViro3DObject)
+    // const sourceViro3DObject = this.state.sourceViro3DObject?
+    //       require (this.state.sourceViro3DObject):
+    //       require('https://www.publicdomainpictures.net/pictures/50000/nahled/simple-red-heart.jpg')
     return (
       <Viro3DObject
-        source={require (sourceViro3DObject)}
+        source={require('../../assets/emoji_heart/emoji_heart.vrx')}
+        // source={{uri: `filename${sourceViro3DObject}`}}
         //We are testing out mapping over the resource. Currently it is hard coded
         // resources={resourceViro3DObject.map(resource =>  require(resource))}
         resources = {[resourceViro3DObject1,resourceViro3DObject2]}
-        animation= {animation}
+        animation= {this.state.animation}
         position={this.props.position}
-        scale={scale}
+        scale={this.state.scale}
         onClick={this._handleClick}
         visible={this.state.visibility}
         type="VRX"
