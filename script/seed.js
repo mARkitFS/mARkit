@@ -1,18 +1,34 @@
 'use strict';
 
 const db = require('../server/db');
-const { User } = require('../server/db/models');
+const { User, Portal, Element } = require('../server/db/models');
 
 async function seed() {
   await db.sync({ force: true });
   console.log('db synced!');
 
   const users = await Promise.all([
-    User.create({ email: 'cody@email.com', password: '123' }),
-    User.create({ email: 'murphy@email.com', password: '123' })
+    User.create({ email: 'cody@email.com', password: '123456' }),
+    User.create({ email: 'murphy@email.com', password: '123456' })
+  ]);
+
+  const elements = await Promise.all([
+    Element.create({
+      name: 'Heart',
+      description: 'The beating heart of our project' ,
+      resourceViro3DObject: ['../../assets/emoji_heart/emoji_heart_specular.png',
+      '../../assets/emoji_heart/emoji_heart.png'],
+      animation: {
+        name: 'bounceUpAndDownAndRotate',
+        run: true,
+        loop: true
+      } ,
+      scale: [0.3, 0.3, 0.3],
+      sourceViro3DObject: '../../assets/emoji_heart/emoji_heart.vrx' }),
   ]);
 
   console.log(`seeded ${users.length} users`);
+  console.log(`seeded ${elements.length} elements`);
   console.log(`seeded successfully`);
 }
 
