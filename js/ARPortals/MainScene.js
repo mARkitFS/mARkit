@@ -20,7 +20,7 @@ import {
   ViroARTrackingTargets
 } from 'react-viro';
 
-import HeartObject from '../../ARScenes/Portals/HeartObject'
+import ThreeDObject from '../../ARScenes/Portals/ThreeDObject'
 
 class MainScene extends Component {
 
@@ -39,9 +39,9 @@ class MainScene extends Component {
               type="VRX" />
           </ViroPortal>
           <Viro360Video source={require('../res/Kaleidoscope.mp4')} loop={true} />
-          <HeartObject position={[2, 2, -3]} />
-        <HeartObject position={[1, 1.5, -5]} />
-        <HeartObject position={[-1, 1, -4]} />
+          <ThreeDObject position={[2, 2, -3]} />
+        <ThreeDObject position={[1, 1.5, -5]} />
+        <ThreeDObject position={[-1, 1, -4]} />
         </ViroPortalScene>
       </ViroARScene>
     );

@@ -1,16 +1,22 @@
 {
-  "name": "ViroSample",
+  "name": "markit",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "prestart": "./node_modules/react-viro/bin/run_ngrok.sh",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "server": "node server",
+    "test": "jest",
+    "seed": "node script/seed.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.14.0",
+    "pg-hstore": "^2.3.3",
     "react": "16.8.3",
     "react-native": "0.59.9",
-    "react-viro": "2.17.0"
+    "react-viro": "2.17.0",
+    "sequelize": "^5.21.2"
   },
   "devDependencies": {
     "@babel/core": "7.7.2",

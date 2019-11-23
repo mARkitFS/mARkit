@@ -2,14 +2,11 @@ const crypto = require('crypto');
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Element = db.define('element', {
+const Portal = db.define('portal', {
   name: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
-  },
-  description: {
-    type: Sequelize.STRING,
   },
   resourceViro3DObject: {
     type: Sequelize.ARRAY(Sequelize.STRING)
@@ -22,8 +19,11 @@ const Element = db.define('element', {
   },
   sourceViro3DObject: {
     type: Sequelize.STRING
-  }
+  },
+  sourceViro3DObject: {
+    type: Sequelize.STRING
+  },
 
 });
 
-module.exports = Element;
+module.exports = Portal;
