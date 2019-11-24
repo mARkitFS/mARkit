@@ -37,19 +37,21 @@ export default class ThreeDObject extends Component {
       scale: [0.3, 0.3, 0.3]
     };
     this._handleClick = this._handleClick.bind(this);
+    this.getObjectData = this.getObjectData.bind(this)
   }
 
   getObjectData = async () =>{
     try {
-    const { data } = await axios.get(`/api/elements/${this.props.elementId}`)
-
+      const { data } = await axios.get(`/api/elements/${this.props.elementId}`)
+      console.log('<<<<<<<<data', data)
+      this.setState({sourceViro3DObject:data.sourceViro3DObject})
     } catch (err) {
       console.log(err)
     }
   }
 
 componentDidMount(){
-
+  this.getObjectData()
 }
 
   _handleClick() {
@@ -64,6 +66,7 @@ componentDidMount(){
     // const sourceViro3DObject = this.state.sourceViro3DObject?
     //       require (this.state.sourceViro3DObject):
     //       require('https://www.publicdomainpictures.net/pictures/50000/nahled/simple-red-heart.jpg')
+    console.log('<<<<<this is a test!!!>>>>>>')
     return (
       <Viro3DObject
         source={require('../../assets/emoji_heart/emoji_heart.vrx')}

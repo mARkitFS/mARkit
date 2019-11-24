@@ -22,12 +22,7 @@ import {
 
 import ThreeDObject from '../../ARScenes/Portals/ThreeDObject'
 const elementId = 1
-
-
-
 class MainScene extends Component {
-
-
   render() {
     return (
       <ViroARScene>
@@ -42,7 +37,7 @@ class MainScene extends Component {
               type="VRX" />
           </ViroPortal>
           <Viro360Video source={require('../res/Kaleidoscope.mp4')} loop={true} />
-          <ThreeDObject element = {elementId} position={[2, 2, -3]} />
+          <ThreeDObject elementId = {elementId} position={[2, 2, -3]} />
         <ThreeDObject position={[1, 1.5, -5]} />
         <ThreeDObject position={[-1, 1, -4]} />
         </ViroPortalScene>

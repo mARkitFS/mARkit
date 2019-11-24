@@ -24,6 +24,7 @@ const Element = db.define('element', {
     type: Sequelize.STRING
   }
 
+
 });
 
 module.exports = Element;
