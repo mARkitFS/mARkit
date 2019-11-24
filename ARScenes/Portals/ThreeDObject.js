@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Vibration } from 'react-native';
 import { Viro3DObject, ViroAnimations } from 'react-viro';
 import axios from 'axios'
+import { images } from '../../js/res/images'
 
 
 const sourceViro3DObject = '../../assets/emoji_heart/emoji_heart.vrx'
@@ -34,7 +35,7 @@ export default class ThreeDObject extends Component {
         run: true,
         loop: true
       },
-      scale: [0.3, 0.3, 0.3]
+      scale: [.03, 0.3, 0.3]
     };
     this._handleClick = this._handleClick.bind(this);
     this.getObjectData = this.getObjectData.bind(this)
@@ -69,17 +70,26 @@ componentDidMount(){
     console.log('<<<<<this is a test!!!>>>>>>')
     return (
       <Viro3DObject
-        source={require('../../assets/emoji_heart/emoji_heart.vrx')}
-        // source={{uri: `filename${sourceViro3DObject}`}}
+      
+        //source from a hosted file
+        source={images.hosted.uri}
+        scale={[ 1, 1, 1]}
+        position={[ 0, 0, -1]}
+        type="GLB"
+
+        // sources from a local file
+        // source={images.local.uri}
+        // resources = {[resourceViro3DObject1,resourceViro3DObject2]}
+        // animation= {this.state.animation}
+        // position={this.props.position}
+        // scale={this.state.scale}
+        // onClick={this._handleClick}
+        // visible={this.state.visibility}
+        // type="VRX"
+
         //We are testing out mapping over the resource. Currently it is hard coded
-        // resources={resourceViro3DObject.map(resource =>  require(resource))}
-        resources = {[resourceViro3DObject1,resourceViro3DObject2]}
-        animation= {this.state.animation}
-        position={this.props.position}
-        scale={this.state.scale}
-        onClick={this._handleClick}
-        visible={this.state.visibility}
-        type="VRX"
+        // resources={resourceViro3DObject.map(resource =>  require(resource))
+
       />
     );
   }
