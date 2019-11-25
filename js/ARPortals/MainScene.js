@@ -38,6 +38,33 @@ class MainScene extends Component {
     }
   }
 
+  componentDidMount (){
+    let templateId = 2
+    if(templateId === 1){
+      this.setState({
+        background: 'party',
+        elements: [
+          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
+        ],
+        viro360Type: Viro360Video,
+        loop: true
+      })
+    } else{
+      this.setState({
+        background: 'beach',
+        elements: [
+          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
+        ],
+        viro360Type: Viro360Image,
+        loop: false
+      })
+    }
+
+  }
 
 
   render() {
