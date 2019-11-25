@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {StyleSheet} from 'react-native';
+import { images } from '../../js/res/images'
 
 import {
   ViroSceneNavigator,
@@ -21,29 +22,73 @@ import {
 } from 'react-viro';
 
 import ThreeDObject from '../../ARScenes/Portals/ThreeDObject'
-const elementId = 1
+
 class MainScene extends Component {
-  render() {
-    return (
-      <ViroARScene>
-      <ViroAmbientLight color="#ffffff" intensity={200}/>
-        <ViroPortalScene passable={true} dragType="FixedDistance" onDrag={() => {}}>
-          <ViroPortal position={[0, 0, -1]} scale={[0.1, 0.1, 0.1]}>
-            <Viro3DObject
-              source={require('../ARPortals/portal_res/portal_ship/portal_ship.vrx')}
-              resources={[require('../ARPortals/portal_res/portal_ship/portal_ship_diffuse.png'),
-                          require('../ARPortals/portal_res/portal_ship/portal_ship_normal.png'),
-                          require('../ARPortals/portal_res/portal_ship/portal_ship_specular.png')]}
-              type="VRX" />
-          </ViroPortal>
-          <Viro360Video source={require('../res/Kaleidoscope.mp4')} loop={true} />
-          <ThreeDObject elementId = {elementId} position={[2, 2, -3]} />
-        <ThreeDObject position={[1, 1.5, -5]} />
-        <ThreeDObject position={[-1, 1, -4]} />
-        </ViroPortalScene>
-      </ViroARScene>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      background: 'party',
+      elements: [
+        {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
+        {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
+        {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
+      ],
+      viro360Type: Viro360Video,
+      loop: true
+    }
   }
-}
+
+  componentDidMount (){
+    let templateId = 2
+    if(templateId === 1){
+      this.setState({
+        background: 'party',
+        elements: [
+          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
+        ],
+        viro360Type: Viro360Video,
+        loop: true
+      })
+    } else{
+      this.setState({
+        background: 'beach',
+        elements: [
+          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
+          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
+        ],
+        viro360Type: Viro360Image,
+        loop: false
+      })
+    }
+
+  }
+
+
+  render() {
+    let TagViro360 = this.state.viro360Type || Viro360Video
+      return (
+        <ViroARScene>
+        <ViroAmbientLight color="#ffffff" intensity={200}/>
+          <ViroPortalScene passable={true} dragType="FixedDistance" onDrag={() => {}}>
+            <ViroPortal position={[0, 0, -1]} scale={[0.1, 0.1, 0.1]}>
+              <Viro3DObject
+                source={require('../ARPortals/portal_res/portal_ship/portal_ship.vrx')}
+                resources={[require('../ARPortals/portal_res/portal_ship/portal_ship_diffuse.png'),
+                            require('../ARPortals/portal_res/portal_ship/portal_ship_normal.png'),
+                            require('../ARPortals/portal_res/portal_ship/portal_ship_specular.png')]}
+                type="VRX" />
+            </ViroPortal>
+            <TagViro360 source={{uri: images.background[this.state.background].uri}} loop = {this.state.loop} />
+            <ThreeDObject element = {this.state.elements} position={[2, 2, -3]} />
+            <ThreeDObject element = {this.state.elements} position={[1, 1.5, -5]} />
+            <ThreeDObject element = {this.state.elements} position={[-1, 1, -4]} />
+          </ViroPortalScene>
+        </ViroARScene>);
+    }
+  }
+
 
 module.exports = MainScene;

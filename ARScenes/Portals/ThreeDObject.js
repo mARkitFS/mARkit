@@ -67,16 +67,16 @@ export default class ThreeDObject extends Component {
       <Viro3DObject
 
         //source from a hosted file
-        source={{uri: images.hosted.uri}}
-        type="GLB"
-        scale={[ 1, 1, 1]}
-        position={[ 0, 0, -1]}
+        source={{uri: images.element[this.props.element[0].name].uri}}
+        type={this.props.element[0].type}
+        scale={this.props.element[0].scale}
+        // position={[ 0, 0, -1]}
 
 
         // sources from a local file
         // source={images.local.uri}
         // animation= {this.state.animation}
-        // position={this.props.position}
+        position={this.props.position}
         // scale={this.state.scale}
         // onClick={this._handleClick}
         // visible={this.state.visibility}
@@ -84,7 +84,7 @@ export default class ThreeDObject extends Component {
 
         //We are testing out mapping over the resource. Currently it is hard coded
         // resources={resourceViro3DObject.map(resource =>  require(resource))
-        // resources = {[resourceViro3DObject1,resourceViro3DObject2]}
+        resources = {images.element[this.props.element[0].name].resources}
 
       />
     );
