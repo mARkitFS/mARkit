@@ -1,7 +1,8 @@
 const images = {
   hosted: {
     imgName: 'Tiger',
-    uri: 'http://img.wfrcdn.com/docresources/30808/118/1180601.glb'
+    uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/1180601.glb'
+
   },
   local: {
     imgName: 'Tiger',
