@@ -27,19 +27,21 @@ class MainScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: 'beach',
+      background: 'party',
       elements: [
         {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
         {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
         {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
       ],
-      viro360Type: 'image'
+      viro360Type: Viro360Video,
+      loop: true
     }
   }
 
-  
+
 
   render() {
+    let TagViro360 = this.state.viro360Type || Viro360Video
       return (
         <ViroARScene>
         <ViroAmbientLight color="#ffffff" intensity={200}/>
@@ -52,8 +54,7 @@ class MainScene extends Component {
                             require('../ARPortals/portal_res/portal_ship/portal_ship_specular.png')]}
                 type="VRX" />
             </ViroPortal>
-            <Viro360Image source={{uri: images.background[this.state.background].uri}} />
-            {/* <Viro360Video source={{uri: images.background[this.state.background].uri}} loop={true} /> */}
+            <TagViro360 source={{uri: images.background[this.state.background].uri}} loop = {this.state.loop} />
             <ThreeDObject element = {this.state.elements} position={[2, 2, -3]} />
             <ThreeDObject element = {this.state.elements} position={[1, 1.5, -5]} />
             <ThreeDObject element = {this.state.elements} position={[-1, 1, -4]} />

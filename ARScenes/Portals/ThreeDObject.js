@@ -67,9 +67,9 @@ export default class ThreeDObject extends Component {
       <Viro3DObject
 
         //source from a hosted file
-        source={{uri: images.element[this.props.element.name].uri}}
-        type={this.props.element.type}
-        scale={this.props.element.scale}
+        source={{uri: images.element[this.props.element[0].name].uri}}
+        type={this.props.element[0].type}
+        scale={this.props.element[0].scale}
         // position={[ 0, 0, -1]}
 
 
@@ -84,7 +84,7 @@ export default class ThreeDObject extends Component {
 
         //We are testing out mapping over the resource. Currently it is hard coded
         // resources={resourceViro3DObject.map(resource =>  require(resource))
-        resources = {images.element[this.props.element.name].resources}
+        resources = {images.element[this.props.element[0].name].resources}
 
       />
     );
