@@ -82,9 +82,9 @@ class MainScene extends Component {
                 type="VRX" />
             </ViroPortal>
             <TagViro360 source={{uri: images.background[this.state.background].uri}} loop = {this.state.loop} />
-            <ThreeDObject element = {this.state.elements} position={[2, 2, -3]} />
-            <ThreeDObject element = {this.state.elements} position={[1, 1.5, -5]} />
-            <ThreeDObject element = {this.state.elements} position={[-1, 1, -4]} />
+            {this.state.elements.map((element, index) =>
+            <ThreeDObject key={index} element = {element} />)
+            }
           </ViroPortalScene>
         </ViroARScene>);
     }
