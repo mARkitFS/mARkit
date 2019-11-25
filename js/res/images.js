@@ -11,6 +11,13 @@ const images = {
     coolGuy:{
       uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/RUST_3d_Low1.obj'
     },
+    fox:{
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj',
+      resources: [
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.mtl',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png'
+      ]
+    },
     hosted: {
     uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/1180601.glb'
 
