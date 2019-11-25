@@ -67,8 +67,8 @@ export default class ThreeDObject extends Component {
       <Viro3DObject
 
         //source from a hosted file
-        source={{uri: images.hosted.uri}}
-        type="GLB"
+        source={{uri: images.coolGuy.uri}}
+        type="OBJ"
         scale={[ 1, 1, 1]}
         position={[ 0, 0, -1]}
 
