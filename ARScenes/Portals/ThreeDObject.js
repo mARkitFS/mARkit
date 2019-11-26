@@ -37,7 +37,7 @@ export default class ThreeDObject extends Component {
       },
       scale: [.03, 0.3, 0.3]
     };
-    this._handleClick = this._handleClick.bind(this);
+    // this._handleClick = this._handleClick.bind(this);
     // this.getObjectData = this.getObjectData.bind(this)
   }
 
@@ -55,37 +55,29 @@ export default class ThreeDObject extends Component {
 //   this.getObjectData()
 // }
 
-  _handleClick() {
-    this.setState({
-      visibility: false,
-    });
-    Vibration.vibrate(1, false);
-  }
+  // _handleClick() {
+  //   this.setState({
+  //     visibility: false,
+  //   });
+  //   Vibration.vibrate(1, false);
+  // }
 
   render() {
+    console.log('props: ', this.props)
     return (
       <Viro3DObject
 
         //source from a hosted file
-        source={{uri: images.element[this.props.element[0].name].uri}}
-        type={this.props.element[0].type}
-        scale={this.props.element[0].scale}
-        // position={[ 0, 0, -1]}
+        source={{uri: images.element[this.props.element.name].uri}}
+        type={this.props.element.type}
+        scale={this.props.element.scale}
+        animation= {this.state.animation}
+        position={this.props.element.position}
+        resources = {images.element[this.props.element.name].resources}
 
-
-        // sources from a local file
-        // source={images.local.uri}
-        // animation= {this.state.animation}
-        position={this.props.position}
-        // scale={this.state.scale}
+        //Possibly need to create the close button
         // onClick={this._handleClick}
         // visible={this.state.visibility}
-        // type="VRX"
-
-        //We are testing out mapping over the resource. Currently it is hard coded
-        // resources={resourceViro3DObject.map(resource =>  require(resource))
-        resources = {images.element[this.props.element[0].name].resources}
-
       />
     );
   }
