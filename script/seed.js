@@ -92,6 +92,60 @@ async function seed() {
       portalId: 1 ,
       position: [-1, 1, -4],
       scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 2 ,
+      position: [2, 2, -3],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 2 ,
+      position: [1, 1.5, -5],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 2 ,
+      position: [-1, 1, -4],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 1 ,
+      position: [2, 2, -3],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 1 ,
+      position: [1, 1.5, -5],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 1 ,
+      position: [-1, 1, -4],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 2 ,
+      position: [2, 2, -3],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 2 ,
+      position: [1, 1.5, -5],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 2 ,
+      position: [-1, 1, -4],
+      scale: [ .01, .01, .01]
     })
   ]);
 
