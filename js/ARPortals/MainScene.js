@@ -113,36 +113,26 @@ class MainScene extends Component {
   }
 
   render() {
-    let TagViro360 = this.state.viro360Type || Viro360Video;
-    return (
-      <ViroARScene>
-        <ViroAmbientLight color="#ffffff" intensity={200} />
-        <ViroPortalScene
-          passable={true}
-          dragType="FixedDistance"
-          onDrag={() => {}}
-        >
-          <ViroPortal position={[0, 0, -1]} scale={[0.1, 0.1, 0.1]}>
-            <Viro3DObject
-              source={require('../ARPortals/portal_res/portal_ship/portal_ship.vrx')}
-              resources={[
-                require('../ARPortals/portal_res/portal_ship/portal_ship_diffuse.png'),
-                require('../ARPortals/portal_res/portal_ship/portal_ship_normal.png'),
-                require('../ARPortals/portal_res/portal_ship/portal_ship_specular.png'),
-              ]}
-              type="VRX"
-            />
-          </ViroPortal>
-          <TagViro360
-            source={{ uri: images.background[this.state.background].uri }}
-            loop={this.state.loop}
-          />
-          <ThreeDObject element={this.state.elements} position={[2, 2, -3]} />
-          <ThreeDObject element={this.state.elements} position={[1, 1.5, -5]} />
-          <ThreeDObject element={this.state.elements} position={[-1, 1, -4]} />
-        </ViroPortalScene>
-      </ViroARScene>
-    );
+    let TagViro360 = this.state.viro360Type || Viro360Video
+      return (
+        <ViroARScene>
+        <ViroAmbientLight color="#ffffff" intensity={200}/>
+          <ViroPortalScene passable={true} dragType="FixedDistance" onDrag={() => {}}>
+            <ViroPortal position={[0, 0, -1]} scale={[0.1, 0.1, 0.1]}>
+              <Viro3DObject
+                source={require('../ARPortals/portal_res/portal_ship/portal_ship.vrx')}
+                resources={[require('../ARPortals/portal_res/portal_ship/portal_ship_diffuse.png'),
+                            require('../ARPortals/portal_res/portal_ship/portal_ship_normal.png'),
+                            require('../ARPortals/portal_res/portal_ship/portal_ship_specular.png')]}
+                type="VRX" />
+            </ViroPortal>
+            <TagViro360 source={{uri: images.background[this.state.background].uri}} loop = {this.state.loop} />
+            {this.state.elements.map((element, index) =>
+            <ThreeDObject key={index} element = {element} />)
+            }
+          </ViroPortalScene>
+        </ViroARScene>);
+    }
   }
 }
 

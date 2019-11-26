@@ -8,23 +8,13 @@ const Element = db.define('element', {
     unique: true,
     allowNull: false
   },
-  description: {
+  type: {
     type: Sequelize.STRING,
   },
-  resourceViro3DObject: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
-  },
-  animation: {
-    type: Sequelize.JSON
-  },
-  scale: {
-    type: Sequelize.ARRAY(Sequelize.FLOAT)
-  },
-  sourceViro3DObject: {
-    type: Sequelize.STRING
+  uri: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
-
-
 });
 
 module.exports = Element;

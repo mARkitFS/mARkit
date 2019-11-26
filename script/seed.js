@@ -1,7 +1,7 @@
 'use strict';
 
 const db = require('../server/db');
-const { User, Portal, Element } = require('../server/db/models');
+const { User, Element, Background, ElementProp, ElementRes, Portal, Portel } = require('../server/db/models');
 
 async function seed() {
   await db.sync({ force: true });
@@ -15,20 +15,160 @@ async function seed() {
   const elements = await Promise.all([
     Element.create({
       name: 'Heart',
-      description: 'The beating heart of our project' ,
-      resourceViro3DObject: ['../../assets/emoji_heart/emoji_heart_specular.png',
-      '../../assets/emoji_heart/emoji_heart.png'],
-      animation: {
-        name: 'bounceUpAndDownAndRotate',
-        run: true,
-        loop: true
-      } ,
-      scale: [0.3, 0.3, 0.3],
-      sourceViro3DObject: `require('../../assets/emoji_heart/emoji_heart.vrx')` }),
+      type: 'VRX' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx'
+    }),
+    Element.create({
+      name: 'Fox',
+      type: 'OBJ' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj'
+    }),
   ]);
 
-  console.log(`seeded ${users.length} users`);
-  console.log(`seeded ${elements.length} elements`);
+  const backgrounds = await Promise.all([
+    Background.create({
+      name: 'Beach',
+      type: 'Viro360Image' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+      loop: false
+    }),
+    Background.create({
+      name: 'Party',
+      type: 'Viro360Video' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
+      loop: true
+    }),
+  ]);
+
+  const portals = await Promise.all([
+    Portal.create({
+      name: 'PartyEvent',
+      backgroundId: 2,
+      type: 'custom' ,
+      imageURL: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
+    }),
+    Portal.create({
+      name: 'BeachVacation',
+      backgroundId: 1,
+      type: 'custom' ,
+      imageURL: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
+    }),
+  ]);
+
+  const portels = await Promise.all([
+    Portel.create({
+      elementId: 2,
+      portalId: 1
+    }),
+    Portel.create({
+      elementId: 2,
+      portalId: 2
+    }),
+    Portel.create({
+      elementId: 1,
+      portalId: 1
+    }),
+    Portel.create({
+      elementId: 1,
+      portalId: 2
+    })
+  ]);
+
+  const elementprops = await Promise.all([
+    ElementProp.create({
+      elementId: 2,
+      portalId: 1 ,
+      position: [2, 2, -3],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 1 ,
+      position: [1, 1.5, -5],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 1 ,
+      position: [-1, 1, -4],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 2 ,
+      position: [2, 2, -3],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 2 ,
+      position: [1, 1.5, -5],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 2,
+      portalId: 2 ,
+      position: [-1, 1, -4],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 1 ,
+      position: [2, 2, -3],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 1 ,
+      position: [1, 1.5, -5],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 1 ,
+      position: [-1, 1, -4],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 2 ,
+      position: [2, 2, -3],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 2 ,
+      position: [1, 1.5, -5],
+      scale: [ .01, .01, .01]
+    }),
+    ElementProp.create({
+      elementId: 1,
+      portalId: 2 ,
+      position: [-1, 1, -4],
+      scale: [ .01, .01, .01]
+    })
+  ]);
+
+  const elementres = await Promise.all([
+    ElementRes.create({
+      elementId: 2,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.mtl',
+    }),
+    ElementRes.create({
+      elementId: 2,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png',
+    }),
+  ]);
+
+
+
+  console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${elements.length} elements`)
+  console.log(`seeded ${backgrounds.length} backgrounds`)
+  console.log(`seeded ${elementprops.length} elementprops`)
+  console.log(`seeded ${elementres.length} elementres`)
+  console.log(`seeded ${portals.length} portals`)
+  console.log(`seeded ${portels.length} portels`)
   console.log(`seeded successfully`);
 }
 
