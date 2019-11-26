@@ -7,7 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   AppRegistry,
   Text,
@@ -16,28 +16,34 @@ import {
   PixelRatio,
   TouchableHighlight,
   Button,
-} from "react-native";
+} from 'react-native';
 
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { ViroVRSceneNavigator, ViroARSceneNavigator } from "react-viro";
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
 
 // import { Homepage } from "./js";
-import { MainScene, ViroApp, Homepage, AppJs } from "./js/index";
+import {
+  MainScene,
+  ViroApp,
+  Homepage,
+  AppJs,
+  ViewerDashboard,
+} from './js/index';
 
 /*
  TODO: Insert your API key below
  */
 var sharedProps = {
-  apiKey: "API_KEY_HERE",
+  apiKey: 'API_KEY_HERE',
 };
 
 // Sets the default scene you want for AR and VR
-var InitialARScene = require("./js/ARPortals/MainScene");
-var InitialVRScene = require("./js/HelloWorldScene");
+var InitialARScene = require('./js/ARPortals/MainScene');
+var InitialVRScene = require('./js/HelloWorldScene');
 
-var UNSET = "UNSET";
-var VR_NAVIGATOR_TYPE = "VR";
-var AR_NAVIGATOR_TYPE = "AR";
+var UNSET = 'UNSET';
+var VR_NAVIGATOR_TYPE = 'VR';
+var AR_NAVIGATOR_TYPE = 'AR';
 
 // This determines which type of experience to launch in, or UNSET, if the user should
 // be presented with a choice of AR or VR. By default, we offer the user a choice.
@@ -160,9 +166,10 @@ const AppNavigator = createSwitchNavigator(
     ViroApp: { screen: ViroApp },
     MainScene: { screen: MainScene },
     AppJs: { screen: AppJs },
+    ViewerDashboard: { screen: ViewerDashboard },
   },
   {
-    initialRouteName: "Homepage",
+    initialRouteName: 'Homepage',
   }
 );
 
@@ -176,30 +183,30 @@ const AppContainer = createAppContainer(AppNavigator);
 var localStyles = StyleSheet.create({
   viroContainer: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: 'black',
   },
   outer: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "black",
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'black',
   },
   inner: {
     flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "black",
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'black',
   },
   titleText: {
     paddingTop: 30,
     paddingBottom: 20,
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
     fontSize: 25,
   },
   buttonText: {
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
     fontSize: 20,
   },
   buttons: {
@@ -209,10 +216,10 @@ var localStyles = StyleSheet.create({
     paddingBottom: 20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: "#68a0cf",
+    backgroundColor: '#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#fff",
+    borderColor: '#fff',
   },
   exitButton: {
     height: 50,
@@ -221,10 +228,10 @@ var localStyles = StyleSheet.create({
     paddingBottom: 10,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: "#68a0cf",
+    backgroundColor: '#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#fff",
+    borderColor: '#fff',
   },
 });
 
