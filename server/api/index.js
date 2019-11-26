@@ -5,6 +5,7 @@ module.exports = router;
 router.use('/portals', require('./portals'));
 router.use('/users', require('./users'));
 router.use('/elements', require('./elements'));
+router.use('/backgrounds', require('./backgrounds'));
 
 router.use((req, res, next) => {
   const error = new Error('Not Found');

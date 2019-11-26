@@ -11,16 +11,10 @@ const Element = db.define('element', {
   type: {
     type: Sequelize.STRING,
   },
-  resourceViro3DObject: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
-  },
-  animation: {
-    type: Sequelize.JSON
-  },
-  scale: {
-    type: Sequelize.ARRAY(Sequelize.FLOAT)
+  uri: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
-
 });
 
 module.exports = Element;

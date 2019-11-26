@@ -22,8 +22,8 @@ const images = {
     uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/1180601.glb'
 
     },
-    local: {
-    uri: require('../../assets/emoji_heart/emoji_heart.vrx')
+    heart: {
+    uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx'
     }
 }
 }
