@@ -1,5 +1,6 @@
 const User = require('./user');
 const Portal = require('./portal');
+const Portel = require('./portEl');
 const Element = require('./element');
 const ElementProp = require('./elementProp');
 const ElementRes = require('./elementRes');
@@ -9,8 +10,11 @@ const Background = require('./background');
 Background.hasMany(Portal)
 Portal.belongsTo(Background)
 
-Element.belongsToMany(Portal,{through: ElementProp})
-Portal.belongsToMany(Element,{through: ElementProp})
+Element.belongsToMany(Portal,{as:'portalId', through: Portel})
+Portal.belongsToMany(Element,{as:'elementId', through: Portel})
+
+ElementProp.belongsTo(Portel)
+Portel.hasMany(ElementProp)
 
 Element.hasMany(ElementRes)
 ElementRes.belongsTo(Element)
@@ -31,7 +35,8 @@ module.exports = {
   Element,
   ElementProp,
   ElementRes,
-  Background
+  Background,
+  Portel
 };
 
 
