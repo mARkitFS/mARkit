@@ -15,20 +15,64 @@ async function seed() {
   const elements = await Promise.all([
     Element.create({
       name: 'Heart',
-      description: 'The beating heart of our project' ,
-      resourceViro3DObject: ['../../assets/emoji_heart/emoji_heart_specular.png',
-      '../../assets/emoji_heart/emoji_heart.png'],
-      animation: {
-        name: 'bounceUpAndDownAndRotate',
-        run: true,
-        loop: true
-      } ,
-      scale: [0.3, 0.3, 0.3],
-      sourceViro3DObject: `require('../../assets/emoji_heart/emoji_heart.vrx')` }),
+      type: 'VRX' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx'
+    }),
+    Element.create({
+      name: 'Fox',
+      type: 'OBJ' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj'
+    }),
+  ]);
+
+  const backgrounds = await Promise.all([
+    Background.create({
+      name: 'Beach',
+      type: 'Viro360Image' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+      loop: false
+    }),
+    Background.create({
+      name: 'Party',
+      type: 'Viro360Video' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
+      loop: true
+    }),
+  ]);
+
+  const backgrounds = await Promise.all([
+    Background.create({
+      name: 'Beach',
+      type: 'Viro360Image' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+      loop: false
+    }),
+    Background.create({
+      name: 'Party',
+      type: 'Viro360Video' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
+      loop: true
+    }),
+  ]);
+
+  const backgrounds = await Promise.all([
+    Background.create({
+      name: 'Beach',
+      type: 'Viro360Image' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+      loop: false
+    }),
+    Background.create({
+      name: 'Party',
+      type: 'Viro360Video' ,
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
+      loop: true
+    }),
   ]);
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${elements.length} elements`);
+  console.log(`seeded ${backgrounds.length} backgrounds`);
   console.log(`seeded successfully`);
 }
 

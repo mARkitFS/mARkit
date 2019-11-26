@@ -1,16 +1,21 @@
 const router = require('express').Router();
-const { User } = require('../db/models');
+const { Portal } = require('../db/models');
 module.exports = router;
 
+//All routes for /api/portals
 router.get('/', async (req, res, next) => {
   try {
-    const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ['id', 'email']
-    });
-    res.json(users);
+    const portals = await Portal.findAll();
+    res.json(portals);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:portalId', async (req, res, next) => {
+  try {
+    const portal = await Portal.findByPk(req.params.portalId);
+    res.json(portal);
   } catch (err) {
     next(err);
   }
