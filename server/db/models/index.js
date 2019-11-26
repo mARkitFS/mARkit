@@ -10,6 +10,9 @@ const Background = require('./background');
 Background.hasMany(Portal)
 Portal.belongsTo(Background)
 
+Element.hasMany(ElementProp)
+ElementProp.belongsTo(Element)
+
 Element.belongsToMany(Portal,{as:'portalId', through: Portel})
 Portal.belongsToMany(Element,{as:'elementId', through: Portel})
 

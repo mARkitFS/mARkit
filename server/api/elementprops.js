@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { ElementProp } = require('../db/models');
+const { ElementProp, Element } = require('../db/models');
+const Sequelize = require('sequelize')
 module.exports = router;
 
 //All routes for /api/elementprops
@@ -12,9 +13,21 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:elementId/:portalId', async (req, res, next) => {
+router.get('/portal/:portalId', async (req, res, next) => {
   try {
-    const element = await ElementProp.findByPk(req.params.elementId);
+    const elementProp = await ElementProp.findAll({
+      where :{portalId: req.params.portalId},
+      attributes:['position','scale'],
+      include: [{model: Element, attributes: ['type','name']}]
+    })
+    element = elementProp.map(el => {
+      let newObj = {}
+      newObj.position = el.position
+      newObj.type = el.element.type
+      newObj.name = el.element.name
+      newObj.scale = el.scale
+      return newObj
+    })
     res.json(element);
   } catch (err) {
     next(err);
