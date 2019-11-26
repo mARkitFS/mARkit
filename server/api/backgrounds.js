@@ -1,21 +1,21 @@
 const router = require('express').Router();
-const { Element } = require('../db/models');
+const { Background } = require('../db/models');
 module.exports = router;
 
-//All routes for /api/elements
+//All routes for /api/backgrounds
 router.get('/', async (req, res, next) => {
   try {
-    const element = await Element.findAll();
-    res.json(element);
+    const backgrounds = await Background.findAll();
+    res.json(backgrounds);
   } catch (err) {
     next(err);
   }
 });
 
-router.get('/:elementId', async (req, res, next) => {
+router.get('/:backgroundId', async (req, res, next) => {
   try {
-    const element = await Element.findByPk(req.params.elementId);
-    res.json(element);
+    const background = await Background.findByPk(req.params.backgroundId);
+    res.json(background);
   } catch (err) {
     next(err);
   }

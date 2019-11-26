@@ -5,8 +5,8 @@ module.exports = router;
 //All routes for /api/elements
 router.get('/', async (req, res, next) => {
   try {
-    const element = await Element.findAll();
-    res.json(element);
+    const elements = await Element.findAll();
+    res.json(elements);
   } catch (err) {
     next(err);
   }

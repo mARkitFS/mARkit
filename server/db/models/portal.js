@@ -11,9 +11,6 @@ const Portal = db.define('portal', {
   description: {
     type: Sequelize.STRING
   },
-  animation: {
-    type: Sequelize.JSON
-  },
   type: {
     type: Sequelize.STRING
   },
