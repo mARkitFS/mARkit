@@ -2,24 +2,21 @@ const crypto = require('crypto');
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Portal = db.define('portal', {
+const Background = db.define('background', {
   name: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
   },
-  description: {
+  uri: {
     type: Sequelize.STRING
-  },
-  animation: {
-    type: Sequelize.JSON
   },
   type: {
     type: Sequelize.STRING
   },
-  imageURL: {
-    type: Sequelize.STRING
+  loop: {
+    type: Sequelize.BOOLEAN
   }
 });
 
-module.exports = Portal;
+module.exports = Background

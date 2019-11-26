@@ -8,7 +8,7 @@ const Element = db.define('element', {
     unique: true,
     allowNull: false
   },
-  description: {
+  type: {
     type: Sequelize.STRING,
   },
   resourceViro3DObject: {
@@ -19,11 +19,7 @@ const Element = db.define('element', {
   },
   scale: {
     type: Sequelize.ARRAY(Sequelize.FLOAT)
-  },
-  sourceViro3DObject: {
-    type: Sequelize.STRING
   }
-
 
 });
 
