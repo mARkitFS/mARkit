@@ -20,10 +20,19 @@ export default class ViewerDashboard extends Component {
             <Button
               title="Portal 1"
               onPress={() => {
-                this.props.navigation.navigate("ViroApp");
+                this.props.navigation.navigate("ViroApp", {
+                  templateId: 1,
+                });
               }}
             />
-            <Button title="Portal 2" />
+            <Button
+              title="Portal 2"
+              onPress={() => {
+                this.props.navigation.navigate("ViroApp", {
+                  templateId: 2,
+                });
+              }}
+            />
           </View>
         </View>
       </View>
