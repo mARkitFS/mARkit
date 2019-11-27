@@ -38,36 +38,51 @@ class MainScene extends Component {
     }
   }
 
-  componentDidMount (){
-    let templateId = 2
-    if(templateId === 1){
-      this.setState({
-        background: 'party',
-        elements: [
-          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
-        ],
-        viro360Type: Viro360Video,
-        loop: true
-      })
-    } else{
-      this.setState({
-        background: 'beach',
-        elements: [
-          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
-        ],
-        viro360Type: Viro360Image,
-        loop: false
-      })
+  async componentDidMount (){
+    let portalId = 2
+    try {
+      const element = await axios.get(`http://10.1.85.88:8080/api/elementprops/portal/${portalId}`)
+      const portal = await axios.get(`http://10.1.85.88:8080/api/portals/${portalId}`)
+      // const background = await axios.get(`http://10.1.85.88:8080/api/backgrounds/${portal.backgroundId}`)
+      this.setState({elements:element})
+      // this.setState({
+      //   background:background.name,
+      //   viro360Type:background.type,
+      //   loop:background.loop
+      // })
+    } catch (err) {
+      console.error(err)
     }
-
   }
+  //   if(templateId === 1){
+  //     this.setState({
+  //       background: 'party',
+  //       elements: [
+  //         {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
+  //         {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
+  //         {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
+  //       ],
+  //       viro360Type: Viro360Video,
+  //       loop: true
+  //     })
+  //   } else{
+  //     this.setState({
+  //       background: 'beach',
+  //       elements: [
+  //         {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
+  //         {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
+  //         {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
+  //       ],
+  //       viro360Type: Viro360Image,
+  //       loop: false
+  //     })
+  //   }
+
+  // }
 
 
   render() {
+    console.log('state>>>>>>',this.state)
     let TagViro360 = this.state.viro360Type || Viro360Video
       return (
         <ViroARScene>
