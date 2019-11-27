@@ -28,46 +28,37 @@ class MainScene extends Component {
     super(props);
     this.state = {
       background: 'party',
-      elements: [
-        {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
-        {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
-        {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
-      ],
+      elements: [],
       viro360Type: Viro360Video,
       loop: true
     }
   }
 
-  componentDidMount (){
-    let templateId = 2
-    if(templateId === 1){
+  async componentDidMount (){
+    let portalId = 1
+    try {
+      const element = await axios.get(`http://10.1.85.88:8080/api/elementprops/portal/${portalId}`)
+      const portal = await axios.get(`http://10.1.85.88:8080/api/portals/${portalId}`)
+      const background = await axios.get(`http://10.1.85.88:8080/api/backgrounds/${portal.data.backgroundId}`)
+      let Viro360Type = (background.data.type === "Viro360Video")
+                        ? Viro360Video: Viro360Image
       this.setState({
-        background: 'party',
-        elements: [
-          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
-        ],
-        viro360Type: Viro360Video,
-        loop: true
+        background: background.data.name,
+        elements: element.data,
+        viro360Type: Viro360Type,
+        loop: background.data.loop
       })
-    } else{
-      this.setState({
-        background: 'beach',
-        elements: [
-          {name:'fox', type:"OBJ", position:[2, 2, -3], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[1, 1.5, -5], scale:[ .01, .01, .01] },
-          {name:'fox', type:"OBJ", position:[-1, 1, -4], scale:[ .01, .01, .01] }
-        ],
-        viro360Type: Viro360Image,
-        loop: false
-      })
-    }
 
+     } catch (err) {
+      console.error(err)
+    }
   }
 
 
+
   render() {
+    console.log('state>>>>>>',this.props)
+
     let TagViro360 = this.state.viro360Type || Viro360Video
       return (
         <ViroARScene>
