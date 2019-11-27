@@ -1,38 +1,86 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { withNavigation } from 'react-navigation';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, Button, Image } from "react-native";
+import { withNavigation } from "react-navigation";
+import axios from "axios";
+
+import { images } from "../res/images";
+const styles = StyleSheet.create({
+  imageInRow: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+  },
+});
 
 const dummyPortals = [
   {
-    name: 'PartyEvent',
+    name: "PartyEvent",
     backgroundId: 2,
-    type: 'custom',
+    type: "custom",
     imageURL:
-      'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+      "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png",
   },
   {
-    name: 'BeachVacation',
+    name: "BeachVacation",
     backgroundId: 1,
-    type: 'custom',
+    type: "custom",
     imageURL:
-      'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+      "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png",
   },
 ];
 
 // creating a row class to instantiate a row from
 export default class Table extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { portals: [] };
+  }
+  async componentDidMount() {
+    const { data } = await axios.get(`http://10.1.85.96:8080/api/portals`);
+    this.setState({ portals: data });
+  }
   renderRow(portal) {
     return (
-      <View style={{ flex: 1, alignSelf: 'stretch', maxHeight: 50 }}>
-        <Text>{portal.name}</Text>
+      <View
+        key={portal.backgroundId}
+        style={{
+          flex: 2,
+          alignSelf: "stretch",
+          maxHeight: 50,
+          margin: 20,
+          borderColor: "#0000ff",
+          borderWidth: 3,
+          flexDirection: "row",
+        }}
+      >
+        <View style={{ padding: 3 }}>
+          <Text>{portal.name}</Text>
+        </View>
+        <View style={{ flex: 1 }}>
+          <Image
+            style={styles.imageInRow}
+            source={images.thumbnails[portal.name]}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Button
+            title="Enter portal"
+            onPress={() => {
+              this.props.navigation.navigate("ViroApp", {
+                templateId: portal.backgroundId,
+              });
+            }}
+          />
+        </View>
       </View>
     );
   }
 
   render() {
+    console.log("portals on state", this.state.portals);
     return (
-      <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
-        {dummyPortals.map(portal => {
+      <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+        {this.state.portals.map(portal => {
           return this.renderRow(portal);
         })}
       </View>
