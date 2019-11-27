@@ -1,33 +1,33 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet, Button, Image } from "react-native";
-import { withNavigation } from "react-navigation";
-import axios from "axios";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import axios from 'axios';
 
-import { images } from "../res/images";
+import { images } from '../res/images';
 const styles = StyleSheet.create({
   imageInRow: {
     width: 50,
     height: 50,
-    resizeMode: "contain",
+    resizeMode: 'contain',
   },
 });
 
-const dummyPortals = [
-  {
-    name: "PartyEvent",
-    backgroundId: 2,
-    type: "custom",
-    imageURL:
-      "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png",
-  },
-  {
-    name: "BeachVacation",
-    backgroundId: 1,
-    type: "custom",
-    imageURL:
-      "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png",
-  },
-];
+// const dummyPortals = [
+//   {
+//     name: 'PartyEvent',
+//     backgroundId: 2,
+//     type: 'custom',
+//     imageURL:
+//       'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+//   },
+//   {
+//     name: 'BeachVacation',
+//     backgroundId: 1,
+//     type: 'custom',
+//     imageURL:
+//       'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+//   },
+// ];
 
 // creating a row class to instantiate a row from
 export default class Table extends Component {
@@ -42,15 +42,15 @@ export default class Table extends Component {
   renderRow(portal) {
     return (
       <View
-        key={portal.backgroundId}
+        key={portal.id}
         style={{
           flex: 2,
-          alignSelf: "stretch",
+          alignSelf: 'stretch',
           maxHeight: 50,
           margin: 20,
-          borderColor: "#0000ff",
+          borderColor: '#0000ff',
           borderWidth: 3,
-          flexDirection: "row",
+          flexDirection: 'row',
         }}
       >
         <View style={{ padding: 3 }}>
@@ -66,8 +66,9 @@ export default class Table extends Component {
           <Button
             title="Enter portal"
             onPress={() => {
-              this.props.navigation.navigate("ViroApp", {
-                templateId: portal.backgroundId,
+              console.log('portal id when navigating', portal.id);
+              this.props.navigation.navigate('ViroApp', {
+                templateId: portal.id,
               });
             }}
           />
@@ -77,9 +78,9 @@ export default class Table extends Component {
   }
 
   render() {
-    console.log("portals on state", this.state.portals);
+    console.log('portals on state', this.state.portals);
     return (
-      <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
         {this.state.portals.map(portal => {
           return this.renderRow(portal);
         })}

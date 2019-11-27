@@ -32,11 +32,11 @@ const images = {
     },
   },
   thumbnails: {
-    BeachVacation: {
+    PartyEvent: {
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
     },
-    PartyEvent: {
+    BeachVacation: {
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
     },
