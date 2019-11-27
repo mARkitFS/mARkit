@@ -4,12 +4,13 @@ import { withNavigation } from 'react-navigation';
 
 class Homepage extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Homepage Bitch</Text>
         <Button
           title="Click to enter"
-          onPress={() => this.props.navigation.navigate('ViroApp')}
+          onPress={() => navigate('ViewerDashboard')}
         />
       </View>
     );

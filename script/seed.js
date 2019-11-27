@@ -1,7 +1,15 @@
 'use strict';
 
 const db = require('../server/db');
-const { User, Element, Background, ElementProp, ElementRes, Portal, Portel } = require('../server/db/models');
+const {
+  User,
+  Element,
+  Background,
+  ElementProp,
+  ElementRes,
+  Portal,
+  Portel,
+} = require('../server/db/models');
 
 async function seed() {
   await db.sync({ force: true });
@@ -9,34 +17,38 @@ async function seed() {
 
   const users = await Promise.all([
     User.create({ email: 'cody@email.com', password: '123456' }),
-    User.create({ email: 'murphy@email.com', password: '123456' })
+    User.create({ email: 'murphy@email.com', password: '123456' }),
   ]);
 
   const elements = await Promise.all([
     Element.create({
       name: 'Heart',
-      type: 'VRX' ,
-      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx'
+      type: 'VRX',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
     }),
     Element.create({
       name: 'Fox',
-      type: 'OBJ' ,
-      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj'
+      type: 'OBJ',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj',
     }),
   ]);
 
   const backgrounds = await Promise.all([
     Background.create({
       name: 'Beach',
-      type: 'Viro360Image' ,
-      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
-      loop: false
+      type: 'Viro360Image',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+      loop: false,
     }),
     Background.create({
       name: 'Party',
-      type: 'Viro360Video' ,
-      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
-      loop: true
+      type: 'Viro360Video',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
+      loop: true,
     }),
   ]);
 
@@ -44,131 +56,133 @@ async function seed() {
     Portal.create({
       name: 'PartyEvent',
       backgroundId: 2,
-      type: 'custom' ,
-      imageURL: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
+      type: 'custom',
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
     }),
     Portal.create({
       name: 'BeachVacation',
       backgroundId: 1,
-      type: 'custom' ,
-      imageURL: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
+      type: 'custom',
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
     }),
   ]);
 
   const portels = await Promise.all([
     Portel.create({
       elementId: 2,
-      portalId: 1
+      portalId: 1,
     }),
     Portel.create({
       elementId: 2,
-      portalId: 2
+      portalId: 2,
     }),
     Portel.create({
       elementId: 1,
-      portalId: 1
+      portalId: 1,
     }),
     Portel.create({
       elementId: 1,
-      portalId: 2
-    })
+      portalId: 2,
+    }),
   ]);
 
   const elementprops = await Promise.all([
     ElementProp.create({
       elementId: 2,
-      portalId: 1 ,
+      portalId: 1,
       position: [2, 2, -3],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 2,
-      portalId: 1 ,
+      portalId: 1,
       position: [1, 1.5, -5],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 2,
-      portalId: 1 ,
+      portalId: 1,
       position: [-1, 1, -4],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 2,
-      portalId: 2 ,
+      portalId: 2,
       position: [2, 2, -3],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 2,
-      portalId: 2 ,
+      portalId: 2,
       position: [1, 1.5, -5],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 2,
-      portalId: 2 ,
+      portalId: 2,
       position: [-1, 1, -4],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
-      portalId: 1 ,
+      portalId: 1,
       position: [2, 2, -3],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
-      portalId: 1 ,
+      portalId: 1,
       position: [1, 1.5, -5],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
-      portalId: 1 ,
+      portalId: 1,
       position: [-1, 1, -4],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
-      portalId: 2 ,
+      portalId: 2,
       position: [2, 2, -3],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
-      portalId: 2 ,
+      portalId: 2,
       position: [1, 1.5, -5],
-      scale: [ .01, .01, .01]
+      scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
-      portalId: 2 ,
+      portalId: 2,
       position: [-1, 1, -4],
-      scale: [ .01, .01, .01]
-    })
+      scale: [0.01, 0.01, 0.01],
+    }),
   ]);
 
   const elementres = await Promise.all([
     ElementRes.create({
       elementId: 2,
-      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.mtl',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.mtl',
     }),
     ElementRes.create({
       elementId: 2,
-      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png',
     }),
   ]);
 
-
-
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${elements.length} elements`)
-  console.log(`seeded ${backgrounds.length} backgrounds`)
-  console.log(`seeded ${elementprops.length} elementprops`)
-  console.log(`seeded ${elementres.length} elementres`)
-  console.log(`seeded ${portals.length} portals`)
-  console.log(`seeded ${portels.length} portels`)
+  console.log(`seeded ${users.length} users`);
+  console.log(`seeded ${elements.length} elements`);
+  console.log(`seeded ${backgrounds.length} backgrounds`);
+  console.log(`seeded ${elementprops.length} elementprops`);
+  console.log(`seeded ${elementres.length} elementres`);
+  console.log(`seeded ${portals.length} portals`);
+  console.log(`seeded ${portels.length} portels`);
   console.log(`seeded successfully`);
 }
 
