@@ -68,7 +68,7 @@ export default class Table extends Component {
             onPress={() => {
               console.log('portal id when navigating', portal.id);
               this.props.navigation.navigate('ViroApp', {
-                templateId: portal.id,
+                portalId: portal.id,
               });
             }}
           />
