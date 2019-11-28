@@ -6,8 +6,6 @@ import { ViroARSceneNavigator } from 'react-viro';
 
 import { View, TouchableHighlight, Image } from 'react-native';
 
-import { images } from '../res/images';
-
 const initalAR = require('./MainScene');
 
 export default class ViroApp extends Component {
@@ -25,7 +23,11 @@ export default class ViroApp extends Component {
           }}
         />
         <View style={{ flex: 1, position: 'absolute' }}>
-          <TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => {
+              this.props.navigation.navigate('ViewerDashboard');
+            }}
+          >
             <Image source={require('../res/icon_close_w.png')} />
           </TouchableHighlight>
         </View>
