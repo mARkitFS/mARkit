@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 // this is the view you get when clicking a portal from the viewer dashboard
 
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
 
 // display a thumbnail (clickable, on click navigates to MainScene)
 // components: name of portal, list of elements,thumbnail
+
+const portalId = 1;
 
 export default class SinglePortal extends Component {
   render() {
@@ -37,9 +39,24 @@ export default class SinglePortal extends Component {
             <Text>thumbnail header</Text>
           </View>
           {/* Thumbnail view */}
-          <View>
-            <Text>Thumbnail will be here</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              console.log(
+                'portal id when navigating from single portal to viro app',
+                portalId
+              );
+              this.props.navigation.navigate('ViroApp', {
+                portalId: portalId,
+              });
+            }}
+          >
+            <View>
+              <Image
+                source={require('../res/guadalupe_360.jpg')}
+                style={{ width: 170, height: 116 }}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
