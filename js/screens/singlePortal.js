@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 // this is the view you get when clicking a portal from the viewer dashboard
 
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
@@ -7,10 +7,12 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 // display a thumbnail (clickable, on click navigates to MainScene)
 // components: name of portal, list of elements,thumbnail
 
-const portalId = 1;
+// const portalId = 1;
 
 export default class SinglePortal extends Component {
   render() {
+    const { navigation } = this.props;
+    const { portalId } = navigation.state.params;
     return (
       // wrapper view
       <View>
@@ -42,17 +44,17 @@ export default class SinglePortal extends Component {
           <TouchableOpacity
             onPress={() => {
               console.log(
-                'portal id when navigating from single portal to viro app',
+                "portal id when navigating from single portal to viro app",
                 portalId
               );
-              this.props.navigation.navigate('ViroApp', {
+              this.props.navigation.navigate("ViroApp", {
                 portalId: portalId,
               });
             }}
           >
             <View>
               <Image
-                source={require('../res/guadalupe_360.jpg')}
+                source={require("../res/guadalupe_360.jpg")}
                 style={{ width: 170, height: 116 }}
               />
             </View>
