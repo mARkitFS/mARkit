@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
+
+import { images } from "../res/images";
 // this is the view you get when clicking a portal from the viewer dashboard
 
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
@@ -11,8 +13,13 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 
 export default class SinglePortal extends Component {
   render() {
+    console.log(
+      this.props.navigation.state.params.portal,
+      "this props navigation state params portal in singlePortal"
+    );
     const { navigation } = this.props;
-    const { portalId } = navigation.state.params;
+    const { portal } = navigation.state.params;
+    const portalId = portal.id;
     return (
       // wrapper view
       <View>
@@ -54,7 +61,7 @@ export default class SinglePortal extends Component {
           >
             <View>
               <Image
-                source={require("../res/guadalupe_360.jpg")}
+                source={images.thumbnails[portal.name]}
                 style={{ width: 170, height: 116 }}
               />
             </View>
