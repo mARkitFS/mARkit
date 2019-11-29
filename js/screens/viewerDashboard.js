@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
-import { withNavigation } from 'react-navigation';
-import axios from 'axios';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, Button, Image } from "react-native";
+import { withNavigation } from "react-navigation";
+import axios from "axios";
 
-import { images } from '../res/images';
+import { images } from "../res/images";
 const styles = StyleSheet.create({
   imageInRow: {
     width: 50,
     height: 50,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
 });
 
@@ -36,8 +36,12 @@ export default class Table extends Component {
     this.state = { portals: [] };
   }
   async componentDidMount() {
-    const { data } = await axios.get(`http://10.1.85.96:8080/api/portals`);
-    this.setState({ portals: data });
+    try {
+      const { data } = await axios.get(`http://10.1.85.96:8080/api/portals`);
+      this.setState({ portals: data });
+    } catch (err) {
+      console.error(err)
+    }
   }
   renderRow(portal) {
     return (
@@ -45,12 +49,12 @@ export default class Table extends Component {
         key={portal.id}
         style={{
           flex: 2,
-          alignSelf: 'stretch',
+          alignSelf: "stretch",
           maxHeight: 50,
           margin: 20,
-          borderColor: '#0000ff',
+          borderColor: "#0000ff",
           borderWidth: 3,
-          flexDirection: 'row',
+          flexDirection: "row",
         }}
       >
         <View style={{ padding: 3 }}>
@@ -66,8 +70,8 @@ export default class Table extends Component {
           <Button
             title="Enter portal"
             onPress={() => {
-              console.log('portal id when navigating', portal.id);
-              this.props.navigation.navigate('SinglePortal', {
+              console.log("portal id when navigating", portal.id);
+              this.props.navigation.navigate("SinglePortal", {
                 portal: portal,
               });
             }}
@@ -78,9 +82,9 @@ export default class Table extends Component {
   }
 
   render() {
-    console.log('portals on state', this.state.portals);
+    console.log("portals on state", this.state.portals);
     return (
-      <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
         {this.state.portals.map(portal => {
           return this.renderRow(portal);
         })}
