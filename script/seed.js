@@ -16,56 +16,64 @@ async function seed() {
   console.log('db synced!');
 
   const users = await Promise.all([
-    User.create({ email: 'cody@email.com', password: '123456' }),
-    User.create({ email: 'murphy@email.com', password: '123456' }),
+    User.create({ id: 1, email: 'cody@email.com', password: '123456' }),
+    User.create({ id: 2, email: 'murphy@email.com', password: '123456' }),
   ]);
 
   const elements = await Promise.all([
     Element.create({
-      name: 'Heart',
+      id: 1,
+      name: 'heart',
       type: 'VRX',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
+      userId: 1,
     }),
     Element.create({
-      name: 'Fox',
+      id: 2,
+      name: 'fox',
       type: 'OBJ',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj',
+      userId: 1,
     }),
   ]);
 
   const backgrounds = await Promise.all([
     Background.create({
-      name: 'Beach',
+      name: 'beach',
       type: 'Viro360Image',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
       loop: false,
+      userId: 1,
     }),
     Background.create({
-      name: 'Party',
+      name: 'party',
       type: 'Viro360Video',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
       loop: true,
+      userId: 1,
     }),
   ]);
 
   const portals = await Promise.all([
     Portal.create({
-      name: 'PartyEvent',
+      name: 'party_event',
       backgroundId: 2,
       type: 'custom',
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+      userId: 1,
     }),
     Portal.create({
-      name: 'BeachVacation',
+      name: 'beach_vacation',
       backgroundId: 1,
       type: 'custom',
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+      userId: 1,
     }),
   ]);
 
