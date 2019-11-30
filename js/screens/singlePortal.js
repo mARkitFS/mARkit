@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React, { Component } from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import { images } from "../res/images";
+import { images } from '../res/images';
 
-import axios from "axios";
+import axios from 'axios';
 // this is the view you get when clicking a portal from the viewer dashboard
 
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
@@ -13,13 +13,13 @@ import axios from "axios";
 
 // const portalId = 1;
 
-import { Viro360Video, Viro360Image } from "react-viro";
+import { Viro360Video, Viro360Image } from 'react-viro';
 
 export default class SinglePortal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: "party",
+      background: 'party',
       elements: [],
       viro360Type: Viro360Video,
       loop: true,
@@ -42,12 +42,12 @@ export default class SinglePortal extends Component {
         `http://10.1.85.96:8080/api/backgrounds/${portal.backgroundId}`
       );
       let Viro360Type =
-        background.data.type === "Viro360Video" ? Viro360Video : Viro360Image;
-      console.log("background: ", background.data.name);
-      console.log("element: ", element.data);
-      console.log("viro360Type: ", Viro360Type);
-      console.log("bacgkround loop: ", Viro360Type);
-      console.log("portal: ", portal);
+        background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
+      console.log('background: ', background.data.name);
+      console.log('element: ', element.data);
+      console.log('viro360Type: ', Viro360Type);
+      console.log('bacgkround loop: ', Viro360Type);
+      console.log('portal: ', portal);
       this.setState({
         background: background.data.name,
         elements: element.data,
@@ -60,13 +60,13 @@ export default class SinglePortal extends Component {
     }
   }
   render() {
-    console.log(this.state, "this state in singlePortal");
+    console.log(this.state, 'this state in singlePortal');
     const returnComponent = this.state.background ? (
       // wrapper view
       <View>
         {/* title view */}
         <View>
-          <Text>Header</Text>
+          <Text>{this.state.portal.name}</Text>
         </View>
         {/* elements box view */}
         <View>
@@ -92,15 +92,15 @@ export default class SinglePortal extends Component {
           <TouchableOpacity
             onPress={() => {
               console.log(
-                "state.portal when navigating from single portal to viro app",
+                'state.portal when navigating from single portal to viro app',
                 this.state.portal
               );
-              this.props.navigation.navigate("ViroApp", {
+              this.props.navigation.navigate('ViroApp', {
                 portal: this.state.portal,
                 background: this.state.background,
                 elements: this.state.elements,
                 loop: this.state.loop,
-                viro360Type: this.state.viro360Type
+                viro360Type: this.state.viro360Type,
               });
             }}
           >

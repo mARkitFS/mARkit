@@ -24,10 +24,10 @@ const images =  {
 
         thumbnails: { 
        beach_vacation: {
-              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
           }, 
        party_event: {
-              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
           }, 
  }
       
