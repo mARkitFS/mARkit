@@ -16,56 +16,67 @@ async function seed() {
   console.log('db synced!');
 
   const users = await Promise.all([
-    User.create({ email: 'cody@email.com', password: '123456' }),
-    User.create({ email: 'murphy@email.com', password: '123456' }),
+    User.create({ id: 1, name: 'admin', email: 'admin@email.com', password: '123456' }),
+    User.create({ id: 2, name: 'cody', email: 'cody@email.com', password: '123456' }),
+    User.create({ id: 3, name: 'murphy', email: 'murphy@email.com', password: '123456' }),
   ]);
 
   const elements = await Promise.all([
     Element.create({
-      name: 'Heart',
+      id: 1,
+      name: 'heart',
       type: 'VRX',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
+      userId: 1,
     }),
     Element.create({
-      name: 'Fox',
+      id: 2,
+      name: 'fox',
       type: 'OBJ',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj',
+      userId: 1,
     }),
   ]);
 
   const backgrounds = await Promise.all([
     Background.create({
-      name: 'Beach',
+      id: 2,
+      name: 'beach',
       type: 'Viro360Image',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
       loop: false,
+      userId: 1,
     }),
     Background.create({
-      name: 'Party',
+      id: 1,
+      name: 'party',
       type: 'Viro360Video',
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
       loop: true,
+      userId: 1,
     }),
   ]);
 
   const portals = await Promise.all([
     Portal.create({
-      name: 'PartyEvent',
-      backgroundId: 2,
-      type: 'custom',
-      imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
-    }),
-    Portal.create({
-      name: 'BeachVacation',
+      name: 'party_event',
       backgroundId: 1,
       type: 'custom',
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+      userId: 1,
+    }),
+    Portal.create({
+      name: 'beach_vacation',
+      backgroundId: 2,
+      type: 'custom',
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+      userId: 1,
     }),
   ]);
 

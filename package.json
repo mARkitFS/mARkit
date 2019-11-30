@@ -8,6 +8,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start npm run start-server",
     "server": "node server",
     "seed": "node script/seed.js",
+    "image": "node script/createImage.js",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
   },
   "dependencies": {
