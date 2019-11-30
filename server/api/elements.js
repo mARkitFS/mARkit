@@ -28,6 +28,26 @@ router.get('/format/:userId', async (req, res, next) => {
   }
 });
 
+router.get('/list/:elementIds', async (req, res, next) => {
+  try {
+    const elements = await Element.findAll({
+      where:{
+        id: {
+          $in:[1,2]
+        }
+      }
+    });
+
+    // const elementProp = await ElementProp.findAll({
+    //   where :{portalId: req.params.portalId},
+    //   attributes:['position','scale'],
+    //   include: [{model: Element, attributes: ['type','name']}]
+    res.json(elements);
+  } catch (err) {
+    next(err);
+  }
+});
+
 
 router.get('/:elementId', async (req, res, next) => {
   try {

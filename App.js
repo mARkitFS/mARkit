@@ -160,6 +160,7 @@ import {
   AppJs,
   ViewerDashboard,
   SinglePortal,
+  PreviewPortal
 } from './js/index';
 
 const AppNavigator = createSwitchNavigator(
@@ -170,6 +171,7 @@ const AppNavigator = createSwitchNavigator(
     AppJs: { screen: AppJs },
     ViewerDashboard: { screen: ViewerDashboard },
     SinglePortal: { screen: SinglePortal },
+    PreviewPortal: { screen: PreviewPortal },
   },
   {
     initialRouteName: 'Homepage',
