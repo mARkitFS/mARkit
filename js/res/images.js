@@ -24,6 +24,11 @@ const images =  {
                   resources: [ ],
                   url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
                   },
+            party: {
+                    uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
+                    resources: [ ],
+                    url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
+                    },
               },
 
 
