@@ -36,8 +36,12 @@ export default class Table extends Component {
     this.state = { portals: [] };
   }
   async componentDidMount() {
-    const { data } = await axios.get(`http://10.1.85.88:8080/api/portals`);
-    this.setState({ portals: data });
+    try {
+      const { data } = await axios.get(`http://10.1.85.96:8080/api/portals`);
+      this.setState({ portals: data });
+    } catch (err) {
+      console.error(err);
+    }
   }
   renderRow(portal) {
     return (
@@ -67,8 +71,8 @@ export default class Table extends Component {
             title="Enter portal"
             onPress={() => {
               console.log('portal id when navigating', portal.id);
-              this.props.navigation.navigate('ViroApp', {
-                portalId: portal.id,
+              this.props.navigation.navigate('SinglePortal', {
+                portal: portal,
               });
             }}
           />

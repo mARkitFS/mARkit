@@ -22,13 +22,6 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
 
 // import { Homepage } from "./js";
-import {
-  MainScene,
-  ViroApp,
-  Homepage,
-  AppJs,
-  ViewerDashboard,
-} from './js/index';
 
 /*
  TODO: Insert your API key below
@@ -160,6 +153,15 @@ export default class ViroSample extends Component {
   }
 }
 
+import {
+  MainScene,
+  ViroApp,
+  Homepage,
+  AppJs,
+  ViewerDashboard,
+  SinglePortal,
+} from './js/index';
+
 const AppNavigator = createSwitchNavigator(
   {
     Homepage: { screen: props => <Homepage {...props} /> },
@@ -167,6 +169,7 @@ const AppNavigator = createSwitchNavigator(
     MainScene: { screen: MainScene },
     AppJs: { screen: AppJs },
     ViewerDashboard: { screen: ViewerDashboard },
+    SinglePortal: { screen: SinglePortal },
   },
   {
     initialRouteName: 'Homepage',

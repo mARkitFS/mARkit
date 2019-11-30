@@ -12,8 +12,8 @@ const images =  {
         element: { 
        fox: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.mtl'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png'
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.mtl'
  ]
           }, 
        heart: {
@@ -23,11 +23,11 @@ const images =  {
  },
 
         thumbnails: { 
-       party_event: {
-              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
-          }, 
        beach_vacation: {
-              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png'
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
+          }, 
+       party_event: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
           }, 
  }
       
