@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
-import axios from 'axios';
-import { StyleSheet } from 'react-native';
-import { images } from '../../js/res/images';
+import React, { Component } from "react";
+import axios from "axios";
+import { StyleSheet } from "react-native";
+import { images } from "../../js/res/images";
 
 import {
   ViroSceneNavigator,
@@ -19,15 +19,15 @@ import {
   ViroARImageMarker,
   ViroBox,
   ViroARTrackingTargets,
-} from 'react-viro';
+} from "react-viro";
 
-import ThreeDObject from '../../ARScenes/Portals/ThreeDObject';
+import ThreeDObject from "../../ARScenes/Portals/ThreeDObject";
 
 class MainScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: 'party',
+      background: "party",
       elements: [],
       viro360Type: Viro360Video,
       loop: true,
@@ -48,7 +48,7 @@ class MainScene extends Component {
         `http://10.1.85.96:8080/api/backgrounds/${portal.data.backgroundId}`
       );
       let Viro360Type =
-        background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
+        background.data.type === "Viro360Video" ? Viro360Video : Viro360Image;
       this.setState({
         background: background.data.name,
         elements: element.data,
@@ -61,8 +61,8 @@ class MainScene extends Component {
   }
 
   render() {
-    console.log('state in main scene>>>>>>', this.state);
-    console.log('props in main scene>>>>>', this.props);
+    console.log("state in main scene>>>>>>", this.state);
+    console.log(this.props, "props in main scene>>>>>");
     let TagViro360 = this.state.viro360Type || Viro360Video;
     return (
       <ViroARScene>
@@ -74,20 +74,20 @@ class MainScene extends Component {
         >
           <ViroPortal position={[0, 0, -1]} scale={[0.1, 0.1, 0.1]}>
             <Viro3DObject
-              source={require('../ARPortals/portal_res/portal_ship/portal_ship.vrx')}
+              source={require("../ARPortals/portal_res/portal_ship/portal_ship.vrx")}
               resources={[
-                require('../ARPortals/portal_res/portal_ship/portal_ship_diffuse.png'),
-                require('../ARPortals/portal_res/portal_ship/portal_ship_normal.png'),
-                require('../ARPortals/portal_res/portal_ship/portal_ship_specular.png'),
+                require("../ARPortals/portal_res/portal_ship/portal_ship_diffuse.png"),
+                require("../ARPortals/portal_res/portal_ship/portal_ship_normal.png"),
+                require("../ARPortals/portal_res/portal_ship/portal_ship_specular.png"),
               ]}
               type="VRX"
             />
           </ViroPortal>
           <TagViro360
-            source={{ uri: images.background[this.state.background].uri }}
-            loop={this.state.loop}
+            source={{ uri: images.background[this.props.background].uri }}
+            loop={this.props.loop}
           />
-          {this.state.elements.map((element, index) => (
+          {this.props.elements.map((element, index) => (
             <ThreeDObject key={index} element={element} />
           ))}
         </ViroPortalScene>
