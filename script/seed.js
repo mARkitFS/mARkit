@@ -37,6 +37,7 @@ async function seed() {
 
   const backgrounds = await Promise.all([
     Background.create({
+      id: 1,
       name: 'Beach',
       type: 'Viro360Image',
       uri:
@@ -44,6 +45,7 @@ async function seed() {
       loop: false,
     }),
     Background.create({
+      id: 2,
       name: 'Party',
       type: 'Viro360Video',
       uri:

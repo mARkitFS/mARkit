@@ -11,15 +11,19 @@ const initalAR = require('./MainScene');
 export default class ViroApp extends Component {
   render() {
     console.log(this.props, 'props in viroapp js');
-    const { navigation } = this.props;
-    const portalId = navigation.state.params.portalId;
-    console.log('portalId var in viroApp', portalId);
+    const params = this.props.navigation.state.params;
     return (
       <View style={{ flex: 3 }}>
         <ViroARSceneNavigator
           initialScene={{
             scene: initalAR,
-            passProps: { portalId: portalId },
+            passProps: {
+              background: params.background,
+              elements: params.elements,
+              viro360Type: params.viro360Type,
+              loop: params.loop,
+              portal: params.portal,
+            },
           }}
         />
         <View style={{ flex: 1, position: 'absolute' }}>
