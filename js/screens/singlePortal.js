@@ -36,7 +36,7 @@ export default class SinglePortal extends Component {
         `http://192.168.0.238:8080/api/elementprops/portal/${portalId}`
       );
       // const portal = await axios.get(
-      //   `http://10.1.85.96:8080/api/portals/${portalId}`
+      //   `http://192.168.0.112:8080/api/portals/${portalId}`
       // );
       const background = await axios.get(
         `http://192.168.0.238:8080/api/backgrounds/${portal.backgroundId}`

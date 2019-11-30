@@ -24,9 +24,6 @@ const images =  {
                   resources: [ ],
                   url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
                   },
-          party: {
-                  url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
-                },
               },
 
 
