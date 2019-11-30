@@ -12,6 +12,22 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/format/:userId', async (req, res, next) => {
+  try{
+    const backgrounds = await Background.findAll()
+    let background = {}
+    backgrounds.forEach(bg => {
+      background[bg.name] = {
+        uri:bg.uri
+      }
+    })
+    res.json(background)
+  } catch (err){
+    next(err)
+  }
+
+})
+
 router.get('/:backgroundId', async (req, res, next) => {
   try {
     const background = await Background.findByPk(req.params.backgroundId);
