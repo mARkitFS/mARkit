@@ -33,7 +33,7 @@ element.data.forEach(el => {
           }, \n`
 })
 
-let thumbnailFormat = `thumbnail: { \n`
+let thumbnailFormat = `thumbnails: { \n`
 portal.data.forEach(pt => {
   thumbnailFormat +=
   `       ${pt.name}: {
@@ -49,7 +49,7 @@ const ex =
       \n}`
 
 const res = "const images =  " + ex + "\n export { images } ";
-fs.writeFileSync("./js/res/imagesTest.js", res);
+fs.writeFileSync("./js/res/images.js", res);
 })()
 
 

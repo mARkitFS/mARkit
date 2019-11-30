@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Element } = require('../db/models');
+const { Element, ElementRes } = require('../db/models');
 module.exports = router;
 
 //All routes for /api/elements
@@ -11,6 +11,23 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
+
+router.get('/format/:userId', async (req, res, next) => {
+  try {
+    const elements = await Element.findAll({
+      include:[{model: ElementRes, attributes:['uri']}]
+    });
+
+    // const elementProp = await ElementProp.findAll({
+    //   where :{portalId: req.params.portalId},
+    //   attributes:['position','scale'],
+    //   include: [{model: Element, attributes: ['type','name']}]
+    res.json(elements);
+  } catch (err) {
+    next(err);
+  }
+});
+
 
 router.get('/:elementId', async (req, res, next) => {
   try {

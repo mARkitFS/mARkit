@@ -16,8 +16,9 @@ async function seed() {
   console.log('db synced!');
 
   const users = await Promise.all([
-    User.create({ id: 1, email: 'cody@email.com', password: '123456' }),
-    User.create({ id: 2, email: 'murphy@email.com', password: '123456' }),
+    User.create({ id: 1, name: 'admin', email: 'admin@email.com', password: '123456' }),
+    User.create({ id: 2, name: 'cody', email: 'cody@email.com', password: '123456' }),
+    User.create({ id: 3, name: 'murphy', email: 'murphy@email.com', password: '123456' }),
   ]);
 
   const elements = await Promise.all([
@@ -41,6 +42,7 @@ async function seed() {
 
   const backgrounds = await Promise.all([
     Background.create({
+      id: 2,
       name: 'beach',
       type: 'Viro360Image',
       uri:
@@ -49,6 +51,7 @@ async function seed() {
       userId: 1,
     }),
     Background.create({
+      id: 1,
       name: 'party',
       type: 'Viro360Video',
       uri:
@@ -61,7 +64,7 @@ async function seed() {
   const portals = await Promise.all([
     Portal.create({
       name: 'party_event',
-      backgroundId: 2,
+      backgroundId: 1,
       type: 'custom',
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
@@ -69,7 +72,7 @@ async function seed() {
     }),
     Portal.create({
       name: 'beach_vacation',
-      backgroundId: 1,
+      backgroundId: 2,
       type: 'custom',
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
