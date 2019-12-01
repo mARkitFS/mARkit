@@ -5,21 +5,12 @@ const colors = require("colors");
 (async () => {
   const portalId = 1;
   const element = await axios.get(
-<<<<<<< HEAD
     `http://192.168.0.112:8080/api/elements/format/${portalId}`
   );
 
   const background = await axios.get(`http://192.168.0.112:8080/api/backgrounds`);
 
   const portal = await axios.get(`http://192.168.0.112:8080/api/portals`);
-=======
-    `http://192.168.0.112:8080/api/elements/format/${portalId}`
-  );
-
-  const background = await axios.get(`http://192.168.0.112:8080/api/backgrounds`);
-
-  const portal = await axios.get(`http://192.168.0.112:8080/api/portals`);
->>>>>>> master
 
   let backgroundFormat = `background: { \n`;
   background.data.forEach(bg => {
