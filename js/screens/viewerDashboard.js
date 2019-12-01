@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
   imageInRow: {
     width: 50,
     height: 50,
-    resizeMode: 'contain',
-  },
+    resizeMode: 'contain'
+  }
 });
 
 // const dummyPortals = [
@@ -36,8 +36,12 @@ export default class Table extends Component {
     this.state = { portals: [] };
   }
   async componentDidMount() {
-    const { data } = await axios.get(`http://172.20.1.222:8080/api/portals`);
-    this.setState({ portals: data });
+    try {
+      const { data } = await axios.get(`https://vast-falls-27580.herokuapp.com/api/portals`);
+      this.setState({ portals: data });
+    } catch (err) {
+      console.error(err);
+    }
   }
   renderRow(portal) {
     return (
@@ -50,7 +54,7 @@ export default class Table extends Component {
           margin: 20,
           borderColor: '#0000ff',
           borderWidth: 3,
-          flexDirection: 'row',
+          flexDirection: 'row'
         }}
       >
         <View style={{ padding: 3 }}>
@@ -67,8 +71,8 @@ export default class Table extends Component {
             title="Enter portal"
             onPress={() => {
               console.log('portal id when navigating', portal.id);
-              this.props.navigation.navigate('ViroApp', {
-                portalId: portal.id,
+              this.props.navigation.navigate('SinglePortal', {
+                portal: portal
               });
             }}
           />

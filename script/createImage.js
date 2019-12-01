@@ -1,57 +1,47 @@
 const fs = require("fs");
-const axios = require ("axios");
+const axios = require("axios");
+const colors = require("colors");
 
 (async () => {
-  const portalId = 1
-const element = await axios.get(
-  `http://172.20.1.222/api/elements/format/${portalId}`
-);
 
-const background = await axios.get(
-  `http://172.20.1.222:8080/api/backgrounds`
-)
+  const portalId = 1;
+  const element = await axios.get(
+    `https://vast-falls-27580.herokuapp.com/api/elements/format/${portalId}`
+  );
 
-const portal = await axios.get(
-  `http://172.20.1.222:8080/api/portals`
-)
+  const background = await axios.get(`https://vast-falls-27580.herokuapp.com/api/backgrounds`);
 
+  const portal = await axios.get(`https://vast-falls-27580.herokuapp.com/api/portals`);
 
-let backgroundFormat = `background: { \n`
-background.data.forEach(bg => {
-  backgroundFormat +=
-  `         ${bg.name}: {
+  let backgroundFormat = `background: { \n`;
+  background.data.forEach(bg => {
+    backgroundFormat += `         ${bg.name}: {
                 uri: '${bg.uri}'
-            }, \n`
-})
+            }, \n`;
+  });
 
-let elementFormat = `element: { \n`
-element.data.forEach(el => {
-  elementFormat +=
-  `       ${el.name}: {
+  let elementFormat = `element: { \n`;
+  element.data.forEach(el => {
+    elementFormat += `       ${el.name}: {
               uri: '${el.uri}',
               resources: [${el.elementres.map(elres => `'${elres.uri}'\n`)} ]
-          }, \n`
-})
+          }, \n`;
+  });
 
-let thumbnailFormat = `thumbnails: { \n`
-portal.data.forEach(pt => {
-  thumbnailFormat +=
-  `       ${pt.name}: {
+  let thumbnailFormat = `thumbnails: { \n`;
+  portal.data.forEach(pt => {
+    thumbnailFormat += `       ${pt.name}: {
               uri: '${pt.imageURL}'
-          }, \n`
-})
+          }, \n`;
+  });
 
-const ex =
-    `{\n
+  const ex = `{\n
         ${backgroundFormat}  },\n
         ${elementFormat} },\n
         ${thumbnailFormat} }
-      \n}`
+      \n}`;
 
-const res = "const images =  " + ex + "\n export { images } ";
-fs.writeFileSync("./js/res/images.js", res);
-})()
-
-
-
-
+  const res = "const images =  " + ex + "\n export { images } ";
+  fs.writeFileSync("./js/res/images.js", res);
+})();
+console.log("image script run successfully!".green);
