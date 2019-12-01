@@ -4,15 +4,15 @@ const axios = require ("axios");
 (async () => {
   const portalId = 1
 const element = await axios.get(
-  `http://10.1.85.88:8080/api/elements/format/${portalId}`
+  `http://172.20.1.222/api/elements/format/${portalId}`
 );
 
 const background = await axios.get(
-  `http://10.1.85.88:8080/api/backgrounds`
+  `http://172.20.1.222:8080/api/backgrounds`
 )
 
 const portal = await axios.get(
-  `http://10.1.85.88:8080/api/portals`
+  `http://172.20.1.222:8080/api/portals`
 )
 
 

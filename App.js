@@ -28,6 +28,7 @@ import {
   Homepage,
   AppJs,
   ViewerDashboard,
+  CreatorDashboard,
 } from './js/index';
 
 /*
@@ -167,6 +168,7 @@ const AppNavigator = createSwitchNavigator(
     MainScene: { screen: MainScene },
     AppJs: { screen: AppJs },
     ViewerDashboard: { screen: ViewerDashboard },
+    CreatorDashboard: { screen: CreatorDashboard },
   },
   {
     initialRouteName: 'Homepage',

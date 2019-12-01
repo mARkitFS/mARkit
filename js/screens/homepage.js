@@ -12,6 +12,10 @@ class Homepage extends React.Component {
           title="Click to enter"
           onPress={() => navigate('ViewerDashboard')}
         />
+        <Button
+          title="Creator Dashboard"
+          onPress={() => navigate('CreatorDashboard')}
+        />
       </View>
     );
   }

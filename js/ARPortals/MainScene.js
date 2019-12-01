@@ -39,13 +39,13 @@ class MainScene extends Component {
     let portalId = this.props.portalId;
     try {
       const element = await axios.get(
-        `http://10.1.85.88:8080/api/elementprops/portal/${portalId}`
+        `http://172.20.1.222:8080/api/elementprops/portal/${portalId}`
       );
       const portal = await axios.get(
-        `http://10.1.85.88:8080/api/portals/${portalId}`
+        `http://172.20.1.222:8080/api/portals/${portalId}`
       );
       const background = await axios.get(
-        `http://10.1.85.88:8080/api/backgrounds/${portal.data.backgroundId}`
+        `http://172.20.1.222:8080/api/backgrounds/${portal.data.backgroundId}`
       );
       let Viro360Type =
         background.data.type === "Viro360Video" ? Viro360Video : Viro360Image;
