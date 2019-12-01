@@ -67,9 +67,9 @@ class CreationPage extends Component {
 
   async componentDidMount() {
     const backgrounds = await axios.get(
-      `http://192.168.0.112:8080/api/backgrounds`
+      `https://vast-falls-27580.herokuapp.com/api/backgrounds`
     );
-    const elements = await axios.get(`http://192.168.0.112:8080/api/elements`);
+    const elements = await axios.get(`https://vast-falls-27580.herokuapp.com/api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data
