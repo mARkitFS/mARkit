@@ -35,31 +35,6 @@ class MainScene extends Component {
   //   };
   // }
 
-  async componentDidMount() {
-    console.log(this.props, "props in component did mount");
-    let portalId = this.props.portalId;
-    try {
-      const element = await axios.get(
-        `http://172.20.1.222:8080/api/elementprops/portal/${portalId}`
-      );
-      const portal = await axios.get(
-        `http://172.20.1.222:8080/api/portals/${portalId}`
-      );
-      const background = await axios.get(
-        `http://172.20.1.222:8080/api/backgrounds/${portal.data.backgroundId}`
-      );
-      let Viro360Type =
-        background.data.type === "Viro360Video" ? Viro360Video : Viro360Image;
-      this.setState({
-        background: background.data.name,
-        elements: element.data,
-        viro360Type: Viro360Type,
-        loop: background.data.loop,
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  }
 
   // async componentDidMount() {
   //   let portalId = this.props.portal.id;
