@@ -22,7 +22,6 @@ import {
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
 
-// import { Homepage } from "./js";
 
 /*
  TODO: Insert your API key below
@@ -172,6 +171,7 @@ const AppNavigator = createSwitchNavigator(
     MainScene: { screen: MainScene },
     AppJs: { screen: AppJs },
     ViewerDashboard: { screen: ViewerDashboard },
+    CreatorDashboard: { screen: CreatorDashboard },
     SinglePortal: { screen: SinglePortal },
     PreviewPortal: { screen: PreviewPortal },
     CreationPage: { screen: CreationPage }

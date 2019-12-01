@@ -3,6 +3,7 @@ const axios = require("axios");
 const colors = require("colors");
 
 (async () => {
+
   const portalId = 1;
   const element = await axios.get(
     `https://vast-falls-27580.herokuapp.com/api/elements/format/${portalId}`

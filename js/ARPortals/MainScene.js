@@ -35,6 +35,7 @@ class MainScene extends Component {
   //   };
   // }
 
+
   // async componentDidMount() {
   //   let portalId = this.props.portal.id;
   //   try {
