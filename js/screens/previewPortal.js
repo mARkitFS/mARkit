@@ -17,10 +17,10 @@ export default class PreviewPortal extends Component {
     const { portal } = navigation.state.params;
     try {
       const element = await axios.get(
-        `http://192.168.0.112:8080/api/elements`
+        `https://vast-falls-27580.herokuapp.com/api/elements`
       );
       const background = await axios.get(
-        `http://192.168.0.112:8080/api/backgrounds/1`
+        `https://vast-falls-27580.herokuapp.com/api/backgrounds/1`
       );
       console.log('<<<<<<element: ', element.data )
       let data = [background.data, ...element.data]
