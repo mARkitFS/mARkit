@@ -8,6 +8,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./db');
 const sessionStore = new SequelizeStore({ db });
 const PORT = process.env.PORT || 8080;
+const HOST = "0.0.0.0"
 const app = express();
 const socketio = require('socket.io');
 module.exports = app;
@@ -93,10 +94,14 @@ const createApp = () => {
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
 };
+app.get('/', (req, res) => {
+  console.log('Responding too root route')
+  res.send('hello user');
+});
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () =>
+  const server = app.listen(PORT, HOST, () =>
     console.log(`Mixing it up on port ${PORT}`));
 
   // set up our socket control center
