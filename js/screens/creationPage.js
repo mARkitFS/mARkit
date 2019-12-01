@@ -132,7 +132,7 @@ class CreationPage extends Component {
             onPress={() =>
               this.setState(prevState => ({
                 selectedElements: [
-                  ...this.state.selectedElements,
+                  ...prevState.selectedElements,
                   { ...item, type: 'element' }
                 ]
               }))
