@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, FlatList, Image } from 'react-native';
-
+import axios from 'axios';
 import { images } from '../res/images';
 
 const backgroundsDummy = [
@@ -65,10 +65,14 @@ class CreationPage extends Component {
     this.renderElement = this.renderElement.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const backgrounds = await axios.get(
+      `http://192.168.0.112:8080/api/backgrounds`
+    );
+    const elements = await axios.get(`http://192.168.0.112:8080/api/elements`);
     this.setState({
-      allBackgrounds: backgroundsDummy,
-      allElements: elementsDummy
+      allBackgrounds: backgrounds.data,
+      allElements: elements.data
     });
   }
 
@@ -126,9 +130,12 @@ class CreationPage extends Component {
           <Button
             title="add"
             onPress={() =>
-              this.setState({
-                selectedElements: [{ ...item, type: 'element' }]
-              })
+              this.setState(prevState => ({
+                selectedElements: [
+                  ...this.state.selectedElements,
+                  { ...item, type: 'element' }
+                ]
+              }))
             }
           />
           <Button
