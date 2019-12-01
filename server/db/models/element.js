@@ -14,6 +14,9 @@ const Element = db.define('element', {
   uri: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  imageURL: {
+    type: Sequelize.STRING
   }
 });
 

@@ -4,4 +4,5 @@ export { default as Homepage } from "./screens/homepage";
 export { default as ViroApp } from "./ARPortals/viroApp";
 export { default as ViewerDashboard } from "./screens/viewerDashboard";
 export { default as SinglePortal } from "./screens/singlePortal";
+export { default as PreviewPortal } from "./screens/previewPortal";
 export { default as CreationPage } from "./screens/creationPage";

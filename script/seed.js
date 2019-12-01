@@ -44,6 +44,7 @@ async function seed() {
       uri:
         "https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx",
       userId: 1,
+      imageURL: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
     }),
     Element.create({
       id: 2,
@@ -52,6 +53,7 @@ async function seed() {
       uri:
         "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj",
       userId: 1,
+      imageURL: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/fox.jpeg'
     }),
   ]);
 
@@ -64,6 +66,8 @@ async function seed() {
         "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg",
       loop: false,
       userId: 1,
+      imageURL:
+        "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg",
     }),
     Background.create({
       id: 1,
@@ -73,6 +77,8 @@ async function seed() {
         "https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4",
       loop: true,
       userId: 1,
+      imageURL:
+        "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg",
     }),
   ]);
 
@@ -154,37 +160,37 @@ async function seed() {
     ElementProp.create({
       elementId: 1,
       portalId: 1,
-      position: [2, 2, -3],
+      position: [-2, 2, -3],
       scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
       portalId: 1,
-      position: [1, 1.5, -5],
+      position: [-1, 1.5, -5],
       scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
       portalId: 1,
-      position: [-1, 1, -4],
+      position: [1, 1, -4],
       scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
       portalId: 2,
-      position: [2, 2, -3],
+      position: [-2, 2, -3],
       scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
       portalId: 2,
-      position: [1, 1.5, -5],
+      position: [-1, 1.5, -5],
       scale: [0.01, 0.01, 0.01],
     }),
     ElementProp.create({
       elementId: 1,
       portalId: 2,
-      position: [-1, 1, -4],
+      position: [1, 1, -4],
       scale: [0.01, 0.01, 0.01],
     }),
   ]);
@@ -199,6 +205,16 @@ async function seed() {
       elementId: 2,
       uri:
         "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png",
+    }),
+    ElementRes.create({
+      elementId: 1,
+      uri:
+        "https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart_specular.png",
+    }),
+    ElementRes.create({
+      elementId: 1,
+      uri:
+        "https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.png",
     }),
   ]);
 
