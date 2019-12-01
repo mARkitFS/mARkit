@@ -16,6 +16,9 @@ const Background = db.define('background', {
   },
   loop: {
     type: Sequelize.BOOLEAN
+  },
+  imageURL: {
+    type: Sequelize.STRING
   }
 });
 

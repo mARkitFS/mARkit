@@ -37,7 +37,7 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const { data } = await axios.get(`http://192.168.0.112:8080/api/portals`);
+      const { data } = await axios.get(`http://192.168.0.238:8080/api/portals`);
       this.setState({ portals: data });
     } catch (err) {
       console.error(err);
@@ -77,7 +77,20 @@ export default class Table extends Component {
             }}
           />
         </View>
+        {/* Testing code will move when component is ready */}
+        <View style={{ flex: 1 }}>
+          <Button
+            title="Preview portal"
+            onPress={() => {
+              console.log('portal id when navigating', portal.id);
+              this.props.navigation.navigate('PreviewPortal', {
+                portal: portal,
+              });
+            }}
+          />
+        </View>
       </View>
+
     );
   }
 

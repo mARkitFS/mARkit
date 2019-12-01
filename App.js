@@ -161,6 +161,7 @@ import {
   AppJs,
   ViewerDashboard,
   SinglePortal,
+  PreviewPortal,
   CreationPage
 } from './js/index';
 
@@ -172,6 +173,7 @@ const AppNavigator = createSwitchNavigator(
     AppJs: { screen: AppJs },
     ViewerDashboard: { screen: ViewerDashboard },
     SinglePortal: { screen: SinglePortal },
+    PreviewPortal: { screen: PreviewPortal },
     CreationPage: { screen: CreationPage }
   },
   {
