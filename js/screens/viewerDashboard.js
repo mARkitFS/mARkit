@@ -77,18 +77,6 @@ export default class Table extends Component {
             }}
           />
         </View>
-        {/* Testing code will move when component is ready */}
-        <View style={{ flex: 1 }}>
-          <Button
-            title="Preview portal"
-            onPress={() => {
-              console.log('portal id when navigating', portal.id);
-              this.props.navigation.navigate('PreviewPortal', {
-                portal: portal
-              });
-            }}
-          />
-        </View>
       </View>
     );
   }
