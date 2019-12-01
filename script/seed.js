@@ -96,8 +96,8 @@ async function seed() {
       backgroundId: 2,
       type: "custom",
       imageURL:
+      userId: 2,
         "https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg",
-      userId: 1,
     }),
   ]);
 

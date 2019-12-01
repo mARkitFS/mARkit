@@ -13,6 +13,8 @@ class Homepage extends React.Component {
           onPress={() => navigate('ViewerDashboard')}
         />
         <Button
+          title="Creator Dashboard"
+          onPress={() => navigate('CreatorDashboard', { userId: 2 })}
           title="go to creation page"
           onPress={() => navigate('CreationPage')}
         />
