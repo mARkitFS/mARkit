@@ -23,7 +23,7 @@ export default class SinglePortal extends Component {
       elements: [],
       viro360Type: Viro360Video,
       loop: true,
-      portal: {},
+      portal: {}
     };
   }
 
@@ -33,13 +33,13 @@ export default class SinglePortal extends Component {
     const portalId = portal.id;
     try {
       const element = await axios.get(
-        `http://192.168.0.238:8080/api/elementprops/portal/${portalId}`
+        `http://192.168.0.112:8080/api/elementprops/portal/${portalId}`
       );
       // const portal = await axios.get(
       //   `http://192.168.0.112:8080/api/portals/${portalId}`
       // );
       const background = await axios.get(
-        `http://192.168.0.238:8080/api/backgrounds/${portal.backgroundId}`
+        `http://192.168.0.112:8080/api/backgrounds/${portal.backgroundId}`
       );
       let Viro360Type =
         background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
@@ -53,7 +53,7 @@ export default class SinglePortal extends Component {
         elements: element.data,
         viro360Type: Viro360Type,
         loop: background.data.loop,
-        portal: portal,
+        portal: portal
       });
     } catch (err) {
       console.error(err);
@@ -100,7 +100,7 @@ export default class SinglePortal extends Component {
                 background: this.state.background,
                 elements: this.state.elements,
                 loop: this.state.loop,
-                viro360Type: this.state.viro360Type,
+                viro360Type: this.state.viro360Type
               });
             }}
           >
