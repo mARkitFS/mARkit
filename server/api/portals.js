@@ -20,3 +20,16 @@ router.get('/:portalId', async (req, res, next) => {
     next(err);
   }
 });
+
+router.get('/user/:userId', async (req, res, next) => {
+  try {
+    const portal = await Portal.findAll({
+      where: {
+        userId: req.params.userId,
+      },
+    });
+    res.json(portal);
+  } catch (err) {
+    next(err);
+  }
+});

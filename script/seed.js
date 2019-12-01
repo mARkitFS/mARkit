@@ -16,9 +16,24 @@ async function seed() {
   console.log('db synced!');
 
   const users = await Promise.all([
-    User.create({ id: 1, name: 'admin', email: 'admin@email.com', password: '123456' }),
-    User.create({ id: 2, name: 'cody', email: 'cody@email.com', password: '123456' }),
-    User.create({ id: 3, name: 'murphy', email: 'murphy@email.com', password: '123456' }),
+    User.create({
+      id: 1,
+      name: 'admin',
+      email: 'admin@email.com',
+      password: '123456',
+    }),
+    User.create({
+      id: 2,
+      name: 'cody',
+      email: 'cody@email.com',
+      password: '123456',
+    }),
+    User.create({
+      id: 3,
+      name: 'murphy',
+      email: 'murphy@email.com',
+      password: '123456',
+    }),
   ]);
 
   const elements = await Promise.all([
@@ -76,7 +91,7 @@ async function seed() {
       type: 'custom',
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
-      userId: 1,
+      userId: 2,
     }),
   ]);
 

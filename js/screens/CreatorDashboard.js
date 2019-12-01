@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Button, FlatList, Image, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import axios from 'axios';
 import { images } from '../res/images';
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class CreatorDashboard extends React.Component {
+class CreatorDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,10 @@ class CreatorDashboard extends React.Component {
     };
   }
   async componentDidMount() {
-    const { data } = await axios.get(`http://172.20.1.222:8080/api/portals`);
+    let { userId } = this.props.navigation.state.params;
+    const { data } = await axios.get(
+      `http://172.20.1.222:8080/api/portals/user/${userId}`
+    );
     this.setState({ portals: data });
   }
   renderRow(portal) {
@@ -62,9 +65,7 @@ class CreatorDashboard extends React.Component {
   }
 
   render() {
-    console.log('portals on state', this.state.portals);
     const { navigate } = this.props.navigation;
-    console.log('<<<nav', navigate);
     return (
       <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
         <Button title="Home" onPress={() => navigate('Homepage')} />
@@ -74,45 +75,11 @@ class CreatorDashboard extends React.Component {
         })}
         <Button
           title="Create New Portal"
-          onPress={() => navigate('CreatePortal', { userId: 1 })}
+          onPress={() => navigate('CreationPage', { userId: 2 })}
         />
       </View>
     );
   }
-
-  // render() {
-  //   console.log('<<<<state', this.state);
-  //   const { navigate } = this.props.navigation;
-  //   return (
-  //     <View
-  //       style={{
-  //         flex: 1,
-  //         padding: 50,
-  //         alignItems: 'center',
-  //         justifyContent: 'center',
-  //       }}
-  //     >
-  //       <Button title="Home" onPress={() => navigate('Homepage')} />
-  //       <Button
-  //         title="Create New Portal"
-  //         onPress={() => navigate('CreatePortal', { userId: 1 })}
-  //       />
-  //       <Text>Creator Dashboard Bitch</Text>
-  //       <FlatList
-  //         data={[
-  //           { key: 1, value: 'Portal1' },
-  //           { key: 2, value: 'Portal2' },
-  //         ]}
-  //         renderItem={({ item }) => (
-  //           <Button
-  //             title={item.value}
-  //             onPress={() => navigate('ViewerDashboard')}
-  //           />
-  //         )}
-  //       />
-  //     </View>
-  //   );
-  // }
 }
 
 export default withNavigation(CreatorDashboard);
