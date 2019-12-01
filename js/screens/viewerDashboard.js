@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
   imageInRow: {
     width: 50,
     height: 50,
-    resizeMode: 'contain',
-  },
+    resizeMode: 'contain'
+  }
 });
 
 // const dummyPortals = [
@@ -37,7 +37,7 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const { data } = await axios.get(`http://192.168.0.238:8080/api/portals`);
+      const { data } = await axios.get(`http://192.168.0.112:8080/api/portals`);
       this.setState({ portals: data });
     } catch (err) {
       console.error(err);
@@ -54,7 +54,7 @@ export default class Table extends Component {
           margin: 20,
           borderColor: '#0000ff',
           borderWidth: 3,
-          flexDirection: 'row',
+          flexDirection: 'row'
         }}
       >
         <View style={{ padding: 3 }}>
@@ -72,7 +72,7 @@ export default class Table extends Component {
             onPress={() => {
               console.log('portal id when navigating', portal.id);
               this.props.navigation.navigate('SinglePortal', {
-                portal: portal,
+                portal: portal
               });
             }}
           />
@@ -84,13 +84,12 @@ export default class Table extends Component {
             onPress={() => {
               console.log('portal id when navigating', portal.id);
               this.props.navigation.navigate('PreviewPortal', {
-                portal: portal,
+                portal: portal
               });
             }}
           />
         </View>
       </View>
-
     );
   }
 

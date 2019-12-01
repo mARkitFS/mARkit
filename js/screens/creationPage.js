@@ -119,7 +119,7 @@ class CreationPage extends Component {
         </View>
         <View style={{ flex: 1 }}>
           <Image
-            source={{ uri: images.element[item.name].imageUrl }}
+            source={{ uri: images.element[item.name].url }}
             style={{
               width: 90,
               height: 90
@@ -183,7 +183,10 @@ class CreationPage extends Component {
             onPress={() => {
               console.log('state: ', this.state);
               this.props.navigation.navigate('PreviewPortal', {
-                items: this.state,
+                items: [
+                  this.state.selectedBackground,
+                  ...this.state.selectedElements
+                ]
               });
             }}
           />
