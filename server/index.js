@@ -94,6 +94,10 @@ const createApp = () => {
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
 };
+app.get('/', (req, res) => {
+  console.log('Responding too root route')
+  res.send('hello user');
+});
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
