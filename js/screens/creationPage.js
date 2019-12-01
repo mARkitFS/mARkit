@@ -173,7 +173,12 @@ class CreationPage extends Component {
           {/* view for previewbutton */}
           <Button
             title="Preview your work"
-            onPress={() => console.log('state: ', this.state)}
+            onPress={() => {
+              console.log('state: ', this.state);
+              this.props.navigation.navigate('PreviewPortal', {
+                items: this.state,
+              });
+            }}
           />
         </View>
       </View>

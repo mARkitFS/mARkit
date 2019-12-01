@@ -5,8 +5,8 @@ import { images } from '../res/images';
 import axios from 'axios';
 
 export default class PreviewPortal extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       items:[]
     };
@@ -30,7 +30,8 @@ export default class PreviewPortal extends Component {
     }
   }
   render() {
-    console.log(this.state, 'this state in previewPortal');
+    // console.log('the props in previewPortal', this.props.navigation.);
+    // console.log('the props in previewPortal', navigation);
     if(this.state.items.length === 0){
       return(
         <View style={styles.loader}>
