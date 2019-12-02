@@ -64,13 +64,21 @@ class CreatorDashboard extends Component {
             //set state to portals that match search
             }}
           />
+          <View style={styles.middle}>
             <FlatList
               style = {styles.container}
               data = {this.state.items}
               keyExtractor = {(item, index) => index.toString()}
               renderItem = {({item}) => <DashboardItem item = {item} screen = 'CreatorDashboard' userId = {this.state.userId}/>}
             />
+          </View>
+
+           <Button
+            title="Create New Portal"
+            onPress={() => navigate('CreationPage', { userId: this.state.userId })}
+          />
         </View>
+
       )
     }
 }
@@ -81,6 +89,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
     backgroundColor: '#F5FCFF'
     // backgroundColor: '#b2b2ff'
+  },
+  middle:{
+    height: 400
   },
   loader: {
     flex: 2,
