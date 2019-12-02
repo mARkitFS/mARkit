@@ -11,13 +11,18 @@ export default class PreviewPortal extends Component {
       saveButton: 'Save',
       items:[],
       portal: {},
-      text: ''
+      text: '',
+      userId: 0
     };
   }
 
   async componentDidMount() {
     let items = this.props.navigation.state.params.items
-    this.setState({items: items})
+    let userId = this.props.navigation.state.params.userId
+    this.setState({
+      items: items,
+      userId: userId
+    })
   }
 
   async addPortal () {
@@ -26,7 +31,7 @@ export default class PreviewPortal extends Component {
       type: 'custom',
       imageURL: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
       backgroundId: this.state.items[0].id,
-      userId: 2
+      userId: this.state.userId
     }
     try{
       const newPortal = await axios.post('http://10.1.85.88:8080/api/portals/add', portalObj)
@@ -80,8 +85,6 @@ export default class PreviewPortal extends Component {
 
 
   render() {
-    // console.log('the props in previewPortal', this.props.navigation.);
-    // console.log('the props in previewPortal', navigation);
     if (this.state.items.length === 0) {
       return (
         <View style={styles.loader}>
@@ -110,7 +113,9 @@ export default class PreviewPortal extends Component {
             onPress={() => {
               console.log('portal id when navigating', this.state.portal.id);
               this.props.navigation.navigate('SinglePortal', {
-                portal: this.state.portal
+                portal: this.state.portal,
+                userId: this.state.userId,
+                screen: 'CreatorDashboard'
               });
             }}
           />

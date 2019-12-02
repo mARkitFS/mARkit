@@ -16,7 +16,7 @@ class DashboardItem extends Component {
       <View style={styles.image}>
         <Image
           style={styles.imageInRow}
-          source={images.thumbnails[this.props.item.name]}
+          source={images.portalThumbnails[this.props.item.name]}
         />
       </View>
         <TouchableOpacity>

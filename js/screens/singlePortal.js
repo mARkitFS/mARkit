@@ -70,27 +70,9 @@ export default class SinglePortal extends Component {
         <View>
           <Text>{this.state.portal.name}</Text>
         </View>
-        {/* elements box view */}
+
         <View>
-          {/* elements header view */}
-          <View>
-            <Text>Elements</Text>
-          </View>
-          {/* actual elements view
-           */}
-          <View>
-            <Text>Elements go here</Text>
-          </View>
-        </View>
-        {/* Thumbnail section view
-         */}
-        <View>
-          {/* thumbail header view
-           */}
-          <View>
-            <Text>thumbnail header</Text>
-          </View>
-          {/* Thumbnail view */}
+       
           <TouchableOpacity
             onPress={() => {
               console.log(
@@ -110,7 +92,7 @@ export default class SinglePortal extends Component {
           >
             <View>
               <Image
-                source={images.thumbnails[this.state.portal.name]}
+                source={images.portalThumbnails[this.state.portal.name]}
                 style={{ width: 170, height: 116 }}
               />
             </View>

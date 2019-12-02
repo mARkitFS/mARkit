@@ -11,20 +11,23 @@ class CreationPage extends Component {
       allBackgrounds: [],
       allElements: [],
       selectedBackground: {},
-      selectedElements: []
+      selectedElements: [],
+      userId: 0
     };
     this.renderBackground = this.renderBackground.bind(this);
     this.renderElement = this.renderElement.bind(this);
   }
 
   async componentDidMount() {
+    let { userId } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
       `http://10.1.85.88:8080/api/backgrounds`
     );
     const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
-      allElements: elements.data
+      allElements: elements.data,
+      userId: userId
     });
   }
 
@@ -152,7 +155,7 @@ class CreationPage extends Component {
                 items: [
                   this.state.selectedBackground,
                   ...this.state.selectedElements
-                ]
+                ], userId: this.state.userId
               });
             }}
           />

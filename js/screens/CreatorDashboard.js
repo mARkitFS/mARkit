@@ -47,6 +47,7 @@ class CreatorDashboard extends Component {
         </View>
       )
     }
+    const { navigate } = this.props.navigation
     console.log('this.state.items: >>>>>', this.state.items)
     return (
       <View style={styles.loader}>
