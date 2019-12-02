@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  Button,
-  Image,
-  StyleSheet,
-  TouchableHighlight
-} from 'react-native';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import axios from 'axios';
 import { images } from '../res/images';
@@ -30,7 +23,7 @@ class CreatorDashboard extends Component {
     let { userId } = this.props.navigation.state.params;
     try {
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
+        `http://10.1.85.96:8080/api/portals/user/${userId}`
       );
       this.setState({ portals: data });
     } catch (error) {
@@ -43,30 +36,29 @@ class CreatorDashboard extends Component {
         key={portal.id}
         style={{
           flex: 2,
-          alignSelf: 'stretch',
           maxHeight: 50,
           margin: 20,
           borderColor: '#0000ff',
-          borderWidth: 3,
+          borderWidth: 2,
           flexDirection: 'row'
         }}
       >
-        <View style={{ padding: 3 }}>
+        <View style={{ padding: 3, flex: 1, alignItems: 'stretch' }}>
           <Text>{portal.name}</Text>
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, alignItems: 'stretch' }}>
           <Image
             style={styles.imageInRow}
-            source={images.thumbnails[portal.name]}
+            source={images.portalThumbnails[portal.name]}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, alignItems: 'stretch' }}>
           <Button
             title="Enter portal"
             onPress={() => {
               console.log('portal id when navigating', portal.id);
-              this.props.navigation.navigate('ViroApp', {
-                portalId: portal.id
+              this.props.navigation.navigate('SinglePortal', {
+                portal: portal
               });
             }}
           />
@@ -78,9 +70,22 @@ class CreatorDashboard extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <View
+        style={{
+          flex: 2,
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-end',
+          backgroundColor: '#b2b2ff'
+        }}
+      >
         <View
-          style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}
+          style={{
+            flex: 2,
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column'
+          }}
         >
           <Button title="Home" onPress={() => navigate('Homepage')} />
           <Text>View Your Portals</Text>

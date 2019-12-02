@@ -3,54 +3,6 @@ import { View, Text, Button, FlatList, Image } from 'react-native';
 import axios from 'axios';
 import { images } from '../res/images';
 
-const backgroundsDummy = [
-  {
-    id: 2,
-    name: 'beach_vacation',
-    uri:
-      'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
-    type: 'Viro360Image',
-    loop: false,
-    createdAt: '2019-11-30T01:55:49.696Z',
-    updatedAt: '2019-11-30T01:55:49.696Z',
-    userId: 1
-  },
-  {
-    id: 1,
-    name: 'party_event',
-    uri:
-      'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
-    type: 'Viro360Video',
-    loop: true,
-    createdAt: '2019-11-30T01:55:49.696Z',
-    updatedAt: '2019-11-30T01:55:49.696Z',
-    userId: 1
-  }
-];
-
-const elementsDummy = [
-  {
-    id: 1,
-    name: 'heart',
-    type: 'VRX',
-    uri:
-      'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-    createdAt: '2019-11-30T01:55:49.673Z',
-    updatedAt: '2019-11-30T01:55:49.673Z',
-    userId: 1
-  },
-  {
-    id: 2,
-    name: 'fox',
-    type: 'OBJ',
-    uri:
-      'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj',
-    createdAt: '2019-11-30T01:55:49.673Z',
-    updatedAt: '2019-11-30T01:55:49.673Z',
-    userId: 1
-  }
-];
-
 // this page will contain all the tools available to creators
 class CreationPage extends Component {
   constructor(props) {
@@ -67,9 +19,11 @@ class CreationPage extends Component {
 
   async componentDidMount() {
     const backgrounds = await axios.get(
-      `https://vast-falls-27580.herokuapp.com/api/backgrounds`
+      `http://10.1.85.96:8080/api/backgrounds`
     );
-    const elements = await axios.get(`https://vast-falls-27580.herokuapp.com/api/elements`);
+    const elements = await axios.get(`http://10.1.85.96:8080/api/elements`);
+    console.log({ elements });
+    console.log({ backgrounds });
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data
@@ -84,7 +38,7 @@ class CreationPage extends Component {
         </View>
         <View style={{ flex: 1 }}>
           <Image
-            source={{ uri: images.thumbnails[item.name].uri }}
+            source={{ uri: images.backgroundThumbnails[item.name].uri }}
             style={{
               width: 70,
               height: 70
@@ -108,6 +62,21 @@ class CreationPage extends Component {
       </View>
     );
   }
+  removeElement(elementId) {
+    // filter out one item with the given ID
+    const prevSelected = this.state.selectedElements.slice(0);
+    // find the first idx of such an item, return sliced fragments without it.
+    // reduce the array of items into an array of itemIDs, use the indexOf to slice
+    const dropThisIndex = prevSelected.findIndex(
+      element => element.id === elementId
+    );
+    this.setState({
+      selectedElements: [
+        ...prevSelected.slice(0, dropThisIndex),
+        ...prevSelected.slice(dropThisIndex + 1)
+      ]
+    });
+  }
 
   renderElement({ item }) {
     return (
@@ -117,7 +86,7 @@ class CreationPage extends Component {
         </View>
         <View style={{ flex: 1 }}>
           <Image
-            source={{ uri: images.element[item.name].url }}
+            source={{ uri: images.element[item.name].uri }}
             style={{
               width: 90,
               height: 90
@@ -136,16 +105,14 @@ class CreationPage extends Component {
               }))
             }
           />
-          <Button
-            title="remove"
-            onPress={() => this.setState({ elements: [] })}
-          />
+          <Button title="remove" onPress={() => this.removeElement(item.id)} />
         </View>
       </View>
     );
   }
 
   render() {
+    console.log('state on creation page', this.state);
     return (
       // wrapper view
       <View>
@@ -158,7 +125,7 @@ class CreationPage extends Component {
           {/* view for list of backgrounds */}
           <View>
             <FlatList
-              data={backgroundsDummy}
+              data={this.state.allBackgrounds}
               renderItem={this.renderBackground}
             />
           </View>
@@ -171,7 +138,10 @@ class CreationPage extends Component {
           </View>
           {/* view for list of elements */}
           <View>
-            <FlatList data={elementsDummy} renderItem={this.renderElement} />
+            <FlatList
+              data={this.state.allElements}
+              renderItem={this.renderElement}
+            />
           </View>
         </View>
         <View style={{ flex: 1, position: 'absolute', alignSelf: 'flex-end' }}>

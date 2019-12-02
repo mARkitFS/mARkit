@@ -30,9 +30,7 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals`
-      );
+      const { data } = await axios.get(`http://10.1.85.96:8080/api/portals`);
       this.setState({ portals: data });
     } catch (err) {
       console.error(err);
@@ -57,7 +55,7 @@ export default class Table extends Component {
         <View style={{ flex: 1, alignItems: 'stretch' }}>
           <Image
             style={styles.imageInRow}
-            source={images.thumbnails[portal.name]}
+            source={images.portalThumbnails[portal.name]}
           />
         </View>
         <View style={{ flex: 1, alignItems: 'stretch' }}>
@@ -105,9 +103,7 @@ export default class Table extends Component {
             flex: 1,
             position: 'absolute',
             flexDirection: 'row',
-            justifyContent: 'flex-end',
-            borderColor: '#fff',
-            borderWidth: 3
+            justifyContent: 'flex-end'
           }}
         >
           <View

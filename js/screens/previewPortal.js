@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
-import PreviewImage from './previewImage'
+import PreviewImage from './previewImage';
 import { images } from '../res/images';
 import axios from 'axios';
 
@@ -16,15 +16,13 @@ export default class PreviewPortal extends Component {
     const { navigation } = this.props;
     const { portal } = navigation.state.params;
     try {
-      const element = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/elements`
-      );
+      const element = await axios.get(`http://10.1.85.96:8080/api/elements`);
       const background = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/backgrounds/1`
+        `http://10.1.85.96:8080/api/backgrounds/1`
       );
-      console.log('<<<<<<element: ', element.data )
-      let data = [background.data, ...element.data]
-      this.setState({items: data})
+      console.log('<<<<<<element: ', element.data);
+      let data = [background.data, ...element.data];
+      this.setState({ items: data });
     } catch (err) {
       console.error(err);
     }
@@ -32,21 +30,21 @@ export default class PreviewPortal extends Component {
   render() {
     // console.log('the props in previewPortal', this.props.navigation.);
     // console.log('the props in previewPortal', navigation);
-    if (this.state.items.length === 0){
+    if (this.state.items.length === 0) {
       return (
         <View style={styles.loader}>
-          <ActivityIndicator size = "large" />
+          <ActivityIndicator size="large" />
         </View>
-      )
+      );
     }
     return (
       <FlatList
-        style = {styles.container}
-        data = {this.state.items}
-        keyExtractor = {(item, index) => index.toString()}
-        renderItem = {({item}) => <PreviewImage item = {item} />}
+        style={styles.container}
+        data={this.state.items}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => <PreviewImage item={item} />}
       />
-    )
+    );
   }
 }
 
@@ -60,5 +58,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
-
+});
