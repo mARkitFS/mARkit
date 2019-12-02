@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Image, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  Image,
+  StyleSheet,
+  TouchableHighlight
+} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import axios from 'axios';
 import { images } from '../res/images';
@@ -71,16 +78,20 @@ class CreatorDashboard extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
-        <Button title="Home" onPress={() => navigate('Homepage')} />
-        <Text>View Your Portals</Text>
-        {this.state.portals.map(portal => {
-          return this.renderRow(portal);
-        })}
-        <Button
-          title="Create New Portal"
-          onPress={() => navigate('CreationPage', { userId: 2 })}
-        />
+      <View>
+        <View
+          style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}
+        >
+          <Button title="Home" onPress={() => navigate('Homepage')} />
+          <Text>View Your Portals</Text>
+          {this.state.portals.map(portal => {
+            return this.renderRow(portal);
+          })}
+          <Button
+            title="Create New Portal"
+            onPress={() => navigate('CreationPage', { userId: 2 })}
+          />
+        </View>
       </View>
     );
   }

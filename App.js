@@ -9,15 +9,7 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  Text,
-  View,
-  StyleSheet,
-  PixelRatio,
-  TouchableHighlight,
-  Button
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
