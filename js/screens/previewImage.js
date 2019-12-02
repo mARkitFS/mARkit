@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Button, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { images } from '../res/images';
 
 export default class PreviewImage extends Component {
   render() {
-    console.log('<<<<<props in previewItem: ', this.props.item.name)
-    console.log('<<<<<<<uri: ', images.element[this.props.item.name])
-    const type = 'element'
     return (
         <TouchableOpacity style = {styles.card}>
-          <Image style={styles.cardImage} source = {{uri: images[type][this.props.item.name].url}}></Image>
-          <Text style={styles.cardText}>{this.props.item.type}</Text>
+          <Image style={styles.cardImage} source = {{uri: images[this.props.item.type][this.props.item.name].url}}></Image>
+          <Text style={styles.cardText}>{`${this.props.item.type}: ${this.props.item.name}`}</Text>
         </TouchableOpacity>
     )
   }
@@ -19,8 +16,8 @@ export default class PreviewImage extends Component {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
-    marginBottom: 10,
-    marginLeft: '2%',
+    marginBottom: 20,
+    marginLeft: '5%',
     width: '85%',
     shadowColor: '#000',
     shadowOpacity: 0.2,
@@ -32,7 +29,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: '85%',
-    height: 200,
+    height: 150,
     resizeMode: 'cover'
   },
   cardText: {

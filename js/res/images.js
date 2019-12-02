@@ -1,7 +1,7 @@
 const images =  {
 
         background: {
-         party: {
+         party_event: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
                 url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
             },
@@ -24,11 +24,16 @@ const images =  {
                   resources: [ ],
                   url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
                   },
-            party: {
+            party_event: {
                     uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
                     resources: [ ],
-                    url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
+                    url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
                     },
+            beach: {
+                    uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
+                    resources: [ ],
+                    url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
+                    }
               },
 
 
