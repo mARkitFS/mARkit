@@ -3,6 +3,7 @@ module.exports = router;
 
 //All routes for /api
 router.use('/portals', require('./portals'));
+router.use('/portels', require('./portels'));
 router.use('/users', require('./users'));
 router.use('/elements', require('./elements'));
 router.use('/elementprops', require('./elementprops'));

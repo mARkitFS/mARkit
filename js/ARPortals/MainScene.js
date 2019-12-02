@@ -15,8 +15,8 @@ import {
 import ThreeDObject from '../../ARScenes/Portals/ThreeDObject';
 
 class MainScene extends Component {
+
   render() {
-    console.log(this.props, 'props in main scene>>>>>');
     let TagViro360 = this.props.viro360Type || Viro360Video;
     return (
       <ViroARScene>
