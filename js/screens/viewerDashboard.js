@@ -9,7 +9,7 @@ import {
   FlatList
 } from 'react-native';
 import axios from 'axios';
-import ViewerDashboardItem from './viewerDashboardItem'
+import DashboardItem from './dashboardItem'
 import { images } from '../res/images';
 
 
@@ -59,7 +59,7 @@ export default class Table extends Component {
               style = {styles.container}
               data = {this.state.items}
               keyExtractor = {(item, index) => index.toString()}
-              renderItem = {({item}) => <ViewerDashboardItem item = {item}  />}
+              renderItem = {({item}) => <DashboardItem item = {item} screen = 'ViewerDashboard' />}
             />
         </View>
       )

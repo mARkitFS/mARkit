@@ -3,7 +3,7 @@ import { Button, Text, TouchableOpacity, Image, View, StyleSheet } from 'react-n
 import { images } from '../res/images';
 import { withNavigation } from 'react-navigation'
 
-class ViewerDashboardItem extends Component {
+class DashboardItem extends Component {
   render() {
   return (
     <View
@@ -25,7 +25,9 @@ class ViewerDashboardItem extends Component {
               title="Enter portal"
               onPress={() => {
                 this.props.navigation.navigate('SinglePortal', {
-                  portal: this.props.item
+                  portal: this.props.item,
+                  screen: this.props.screen,
+                  userId: this.props.userId
                 });
               }}
             />
@@ -66,4 +68,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavigation(ViewerDashboardItem)
+export default withNavigation(DashboardItem)

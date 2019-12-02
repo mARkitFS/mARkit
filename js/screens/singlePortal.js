@@ -30,6 +30,8 @@ export default class SinglePortal extends Component {
   async componentDidMount() {
     const { navigation } = this.props;
     const { portal } = navigation.state.params;
+    const { screen } = navigation.state.params;
+    const { userId } = navigation.state.params;
     const portalId = portal.id;
     try {
       const element = await axios.get(
@@ -48,12 +50,15 @@ export default class SinglePortal extends Component {
       console.log('viro360Type: ', Viro360Type);
       console.log('bacgkround loop: ', Viro360Type);
       console.log('portal: ', portal);
+      console.log('screen: ', screen);
       this.setState({
         background: background.data.name,
         elements: element.data,
         viro360Type: Viro360Type,
         loop: background.data.loop,
-        portal: portal
+        portal: portal,
+        screen: screen,
+        userId: userId
       });
     } catch (err) {
       console.error(err);
@@ -100,7 +105,9 @@ export default class SinglePortal extends Component {
                 background: this.state.background,
                 elements: this.state.elements,
                 loop: this.state.loop,
-                viro360Type: this.state.viro360Type
+                viro360Type: this.state.viro360Type,
+                screen: this.state.screen,
+                userId: this.state.userId
               });
             }}
           >

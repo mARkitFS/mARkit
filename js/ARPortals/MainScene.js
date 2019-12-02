@@ -24,45 +24,8 @@ import {
 import ThreeDObject from "../../ARScenes/Portals/ThreeDObject";
 
 class MainScene extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     background: "party",
-  //     elements: [],
-  //     viro360Type: Viro360Video,
-  //     loop: true,
-  //     portal: {},
-  //   };
-  // }
-
-
-  // async componentDidMount() {
-  //   let portalId = this.props.portal.id;
-  //   try {
-  //     const element = await axios.get(
-  //       `http://192.168.0.112:8080/api/elementprops/portal/${portalId}`
-  //     );
-  //     const portal = await axios.get(
-  //       `http://192.168.0.112:8080/api/portals/${portalId}`
-  //     );
-  //     const background = await axios.get(
-  //       `http://192.168.0.112:8080/api/backgrounds/${portal.data.backgroundId}`
-  //     );
-  //     let Viro360Type =
-  //       background.data.type === "Viro360Video" ? Viro360Video : Viro360Image;
-  //     this.setState({
-  //       background: background.data.name,
-  //       elements: element.data,
-  //       viro360Type: Viro360Type,
-  //       loop: background.data.loop,
-  //     });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
 
   render() {
-    console.log(this.props, "props in main scene>>>>>");
     let TagViro360 = this.props.viro360Type || Viro360Video;
     return (
       <ViroARScene>
