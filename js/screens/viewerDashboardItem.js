@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Text, TouchableOpacity, Image, View, StyleSheet } from 'react-native';
 import { images } from '../res/images';
+import { withNavigation } from 'react-navigation'
 
-export default class ViewerDashboardItem extends Component {
+class ViewerDashboardItem extends Component {
   render() {
   return (
     <View
@@ -23,7 +24,6 @@ export default class ViewerDashboardItem extends Component {
             <Button
               title="Enter portal"
               onPress={() => {
-                console.log('portal id when navigating', this.props.item.id);
                 this.props.navigation.navigate('SinglePortal', {
                   portal: this.props.item
                 });
@@ -39,7 +39,8 @@ export default class ViewerDashboardItem extends Component {
 const styles = StyleSheet.create({
   container:{
     flex: 2,
-    maxHeight: 50,
+    maxHeight: 150,
+    width: 250,
     margin: 20,
     borderColor: '#0000ff',
     borderWidth: 2,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
   imageInRow: {
-    width: 50,
+    width: 75,
     height: 50,
     resizeMode: 'contain'
   },
@@ -65,3 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
+export default withNavigation(ViewerDashboardItem)
