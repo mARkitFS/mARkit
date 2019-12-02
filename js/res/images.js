@@ -1,4 +1,15 @@
-const images =  {
+/* eslint-disable camelcase */
+const images = {
+  background: {
+    party: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4'
+    },
+    beach: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
+    }
+  },
 
         background: {
          party_event: {
@@ -52,17 +63,38 @@ const images =  {
               },
 
 
-        thumbnails: {
-          party_event: {
-                  uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
-                },
-          beach_vacation: {
-                  uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
-              },
-          default: {
-                  uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
-              }
-          }
+  // creating a portal thumbnails property. The dashboard components pull in portals, not backgrounds. To get those components to display thumbnails from the existing thumbnail prop (which I've renamed from thumbnails to backgroundThumbnails) we would have to make another AJAX request and get the whole background object - just to get the name and use it to import a thumbnail image from this file. I also thought people might want to use a thumbnail per portal that's different to the one their portal background uses. So I separated backgroundThumbnails (used in portal creation) from portalThumbnails (used in components that display existing portals).
 
-}
- export { images }
+
+          backgroundThumbnails: {
+            beach: {
+              uri:
+                'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
+            },
+            party: {
+              uri:
+                'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+            },
+            default: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+          }
+          },
+
+
+
+  portalThumbnails: {
+    beach_vacation: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
+    },
+    party_event: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+    },
+    default: {
+      uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+  }
+  }
+};
+
+export { images };

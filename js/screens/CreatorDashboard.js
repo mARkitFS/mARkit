@@ -6,11 +6,11 @@ import {
   Button,
   TextInput,
   ActivityIndicator,
-  FlatList
+  FlatList,
 } from 'react-native';
+
 import axios from 'axios';
 import DashboardItem from './dashboardItem'
-import { images } from '../res/images';
 import { withNavigation } from 'react-navigation';
 
 

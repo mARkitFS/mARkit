@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { Button, Text, TextInput, View, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
 import PreviewImage from './previewImage'
+=======
+import { View, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import PreviewImage from './previewImage';
+>>>>>>> master
 import { images } from '../res/images';
 import axios from 'axios';
 
@@ -16,6 +21,7 @@ export default class PreviewPortal extends Component {
   }
 
   async componentDidMount() {
+<<<<<<< HEAD
     let items = this.props.navigation.state.params.items
     this.setState({items: items})
   }
@@ -38,6 +44,20 @@ export default class PreviewPortal extends Component {
       this.setState({portal:data, saveButton: `Portal ${data.name} created`})
     }catch(err){
       console.log(err)
+=======
+    const { navigation } = this.props;
+    const { portal } = navigation.state.params;
+    try {
+      const element = await axios.get(`http://10.1.85.96:8080/api/elements`);
+      const background = await axios.get(
+        `http://10.1.85.96:8080/api/backgrounds/1`
+      );
+      console.log('<<<<<<element: ', element.data);
+      let data = [background.data, ...element.data];
+      this.setState({ items: data });
+    } catch (err) {
+      console.error(err);
+>>>>>>> master
     }
   }
 
@@ -80,19 +100,26 @@ export default class PreviewPortal extends Component {
 
 
   render() {
+<<<<<<< HEAD
     console.log('current state in previewPortal: ', this.state)
 
     let elementArr = this.state.items.filter(el => el.type != 'background')
                       .map(el => el.id)
     console.log('elementArr: ', elementArr)
     if (this.state.items.length === 0){
+=======
+    // console.log('the props in previewPortal', this.props.navigation.);
+    // console.log('the props in previewPortal', navigation);
+    if (this.state.items.length === 0) {
+>>>>>>> master
       return (
         <View style={styles.loader}>
-          <ActivityIndicator size = "large" />
+          <ActivityIndicator size="large" />
         </View>
-      )
+      );
     }
     return (
+<<<<<<< HEAD
       <View style={styles.loader}>
           <Text>Preview your portal selections: </Text>
           <TextInput
@@ -125,6 +152,15 @@ export default class PreviewPortal extends Component {
         />
       </View>
     )
+=======
+      <FlatList
+        style={styles.container}
+        data={this.state.items}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => <PreviewImage item={item} />}
+      />
+    );
+>>>>>>> master
   }
 }
 
@@ -138,5 +174,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
-
+});

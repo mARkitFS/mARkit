@@ -67,9 +67,6 @@ export default class Table extends Component {
 }
 
 
-
-
-
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,

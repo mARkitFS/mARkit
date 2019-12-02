@@ -1,17 +1,17 @@
-const fs = require("fs");
-const axios = require("axios");
-const colors = require("colors");
+const fs = require('fs');
+const axios = require('axios');
+const colors = require('colors');
 
 (async () => {
 
   const portalId = 1;
   const element = await axios.get(
-    `https://vast-falls-27580.herokuapp.com/api/elements/format/${portalId}`
+    `http://10.1.85.96:8080/api/elements/format/${portalId}`
   );
 
-  const background = await axios.get(`https://vast-falls-27580.herokuapp.com/api/backgrounds`);
+  const background = await axios.get(`http://10.1.85.96:8080/api/backgrounds`);
 
-  const portal = await axios.get(`https://vast-falls-27580.herokuapp.com/api/portals`);
+  const portal = await axios.get(`http://10.1.85.96:8080/api/portals`);
 
   let backgroundFormat = `background: { \n`;
   background.data.forEach(bg => {
@@ -41,7 +41,7 @@ const colors = require("colors");
         ${thumbnailFormat} }
       \n}`;
 
-  const res = "const images =  " + ex + "\n export { images } ";
-  fs.writeFileSync("./js/res/images.js", res);
+  const res = 'const images =  ' + ex + '\n export { images } ';
+  fs.writeFileSync('./js/res/images.js', res);
 })();
-console.log("image script run successfully!".green);
+console.log('image script run successfully!'.green);
