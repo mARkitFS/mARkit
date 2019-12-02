@@ -12,7 +12,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
+import { ViroVRSceneNavigator } from 'react-viro';
 
 /*
  TODO: Insert your API key below
@@ -22,7 +22,6 @@ var sharedProps = {
 };
 
 // Sets the default scene you want for AR and VR
-var InitialARScene = require('./js/ARPortals/MainScene');
 var InitialVRScene = require('./js/HelloWorldScene');
 
 var UNSET = 'UNSET';
@@ -64,55 +63,14 @@ export default class ViroSample extends Component {
 
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
-    return (
-      // <View style={localStyles.outer}>
-      //   <View style={localStyles.inner}>
-      //     <Text style={localStyles.titleText}>
-      //       Choose your desired experience:
-      //     </Text>
-
-      //     <TouchableHighlight
-      //       style={localStyles.buttons}
-      //       onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-      //       underlayColor="#68a0ff"
-      //     >
-      //       <Text style={localStyles.buttonText}>AR</Text>
-      //     </TouchableHighlight>
-
-      //     <TouchableHighlight
-      //       style={localStyles.buttons}
-      //       onPress={this._getExperienceButtonOnPress(VR_NAVIGATOR_TYPE)}
-      //       underlayColor="#68a0ff"
-      //     >
-      //       <Text style={localStyles.buttonText}>VR</Text>
-      //     </TouchableHighlight>
-      //   </View>
-      // </View>
-      <AppContainer />
-    );
+    return <AppContainer />;
   }
   // Returns the ViroARSceneNavigator which will start the AR experience
-  // openVRSceneNav() {
-  //   <ViroARSceneNavigator
-  //     {...this.state.sharedProps}
-  //     initialScene={{ scene: InitialARScene }}
-  //   />;
-  // }
+
   // navigates to home page
   _getARNavigator() {
     // const { navigate } = this.props.navigation;
-    return (
-      // <View>
-      //   <View>
-      //     <Button
-      //       title="Click to enter"
-      //       onPress={() => this.props.navigation.navigate("ViroApp")}
-      //     />
-      //   </View>
-      // </View>
-
-      <Homepage {...this.props} />
-    );
+    return <Homepage {...this.props} />;
   }
 
   // Returns the ViroSceneNavigator which will start the VR experience
@@ -172,11 +130,6 @@ const AppNavigator = createSwitchNavigator(
     initialRouteName: 'Homepage'
   }
 );
-
-// const TabNavigator = createBottomTabNavigator({
-//   Home: HomeScreen,
-//   Details: DetailsScreen,
-// });
 
 const AppContainer = createAppContainer(AppNavigator);
 
