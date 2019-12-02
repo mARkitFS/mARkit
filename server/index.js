@@ -101,7 +101,7 @@ app.get('/', (req, res) => {
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, HOST, () =>
+  const server = app.listen(PORT, () =>
     console.log(`Mixing it up on port ${PORT}`));
 
   // set up our socket control center

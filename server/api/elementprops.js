@@ -33,3 +33,12 @@ router.get('/portal/:portalId', async (req, res, next) => {
     next(err);
   }
 });
+
+router.post('/add', async (req, res, next)=>{
+  try{
+    const newElementProp = await ElementProp.create(req.body)
+    res.json(newElementProp)
+  }catch(err){
+    next(err)
+    }
+  })

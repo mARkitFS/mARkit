@@ -33,3 +33,14 @@ router.get('/user/:userId', async (req, res, next) => {
     next(err);
   }
 });
+
+router.post('/add', async (req, res, next)=>{
+  try{
+    console.log('req body of portals post:>>>>>> ',req.body)
+    const newPortal = await Portal.create(req.body)
+    console.log('newPortal:>>>>',newPortal.dataValues)
+    res.json(newPortal.dataValues)
+  }catch(err){
+    next(err)
+    }
+  })
