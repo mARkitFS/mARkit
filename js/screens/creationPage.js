@@ -76,8 +76,6 @@ class CreationPage extends Component {
     });
   }
 
-  removeItem() {}
-
   renderBackground({ item }) {
     return (
       <View key={item.id}>

@@ -8,23 +8,27 @@ const styles = StyleSheet.create({
   imageInRow: {
     width: 50,
     height: 50,
-    resizeMode: 'contain',
-  },
+    resizeMode: 'contain'
+  }
 });
 
 class CreatorDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      portals: [],
+      portals: []
     };
   }
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
-    const { data } = await axios.get(
-      `http://172.20.1.222:8080/api/portals/user/${userId}`
-    );
-    this.setState({ portals: data });
+    try {
+      const { data } = await axios.get(
+        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
+      );
+      this.setState({ portals: data });
+    } catch (error) {
+      console.error(error);
+    }
   }
   renderRow(portal) {
     return (
@@ -37,7 +41,7 @@ class CreatorDashboard extends Component {
           margin: 20,
           borderColor: '#0000ff',
           borderWidth: 3,
-          flexDirection: 'row',
+          flexDirection: 'row'
         }}
       >
         <View style={{ padding: 3 }}>
@@ -55,7 +59,7 @@ class CreatorDashboard extends Component {
             onPress={() => {
               console.log('portal id when navigating', portal.id);
               this.props.navigation.navigate('ViroApp', {
-                portalId: portal.id,
+                portalId: portal.id
               });
             }}
           />

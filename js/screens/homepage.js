@@ -9,14 +9,12 @@ class Homepage extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Homepage Bitch</Text>
         <Button
-          title="Click to enter"
+          title="Viewer Dashboard"
           onPress={() => navigate('ViewerDashboard')}
         />
         <Button
           title="Creator Dashboard"
-          onPress={() => navigate('CreatorDashboard', { userId: 2 })}
-          title="go to creation page"
-          onPress={() => navigate('CreationPage')}
+          onPress={() => navigate('CreatorDashboard', { userId: 1 })}
         />
       </View>
     );

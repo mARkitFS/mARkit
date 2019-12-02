@@ -22,7 +22,6 @@ import {
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
 
-
 /*
  TODO: Insert your API key below
  */
@@ -161,7 +160,8 @@ import {
   ViewerDashboard,
   SinglePortal,
   PreviewPortal,
-  CreationPage
+  CreationPage,
+  CreatorDashboard
 } from './js/index';
 
 const AppNavigator = createSwitchNavigator(
