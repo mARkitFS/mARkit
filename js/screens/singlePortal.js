@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-
 import { images } from '../res/images';
-
 import axios from 'axios';
 // this is the view you get when clicking a portal from the viewer dashboard
-
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
-
 // display a thumbnail (clickable, on click navigates to MainScene)
 // components: name of portal, list of elements,thumbnail
-
 // const portalId = 1;
-
 import { Viro360Video, Viro360Image } from 'react-viro';
-
 export default class SinglePortal extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +19,6 @@ export default class SinglePortal extends Component {
       portal: {}
     };
   }
-
   async componentDidMount() {
     const { navigation } = this.props;
     const { portal } = navigation.state.params;
@@ -70,9 +62,7 @@ export default class SinglePortal extends Component {
         <View>
           <Text>{this.state.portal.name}</Text>
         </View>
-
         <View>
-
           <TouchableOpacity
             onPress={() => {
               console.log(
@@ -100,17 +90,8 @@ export default class SinglePortal extends Component {
         </View>
       </View>
     ) : (
-        <View />
-      );
-
+      <View />
+    );
     return returnComponent;
   }
 }
-
-/* styles to put on stylesheet:
-1. Header style for name of portal
-2. sub-header style for list of elements
-3. element box display
-4. individual elements
-5. thumbnail
-*/

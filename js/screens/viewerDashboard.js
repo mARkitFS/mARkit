@@ -9,9 +9,8 @@ import {
   FlatList
 } from 'react-native';
 import axios from 'axios';
-import DashboardItem from './dashboardItem'
+import DashboardItem from './dashboardItem';
 import { images } from '../res/images';
-
 
 // creating a row class to instantiate a row from
 export default class Table extends Component {
@@ -21,9 +20,7 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals`
-      );
+      const { data } = await axios.get(`https://vast-falls-27580.herokuapp.com/api/portals`);
       this.setState({ items: data });
     } catch (err) {
       console.error(err);
@@ -31,13 +28,13 @@ export default class Table extends Component {
   }
 
   render() {
-    console.log('portals on state', this.state.portals);
+    console.log('portals on state', this.state.items);
     if (this.state.items.length === 0) {
       return (
         <View style={styles.loader}>
           <ActivityIndicator size="large" />
         </View>
-      )
+      );
     }
     return (
       <View style={styles.loader}>
@@ -45,7 +42,7 @@ export default class Table extends Component {
         <TextInput
           style={{ height: 40, width: 150 }}
           placeholder="Portal name"
-          onChangeText={(text) => this.setState({ text })}
+          onChangeText={text => this.setState({ text })}
           value={this.state.text}
         />
         <Button
@@ -59,13 +56,14 @@ export default class Table extends Component {
           style={styles.container}
           data={this.state.items}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <DashboardItem item={item} screen='ViewerDashboard' />}
+          renderItem={({ item }) => (
+            <DashboardItem item={item} screen="ViewerDashboard" />
+          )}
         />
       </View>
-    )
+    );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -79,4 +77,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+});
