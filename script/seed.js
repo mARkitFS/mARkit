@@ -38,16 +38,6 @@ async function seed() {
 
   const elements = await Promise.all([
     Element.create({
-      id: 1,
-      name: 'heart',
-      type: 'VRX',
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-      userId: 1,
-      imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
-    }),
-    Element.create({
       id: 2,
       name: 'fox',
       type: 'OBJ',
@@ -91,6 +81,28 @@ async function seed() {
       userId: 1,
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+    }),
+    Background.create({
+      id: 3,
+      name: 'theater',
+      type: 'Viro360Image',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater.jpg',
+      loop: false,
+      userId: 2,
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater-thumbnail.jpg'
+    }),
+    Background.create({
+      id: 6,
+      name: 'space',
+      type: 'Viro360Image',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg',
+      loop: false,
+      userId: 2,
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg'
     })
   ]);
 
@@ -120,14 +132,6 @@ async function seed() {
     }),
     Portel.create({
       elementId: 2,
-      portalId: 2
-    }),
-    Portel.create({
-      elementId: 1,
-      portalId: 1
-    }),
-    Portel.create({
-      elementId: 1,
       portalId: 2
     })
   ]);
@@ -168,42 +172,6 @@ async function seed() {
       portalId: 2,
       position: [-1, 1, -4],
       scale: [0.01, 0.01, 0.01]
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 1,
-      position: [-2, 2, -3],
-      scale: [0.01, 0.01, 0.01]
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 1,
-      position: [-1, 1.5, -5],
-      scale: [0.01, 0.01, 0.01]
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 1,
-      position: [1, 1, -4],
-      scale: [0.01, 0.01, 0.01]
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 2,
-      position: [-2, 2, -3],
-      scale: [0.01, 0.01, 0.01]
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 2,
-      position: [-1, 1.5, -5],
-      scale: [0.01, 0.01, 0.01]
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 2,
-      position: [1, 1, -4],
-      scale: [0.01, 0.01, 0.01]
     })
   ]);
 
@@ -217,16 +185,6 @@ async function seed() {
       elementId: 2,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png'
-    }),
-    ElementRes.create({
-      elementId: 1,
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart_specular.png'
-    }),
-    ElementRes.create({
-      elementId: 1,
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.png'
     }),
     ElementRes.create({
       elementId: 3,
