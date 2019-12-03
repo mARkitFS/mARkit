@@ -74,6 +74,13 @@ class CreationPage extends Component {
     const dropThisIndex = prevSelected.findIndex(
       element => element.id === elementId
     );
+    if (dropThisIndex < 0) {
+      Alert.alert(
+        'Nothing to remove',
+        'You do not have any instances of this element in your portal.'
+      );
+      return;
+    }
     this.setState({
       selectedElements: [
         ...prevSelected.slice(0, dropThisIndex),
