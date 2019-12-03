@@ -4,24 +4,26 @@ import {
   Text,
   Button,
   ImageBackground,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity,
+  Image
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
-
+import { images } from '../res/images'
 const Landing = (props) => {
+  const { navigate } = props.navigation;
   return (
     <View style = { styles.container } >
     <ImageBackground  style= { styles.backgroundImage }
     source={{uri:'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/mARkit%20(1).jpg'}} >
-      <View style= { styles.logoContainer }>
-        <View style = { styles.container }>
-        <Button
-          style = { styles.logoText }
-          title="Enter"
-          onPress={() => navigate('Homepage')}
-        />
-        </View>
-      </View>
+      <TouchableOpacity style = {styles.card}
+        onPress={() => {
+          navigate('Homepage');
+        }}
+      >
+          <Image style={styles.cardImage} source = {{uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/enter.jpeg'}}></Image>
+
+        </TouchableOpacity>
       </ImageBackground>
     </View>
   );
@@ -33,6 +35,11 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: "orange"
+  },
+  button:{
+    fontSize: 20,
+    color: 'green',
+    width: '50%'
   },
   logoContainer:{
       alignItems: "center",
@@ -54,7 +61,34 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       opacity: 1
-  }
-});
+  },
+    card: {
+      backgroundColor: '#fff',
+      marginTop: 300,
+      marginBottom: 20,
+      marginRight: '50%',
+      width: '25%',
+      height: '5%',
+      shadowColor: '#000',
+      shadowOpacity: 0.2,
+      shadowRadius: 1,
+      shadowOffset: {
+        width: 3,
+        height: 2
+      }
+    },
+    cardImage: {
+      width: '150%',
+      height: 50,
+      resizeMode: 'cover'
+    },
+    cardText: {
+      padding: 10,
+      fontSize: 16
+    }
+
+  })
+
+
 
 export default withNavigation(Landing)

@@ -7,6 +7,7 @@ import {
   TextInput,
   ActivityIndicator,
   FlatList,
+  TouchableOpacity
 } from 'react-native';
 
 import axios from 'axios';
@@ -38,9 +39,7 @@ class CreatorDashboard extends Component {
   }
 
   render() {
-    // console.log('portals on state', this.state.portals);
     if (this.state.items.length === 0) {
-      console.log('no items on state>>>>>>>')
       return (
         <View style={styles.loader}>
           <ActivityIndicator size="large" />
@@ -48,36 +47,23 @@ class CreatorDashboard extends Component {
       )
     }
     const { navigate } = this.props.navigation
-    console.log('this.state.items: >>>>>', this.state.items)
     return (
       <View style={styles.loader}>
-        <Text>Search Portals: </Text>
-        <TextInput
-          style={{ height: 40, width: 150 }}
-          placeholder="Portal name"
-          onChangeText={(text) => this.setState({ text })}
-          value={this.state.text}
-        />
-        <Button
-          title="Search"
-          onPress={() => {
-            console.log('state: ', this.state);
-            //set state to portals that match search
-          }}
-        />
-        <View style={styles.middle}>
-          <FlatList
+        <View >
+          <Text style={styles.title}> Welcome to the Creator Dashboard! </Text>
+        </View>
+        <FlatList
             style={styles.container}
             data={this.state.items}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => <DashboardItem item={item} screen='CreatorDashboard' userId={this.state.userId} />}
           />
-        </View>
-
-        <Button
-          title="Create New Portal"
+        <TouchableOpacity
+          style = {styles.card}
           onPress={() => navigate('CreationPage', { userId: this.state.userId })}
-        />
+        >
+          <Text style={styles.cardText}> Create New Portal </Text>
+        </TouchableOpacity>
       </View>
 
     )
@@ -89,16 +75,36 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 30,
     backgroundColor: '#F5FCFF'
-    // backgroundColor: '#b2b2ff'
   },
-  middle: {
-    height: 400
+  title: {
+    fontWeight: 'bold',
+    fontFamily: 'Academy Engraved LET',
+    fontSize: 30,
+    color: '#0B3142',
+    textAlign: 'center'
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  cardText: {
+    padding: 1,
+    fontSize: 12,
+    color: '#0B3142',
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  card: {
+    backgroundColor: '#D6D3F0',
+    marginBottom: 10,
+    marginTop: 10,
+    marginRight: '50%',
+    width: '25%',
+    shadowColor: '#0B3142',
+    shadowOpacity: 0.2,
+    shadowRadius: 1
   }
 })
 export default withNavigation(CreatorDashboard);

@@ -15,11 +15,11 @@ export default class PreviewImage extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#0B3142',
     marginBottom: 20,
     marginLeft: '5%',
     width: '85%',
-    shadowColor: '#000',
+    shadowColor: '#0B3142',
     shadowOpacity: 0.2,
     shadowRadius: 1,
     shadowOffset: {
@@ -33,8 +33,10 @@ const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
   cardText: {
-    padding: 10,
-    fontSize: 16
+    padding: 5,
+    fontSize: 16,
+    color: 'white',
+    fontWeight: 'bold'
   }
 
 })

@@ -6,66 +6,52 @@ import { withNavigation } from 'react-navigation'
 class DashboardItem extends Component {
   render() {
   return (
-    <View
-      // key={portal.id}
-      style={styles.container}
-    >
-      <View style={styles.name}>
-        <Text>{this.props.item.name}</Text>
-      </View>
-      <View style={styles.image}>
-        <Image
-          style={styles.imageInRow}
-          source={images.portalThumbnails[this.props.item.name]}
-        />
-      </View>
-        <TouchableOpacity>
-          <View style={styles.navButton}>
-            <Button
-              title="Enter portal"
-              onPress={() => {
-                this.props.navigation.navigate('SinglePortal', {
-                  portal: this.props.item,
-                  screen: this.props.screen,
-                  userId: this.props.userId
-                });
-              }}
-            />
-          </View>
+    <View>
+        <TouchableOpacity style = {styles.card}
+          onPress={() => {
+            this.props.navigation.navigate('SinglePortal', {
+              portal: this.props.item,
+              screen: this.props.screen,
+              userId: this.props.userId
+            });
+          }}
+        >
+          <Image style={styles.cardImage} source={images.portalThumbnails[this.props.item.name]}></Image>
+          <Text style={styles.cardText}>{`Enter the ${this.props.item.name} portal!`}</Text>
         </TouchableOpacity>
-      </View>
+
+    </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex: 2,
-    maxHeight: 150,
-    width: 250,
-    margin: 20,
-    borderColor: '#0000ff',
-    borderWidth: 2,
-    flexDirection: 'row'
+  card: {
+    backgroundColor: '#0B3142',
+    marginBottom: 20,
+    marginLeft: '5%',
+    width: '85%',
+    shadowColor: '#0B3142',
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3
+    }
   },
-  name: {
-    padding: 3,
-    flex: 1,
-    alignItems: 'stretch'
+  cardImage: {
+    width: '100%',
+    height: 150,
+    resizeMode: 'cover'
   },
-  image: {
-    flex: 1,
-    alignItems: 'stretch'
-  },
-  imageInRow: {
-    width: 75,
-    height: 50,
-    resizeMode: 'contain'
-  },
-  navButton: {
-    flex: 1,
-    alignItems: 'stretch'
+  cardText: {
+    padding: 5,
+    fontSize: 16,
+    color: 'white',
+    fontWeight: 'bold'
   }
-});
+
+})
+
 
 export default withNavigation(DashboardItem)
