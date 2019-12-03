@@ -12,6 +12,18 @@ const images = {
         'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
       url:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+    },
+    theater: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater.jpg',
+      url:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater-thumbnail.jpg'
+    },
+    space: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg',
+      url:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg'
     }
   },
   element: {
@@ -79,6 +91,26 @@ const images = {
     party: {
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+    },
+    theater: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater-thumbnail.jpg'
+    },
+    space: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg'
+    },
+    tiles: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_tiles.jpg'
+    },
+    waikiki: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_waikiki.jpg'
+    },
+    westlake: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_westlake.jpg'
     },
     default: {
       uri:
