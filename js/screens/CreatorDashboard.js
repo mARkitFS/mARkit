@@ -29,7 +29,7 @@ class CreatorDashboard extends Component {
     console.log('userID:>>>>>', userId);
     try {
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
+        `https://10.1.85.95.localhost:8080/api/portals/user/${userId}`
       );
       this.setState({ items: data });
     } catch (error) {
@@ -78,14 +78,15 @@ class CreatorDashboard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
-    backgroundColor: '#D6D3F0',
+    // marginTop: 30,
+    // backgroundColor: '#D6D3F0',
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#D6D3F0',
   },
   title: {
     fontWeight: 'bold',
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#0B3142',
     textAlign: 'center',
+    marginTop: 40,
   },
   cardText: {
     padding: 1,
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   card: {
-    backgroundColor: '#D6D3F0',
+    backgroundColor: '#D7D3F9',
     marginBottom: 10,
     marginTop: 10,
     marginRight: '50%',
@@ -110,6 +112,7 @@ const styles = StyleSheet.create({
     shadowColor: '#0B3142',
     shadowOpacity: 0.2,
     shadowRadius: 1,
+    borderRadius: 20,
   },
 });
 export default withNavigation(CreatorDashboard);

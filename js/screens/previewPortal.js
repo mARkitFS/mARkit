@@ -44,11 +44,11 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
-        'https://vast-falls-27580.herokuapp.com/api/portals/add',
+        'https://10.1.85.95.localhost:8080/api/portals/add',
         portalObj
       );
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals/${newPortal.data.id}`
+        `https://10.1.85.95.localhost:8080/api/portals/${newPortal.data.id}`
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -76,7 +76,7 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
-          'https://vast-falls-27580.herokuapp.com/api/elementprops/add',
+          'https://10.1.85.95.localhost:8080/api/elementprops/add',
           elementPropsObj
         );
         console.log('newElementProps: ', newElementProps);
@@ -98,7 +98,7 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'https://vast-falls-27580.herokuapp.com/api/portels/add',
+          'https://10.1.85.95.localhost:8080/api/portels/add',
           portelObj
         );
         console.log('newPortel: ', newPortel);

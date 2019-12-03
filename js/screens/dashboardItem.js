@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Image,
   View,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import { images } from '../res/images';
 import { withNavigation } from 'react-navigation';
@@ -28,21 +28,23 @@ class DashboardItem extends Component {
       />
     );
     return (
-    <View>
-        <TouchableOpacity style = {styles.card}
+      <View>
+        <TouchableOpacity
+          style={styles.card}
           onPress={() => {
             this.props.navigation.navigate('SinglePortal', {
               portal: this.props.item,
               screen: this.props.screen,
-              userId: this.props.userId
+              userId: this.props.userId,
             });
           }}
         >
           {image}
-          <Text style={styles.cardText}>{`Enter the ${this.props.item.name} portal!`}</Text>
+          <Text
+            style={styles.cardText}
+          >{`Enter the ${this.props.item.name} portal!`}</Text>
         </TouchableOpacity>
-
-    </View>
+      </View>
     );
   }
 }
@@ -50,6 +52,7 @@ class DashboardItem extends Component {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#0B3142',
+    borderRadius: 20,
     marginBottom: 20,
     marginLeft: '5%',
     width: '85%',
@@ -58,22 +61,20 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     shadowOffset: {
       width: 3,
-      height: 3
-    }
+      height: 3,
+    },
   },
   cardImage: {
     width: '100%',
     height: 150,
-    resizeMode: 'cover'
+    resizeMode: 'cover',
   },
   cardText: {
     padding: 5,
     fontSize: 16,
     color: 'white',
-    fontWeight: 'bold'
-  }
-
-})
-
+    fontWeight: 'bold',
+  },
+});
 
 export default withNavigation(DashboardItem);
