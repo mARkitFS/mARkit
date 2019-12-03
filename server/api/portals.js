@@ -39,11 +39,6 @@ router.post('/add', async (req, res, next) => {
     console.log('req body of portals post:>>>>>> ', req.body);
     // if the name provided in req.body already exists, respond with error
     // get all existing names
-    const existingNames = Portal.getAllNames();
-    // if existing names includes req.body.name, , res.send error 409
-    if (existingNames.includes(req.body.name)) {
-      res.sendStatus(409);
-    }
     const newPortal = await Portal.create(req.body);
     console.log('newPortal:>>>>', newPortal.dataValues);
     res.json(newPortal.dataValues);
