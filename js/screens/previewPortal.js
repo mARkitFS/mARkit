@@ -24,7 +24,7 @@ export default class PreviewPortal extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     let items = this.props.navigation.state.params.items;
     let userId = this.props.navigation.state.params.userId;
     this.setState({

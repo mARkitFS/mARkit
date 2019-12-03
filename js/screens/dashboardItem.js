@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
-import { Button, Text, TouchableOpacity, Image, View, StyleSheet } from 'react-native';
+import {
+  Button,
+  Text,
+  TouchableOpacity,
+  Image,
+  View,
+  StyleSheet
+} from 'react-native';
 import { images } from '../res/images';
-import { withNavigation } from 'react-navigation'
+import { withNavigation } from 'react-navigation';
 
 class DashboardItem extends Component {
   render() {
-  return (
-    <View
-      // key={portal.id}
-      style={styles.container}
-    >
-      <View style={styles.name}>
-        <Text>{this.props.item.name}</Text>
-      </View>
-      <View style={styles.image}>
-        <Image
-          style={styles.imageInRow}
-          source={images.portalThumbnails[this.props.item.name]}
-        />
-      </View>
+    console.log(
+      'images portal thumbnails in dashboard item: ',
+      images.portalThumbnails
+    );
+    const image = images.portalThumbnails[this.props.item.name] ? (
+      <Image
+        style={styles.imageInRow}
+        source={images.portalThumbnails[this.props.item.name]}
+      />
+    ) : (
+      <Image
+        style={styles.imageInRow}
+        source={images.portalThumbnails.default}
+      />
+    );
+    return (
+      <View
+        // key={portal.id}
+        style={styles.container}
+      >
+        <View style={styles.name}>
+          <Text>{this.props.item.name}</Text>
+        </View>
+        <View style={styles.image}>{image}</View>
         <TouchableOpacity>
           <View style={styles.navButton}>
             <Button
@@ -39,7 +56,7 @@ class DashboardItem extends Component {
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 2,
     maxHeight: 150,
     width: 250,
@@ -68,4 +85,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavigation(DashboardItem)
+export default withNavigation(DashboardItem);
