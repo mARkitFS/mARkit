@@ -92,17 +92,6 @@ async function seed() {
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
     }),
-    Background.create({
-      id: 3,
-      name: 'livingroom',
-      type: 'Viro360Image',
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/autodesk.jpg',
-      loop: true,
-      userId: 1,
-      imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/autodesk.jpg',
-    }),
   ]);
 
   const portals = await Promise.all([

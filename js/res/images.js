@@ -13,12 +13,6 @@ const images = {
       url:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
     },
-    livingroom: {
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/autodesk.jpg',
-      url:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/autodesk.jpg',
-    },
   },
   element: {
     fox: {
@@ -77,10 +71,6 @@ const images = {
     default: {
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
-    },
-    livingroom: {
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/autodesk.jpg',
     },
   },
 
