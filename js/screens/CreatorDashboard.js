@@ -74,7 +74,13 @@ class CreatorDashboard extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#D6D3F0'
+  },
+  loader: {
+    flex: 2,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   title: {
     fontWeight: 'bold',
@@ -82,12 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#0B3142',
     textAlign: 'center'
-  },
-  loader: {
-    flex: 2,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   cardText: {
     padding: 1,

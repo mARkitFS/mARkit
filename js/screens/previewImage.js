@@ -37,6 +37,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     fontWeight: 'bold'
-  }
+  },
+  title: {
+    fontWeight: 'bold',
+    fontFamily: 'Academy Engraved LET',
+    fontSize: 30,
+    color: '#0B3142',
+    textAlign: 'center'
+  },
 
 })

@@ -56,7 +56,7 @@ export default class Table extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#D6D3F0'
   },
   title: {
     fontWeight: 'bold',
