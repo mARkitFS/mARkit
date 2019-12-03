@@ -54,6 +54,7 @@ export default class PreviewPortal extends Component {
         'https://vast-falls-27580.herokuapp.com/api/portals/add',
         portalObj
       );
+
       const { data } = await axios.get(
         `https://vast-falls-27580.herokuapp.com/api/portals/${newPortal.data.id}`
       );
@@ -66,7 +67,12 @@ export default class PreviewPortal extends Component {
         saveButton: `Portal ${data.name} created`
       });
     } catch (err) {
-      console.log(err);
+      if (err.response.data === 'Validation error') {
+        Alert.alert(
+          'Portal name is not unique',
+          'The portal name you entered already exists. Please choose another portal name!'
+        );
+      }
     }
   }
 

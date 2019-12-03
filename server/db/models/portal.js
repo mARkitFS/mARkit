@@ -19,4 +19,10 @@ const Portal = db.define('portal', {
   }
 });
 
+// class method to get all the names of portals in the table
+Portal.getAllNames = function() {
+  const allPortals = this.findAll();
+  return allPortals.map(portal => portal.name);
+};
+
 module.exports = Portal;
