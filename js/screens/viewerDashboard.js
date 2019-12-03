@@ -7,9 +7,8 @@ import {
   FlatList
 } from 'react-native';
 import axios from 'axios';
-import DashboardItem from './dashboardItem'
+import DashboardItem from './dashboardItem';
 import { images } from '../res/images';
-
 
 // creating a row class to instantiate a row from
 export default class Table extends Component {
@@ -19,9 +18,7 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals`
-      );
+      const { data } = await axios.get(`https://vast-falls-27580.herokuapp.com/api/portals`);
       this.setState({ items: data });
     } catch (err) {
       console.error(err);
@@ -34,7 +31,7 @@ export default class Table extends Component {
         <View style={styles.loader}>
           <ActivityIndicator size="large" />
         </View>
-      )
+      );
     }
     return (
       <View style={styles.loader}>
@@ -45,13 +42,14 @@ export default class Table extends Component {
           style={styles.container}
           data={this.state.items}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <DashboardItem item={item} screen='ViewerDashboard' />}
+          renderItem={({ item }) => (
+            <DashboardItem item={item} screen="ViewerDashboard" />
+          )}
         />
       </View>
-    )
+    );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -71,4 +69,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+});

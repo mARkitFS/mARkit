@@ -11,9 +11,8 @@ import {
 } from 'react-native';
 
 import axios from 'axios';
-import DashboardItem from './dashboardItem'
+import DashboardItem from './dashboardItem';
 import { withNavigation } from 'react-navigation';
-
 
 // creating a row class to instantiate a row from
 class CreatorDashboard extends Component {
@@ -27,7 +26,7 @@ class CreatorDashboard extends Component {
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     this.setState({ userId: userId });
-    console.log('userID:>>>>>', userId)
+    console.log('userID:>>>>>', userId);
     try {
       const { data } = await axios.get(
         `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
@@ -44,7 +43,7 @@ class CreatorDashboard extends Component {
         <View style={styles.loader}>
           <ActivityIndicator size="large" />
         </View>
-      )
+      );
     }
     const { navigate } = this.props.navigation
     return (
@@ -56,7 +55,13 @@ class CreatorDashboard extends Component {
             style={styles.container}
             data={this.state.items}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => <DashboardItem item={item} screen='CreatorDashboard' userId={this.state.userId} />}
+            renderItem={({ item }) => (
+              <DashboardItem
+                item={item}
+                screen="CreatorDashboard"
+                userId={this.state.userId}
+              />
+            )}
           />
         <TouchableOpacity
           style = {styles.card}
@@ -65,11 +70,9 @@ class CreatorDashboard extends Component {
           <Text style={styles.cardText}> Create New Portal </Text>
         </TouchableOpacity>
       </View>
-
-    )
+    );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -106,5 +109,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1
   }
-})
+});
 export default withNavigation(CreatorDashboard);

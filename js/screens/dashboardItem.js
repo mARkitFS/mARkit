@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
-import { Button, Text, TouchableOpacity, Image, View, StyleSheet } from 'react-native';
+import {
+  Button,
+  Text,
+  TouchableOpacity,
+  Image,
+  View,
+  StyleSheet
+} from 'react-native';
 import { images } from '../res/images';
-import { withNavigation } from 'react-navigation'
+import { withNavigation } from 'react-navigation';
 
 class DashboardItem extends Component {
   render() {
-  return (
+    console.log(
+      'images portal thumbnails in dashboard item: ',
+      images.portalThumbnails
+    );
+    const image = images.portalThumbnails[this.props.item.name] ? (
+      <Image
+        style={styles.cardImage}
+        source={images.portalThumbnails[this.props.item.name]}
+      />
+    ) : (
+      <Image
+        style={styles.cardImage}
+        source={images.portalThumbnails.default}
+      />
+    );
+    return (
     <View>
         <TouchableOpacity style = {styles.card}
           onPress={() => {
@@ -16,7 +38,7 @@ class DashboardItem extends Component {
             });
           }}
         >
-          <Image style={styles.cardImage} source={images.portalThumbnails[this.props.item.name]}></Image>
+          {image}
           <Text style={styles.cardText}>{`Enter the ${this.props.item.name} portal!`}</Text>
         </TouchableOpacity>
 
@@ -54,4 +76,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default withNavigation(DashboardItem)
+export default withNavigation(DashboardItem);
