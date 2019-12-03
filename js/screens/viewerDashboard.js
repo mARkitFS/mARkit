@@ -19,7 +19,7 @@ export default class Table extends Component {
   async componentDidMount() {
     try {
       const { data } = await axios.get(
-        `https://10.1.85.95.localhost:8080/api/portals`
+        `https://vast-falls-27580.herokuapp.com/api/portals`
       );
       this.setState({ items: data });
     } catch (err) {
@@ -64,11 +64,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#0B3142',
     textAlign: 'center',
+    marginTop: 40,
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#D6D3F0',
   },
 });

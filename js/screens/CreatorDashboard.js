@@ -29,7 +29,7 @@ class CreatorDashboard extends Component {
     console.log('userID:>>>>>', userId);
     try {
       const { data } = await axios.get(
-        `https://10.1.85.95.localhost:8080/api/portals/user/${userId}`
+        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
       );
       this.setState({ items: data });
     } catch (error) {

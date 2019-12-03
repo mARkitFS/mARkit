@@ -22,10 +22,10 @@ class CreationPage extends Component {
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
-      `https://10.1.85.95.localhost:8080/api/backgrounds`
+      `https://vast-falls-27580.herokuapp.com/api/backgrounds`
     );
     const elements = await axios.get(
-      `https://10.1.85.95.localhost:8080/api/elements`
+      `https://vast-falls-27580.herokuapp.com/api/elements`
     );
     this.setState({
       allBackgrounds: backgrounds.data,
@@ -138,7 +138,7 @@ class CreationPage extends Component {
     console.log('state on creation page', this.state);
     return (
       // wrapper view
-      <View>
+      <View style={{ marginTop: 40 }}>
         {/* wrapper for background */}
         <View>
           {/* background header view */}
