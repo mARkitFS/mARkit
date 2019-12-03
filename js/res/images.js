@@ -13,6 +13,18 @@ const images = {
       url:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
     },
+    theater: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater.jpg',
+      url:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater-thumbnail.jpg'
+    },
+    space: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg',
+      url:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg'
+    }
   },
   element: {
     fox: {
@@ -35,19 +47,20 @@ const images = {
       url:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png',
     },
-    party_event: {
+
+    alduin: {
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-      resources: [],
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.obj',
+      resources: [
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.mtl',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin_n.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes_g.jpg'
+      ],
       url:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
-    },
-    beach: {
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-      resources: [],
-      url:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Alduin_thumbnail.jpg'
+
     },
     beach_vacation: {
       uri:
@@ -67,6 +80,26 @@ const images = {
     party: {
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
+    },
+    theater: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater-thumbnail.jpg'
+    },
+    space: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg'
+    },
+    tiles: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_tiles.jpg'
+    },
+    waikiki: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_waikiki.jpg'
+    },
+    westlake: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_westlake.jpg'
     },
     default: {
       uri:

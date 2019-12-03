@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   FlatList,
   StyleSheet,
+  Alert
 } from 'react-native';
 import PreviewImage from './previewImage';
 import { images } from '../res/images';
@@ -44,11 +45,12 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
-        'https://vast-falls-27580.herokuapp.com/api/portals/add',
+        'http://10.1.85.96:8080/api/portals/add',
         portalObj
       );
+
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals/${newPortal.data.id}`
+        `http://10.1.85.96:8080/api/portals/${newPortal.data.id}`
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -59,7 +61,19 @@ export default class PreviewPortal extends Component {
         saveButton: `Portal ${data.name} created`,
       });
     } catch (err) {
-      console.log(err);
+      if (err.response.data === 'Validation error') {
+        if (this.state.text.length < 1) {
+          Alert.alert(
+            'Portal name is required',
+            'Please provide a portal name!'
+          );
+        } else {
+          Alert.alert(
+            'Portal name is not unique',
+            'The portal name you entered already exists. Please choose another portal name.'
+          );
+        }
+      }
     }
   }
 
@@ -68,15 +82,16 @@ export default class PreviewPortal extends Component {
       .filter(el => el.type != 'background')
       .map(el => el.id);
     elementArr.forEach(async el => {
+        let position = this.getRandomPosition()
       let elementPropsObj = {
         elementId: el,
         portalId: portalId,
         scale: [0.01, 0.01, 0.01],
-        position: [1, 1.5, -5],
+        position: position,
       };
       try {
         const newElementProps = await axios.post(
-          'https://vast-falls-27580.herokuapp.com/api/elementprops/add',
+          'http://10.1.85.96:8080/api/elementprops/add',
           elementPropsObj
         );
         console.log('newElementProps: ', newElementProps);
@@ -85,6 +100,16 @@ export default class PreviewPortal extends Component {
       }
     });
   }
+
+  getRandomPosition(){
+    let positionArr = []
+    for (let i = 0; i < 3; i++){
+      let num = (Math.random() * (8 - (i*2))) - 3
+      positionArr.unshift(num)
+    }
+    return positionArr
+  }
+
 
   addPortels(portalId) {
     let elementArr = this.state.items
@@ -98,7 +123,7 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'https://vast-falls-27580.herokuapp.com/api/portels/add',
+          'http://10.1.85.96:8080/api/portels/add',
           portelObj
         );
         console.log('newPortel: ', newPortel);

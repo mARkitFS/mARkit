@@ -38,16 +38,6 @@ async function seed() {
 
   const elements = await Promise.all([
     Element.create({
-      id: 1,
-      name: 'heart',
-      type: 'VRX',
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-      userId: 1,
-      imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png',
-    }),
-    Element.create({
       id: 2,
       name: 'fox',
       type: 'OBJ',
@@ -59,14 +49,14 @@ async function seed() {
     }),
     Element.create({
       id: 3,
-      name: 'teapot',
+      name: 'alduin',
       type: 'OBJ',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Chaynik.obj',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.obj',
       userId: 1,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/teapot-teacup-jug-rose-tea-teapot.jpg',
-    }),
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Alduin_thumbnail.jpg'
+    })
   ]);
 
   const backgrounds = await Promise.all([
@@ -90,8 +80,30 @@ async function seed() {
       loop: true,
       userId: 1,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
     }),
+    Background.create({
+      id: 3,
+      name: 'theater',
+      type: 'Viro360Image',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater.jpg',
+      loop: false,
+      userId: 2,
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater-thumbnail.jpg'
+    }),
+    Background.create({
+      id: 6,
+      name: 'space',
+      type: 'Viro360Image',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg',
+      loop: false,
+      userId: 2,
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg'
+    })
   ]);
 
   const portals = await Promise.all([
@@ -120,16 +132,9 @@ async function seed() {
     }),
     Portel.create({
       elementId: 2,
-      portalId: 2,
-    }),
-    Portel.create({
-      elementId: 1,
-      portalId: 1,
-    }),
-    Portel.create({
-      elementId: 1,
-      portalId: 2,
-    }),
+      portalId: 2
+    })
+
   ]);
 
   const elementprops = await Promise.all([
@@ -167,44 +172,8 @@ async function seed() {
       elementId: 2,
       portalId: 2,
       position: [-1, 1, -4],
-      scale: [0.01, 0.01, 0.01],
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 1,
-      position: [-2, 2, -3],
-      scale: [0.01, 0.01, 0.01],
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 1,
-      position: [-1, 1.5, -5],
-      scale: [0.01, 0.01, 0.01],
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 1,
-      position: [1, 1, -4],
-      scale: [0.01, 0.01, 0.01],
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 2,
-      position: [-2, 2, -3],
-      scale: [0.01, 0.01, 0.01],
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 2,
-      position: [-1, 1.5, -5],
-      scale: [0.01, 0.01, 0.01],
-    }),
-    ElementProp.create({
-      elementId: 1,
-      portalId: 2,
-      position: [1, 1, -4],
-      scale: [0.01, 0.01, 0.01],
-    }),
+      scale: [0.01, 0.01, 0.01]
+    })
   ]);
 
   const elementres = await Promise.all([
@@ -219,15 +188,30 @@ async function seed() {
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png',
     }),
     ElementRes.create({
-      elementId: 1,
+      elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart_specular.png',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.mtl'
     }),
     ElementRes.create({
-      elementId: 1,
+      elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.png',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin.jpg'
     }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin_n.jpg'
+    }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes.jpg'
+    }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes_g.jpg'
+    })
   ]);
 
   console.log(`seeded ${users.length} users`);

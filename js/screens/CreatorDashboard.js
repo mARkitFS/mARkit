@@ -3,11 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
-  TextInput,
   ActivityIndicator,
   FlatList,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
 
 import axios from 'axios';
@@ -20,16 +18,15 @@ class CreatorDashboard extends Component {
     super(props);
     this.state = {
       items: [],
-      userId: 0,
+      userId: 0
     };
   }
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     this.setState({ userId: userId });
-    console.log('userID:>>>>>', userId);
     try {
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
+        `http://10.1.85.96:8080/api/portals/user/${userId}`
       );
       this.setState({ items: data });
     } catch (error) {
@@ -101,7 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#0B3142',
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   card: {
     backgroundColor: '#D7D3F9',
@@ -114,5 +111,6 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     borderRadius: 20,
   },
+
 });
 export default withNavigation(CreatorDashboard);
