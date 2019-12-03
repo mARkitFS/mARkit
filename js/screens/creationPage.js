@@ -21,9 +21,9 @@ class CreationPage extends Component {
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
-      `http://10.1.85.88:8080/api/backgrounds`
+      `https://vast-falls-27580.herokuapp.com/api/backgrounds`
     );
-    const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
+    const elements = await axios.get(`api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,

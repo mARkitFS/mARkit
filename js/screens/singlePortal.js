@@ -35,10 +35,10 @@ export default class SinglePortal extends Component {
     const portalId = portal.id;
     try {
       const element = await axios.get(
-        `http://10.1.85.88:8080/api/elementprops/portal/${portalId}`
+        `https://vast-falls-27580.herokuapp.com/api/elementprops/portal/${portalId}`
       );
       const background = await axios.get(
-        `http://10.1.85.88:8080/api/backgrounds/${portal.backgroundId}`
+        `https://vast-falls-27580.herokuapp.com/api/backgrounds/${portal.backgroundId}`
       );
       let Viro360Type =
         background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
@@ -72,7 +72,7 @@ export default class SinglePortal extends Component {
         </View>
 
         <View>
-       
+
           <TouchableOpacity
             onPress={() => {
               console.log(
@@ -100,8 +100,8 @@ export default class SinglePortal extends Component {
         </View>
       </View>
     ) : (
-      <View />
-    );
+        <View />
+      );
 
     return returnComponent;
   }
