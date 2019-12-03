@@ -123,8 +123,8 @@ class CreationPage extends Component {
   }
 
   handleSubmit() {
-    console.log('state: ', this.state);
-    if (this.state.selectedBackground.length < 1) {
+    console.log(this.state.selectedBackground, 'this selected background');
+    if (!this.state.selectedBackground.name) {
       Alert.alert('Background required', 'Please select a background!');
       return;
     }
