@@ -55,6 +55,17 @@ export default class SinglePortal extends Component {
   }
   render() {
     console.log(this.state, 'this state in singlePortal');
+    const image = images.portalThumbnails[this.state.portal.name] ? (
+      <Image
+        source={images.portalThumbnails[this.state.portal.name]}
+        style={{ width: 340, height: 232 }}
+      />
+    ) : (
+      <Image
+        source={images.portalThumbnails.default}
+        style={{ width: 340, height: 232 }}
+      />
+    );
     const returnComponent = this.state.background ? (
       // wrapper view
       <View>
@@ -80,12 +91,7 @@ export default class SinglePortal extends Component {
               });
             }}
           >
-            <View>
-              <Image
-                source={images.portalThumbnails[this.state.portal.name]}
-                style={{ width: 170, height: 116 }}
-              />
-            </View>
+            <View>{image}</View>
           </TouchableOpacity>
         </View>
       </View>
