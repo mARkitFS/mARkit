@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import {
@@ -11,6 +12,7 @@ import {
   PreviewPortal,
   CreationPage,
   CreatorDashboard,
+  Landing,
 } from './index';
 
 const CreatorNavigator = createSwitchNavigator({
@@ -41,12 +43,12 @@ const TabNavigator = createMaterialBottomTabNavigator({
       tabBarLabel: 'Creator',
     },
   },
-  Viewer: {
-    screen: ViewerNavigator,
-    navigationOptions: {
-      tabBarLabel: 'Viewer',
-    },
-  },
+  // Viewer: {
+  //   screen: ViewerNavigator,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Viewer',
+  //   },
+  // },
 });
 
 const AppContainer = createAppContainer(TabNavigator);

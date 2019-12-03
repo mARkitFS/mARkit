@@ -113,12 +113,13 @@ import {
   CreationPage,
   CreatorDashboard,
   Landing,
-  BottomNavWrapper,
+  BottomNavWrapper
 } from './js/index';
+// import BottomNavWrapper from './js/tab';
 
 const AppNavigator = createSwitchNavigator(
   {
-    // Homepage: { screen: props => <Homepage {...props} /> },
+    Homepage: { screen: props => <Homepage {...props} /> },
     // ViroApp: { screen: ViroApp },
     // MainScene: { screen: MainScene },
     // AppJs: { screen: AppJs },
@@ -127,11 +128,11 @@ const AppNavigator = createSwitchNavigator(
     // SinglePortal: { screen: SinglePortal },
     // PreviewPortal: { screen: PreviewPortal },
     // CreationPage: { screen: CreationPage }
-    Landing: { screen: Landing },
+    // Landing: { screen: Landing },
     BottomNavWrapper: { screen: BottomNavWrapper },
   },
   {
-    initialRouteName: 'Landing',
+    initialRouteName: 'Homepage',
   }
 );
 
