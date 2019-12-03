@@ -75,21 +75,23 @@ class CreatorDashboard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
-    backgroundColor: '#D6D3F0'
+    // marginTop: 30,
+    // backgroundColor: '#D6D3F0',
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#D6D3F0',
   },
   title: {
     fontWeight: 'bold',
     fontFamily: 'Academy Engraved LET',
     fontSize: 30,
     color: '#0B3142',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 40,
   },
   cardText: {
     padding: 1,
@@ -99,14 +101,16 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   card: {
-    backgroundColor: '#D6D3F0',
+    backgroundColor: '#D7D3F9',
     marginBottom: 10,
     marginTop: 10,
     marginRight: '50%',
     width: '25%',
     shadowColor: '#0B3142',
     shadowOpacity: 0.2,
-    shadowRadius: 1
-  }
+    shadowRadius: 1,
+    borderRadius: 20,
+  },
+
 });
 export default withNavigation(CreatorDashboard);

@@ -64,11 +64,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#0B3142',
     textAlign: 'center',
+    marginTop: 40,
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#D6D3F0',
   },
 });

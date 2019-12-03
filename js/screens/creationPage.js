@@ -139,7 +139,7 @@ class CreationPage extends Component {
     console.log('state on creation page', this.state);
     return (
       // wrapper view
-      <View>
+      <View style={{ marginTop: 40 }}>
         {/* wrapper for background */}
         <View>
           {/* background header view */}

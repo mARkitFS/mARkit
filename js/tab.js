@@ -6,13 +6,11 @@ import {
   MainScene,
   ViroApp,
   Homepage,
-  AppJs,
   ViewerDashboard,
   SinglePortal,
   PreviewPortal,
   CreationPage,
   CreatorDashboard,
-  Landing,
 } from './index';
 
 const CreatorNavigator = createSwitchNavigator({
