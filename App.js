@@ -13,12 +13,13 @@ import { StyleSheet } from 'react-native';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { ViroVRSceneNavigator } from 'react-viro';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 /*
  TODO: Insert your API key below
  */
 var sharedProps = {
-  apiKey: 'API_KEY_HERE'
+  apiKey: 'API_KEY_HERE',
 };
 
 // Sets the default scene you want for AR and VR
@@ -38,7 +39,7 @@ export default class ViroSample extends Component {
 
     this.state = {
       navigatorType: defaultNavigatorType,
-      sharedProps: sharedProps
+      sharedProps: sharedProps,
     };
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
@@ -89,7 +90,7 @@ export default class ViroSample extends Component {
   _getExperienceButtonOnPress(navigatorType) {
     return () => {
       this.setState({
-        navigatorType: navigatorType
+        navigatorType: navigatorType,
       });
     };
   }
@@ -97,7 +98,7 @@ export default class ViroSample extends Component {
   // This function "exits" Viro by setting the navigatorType to UNSET.
   _exitViro() {
     this.setState({
-      navigatorType: UNSET
+      navigatorType: UNSET,
     });
   }
 }
@@ -112,57 +113,91 @@ import {
   SinglePortal,
   PreviewPortal,
   CreationPage,
-  CreatorDashboard
+  CreatorDashboard,
+  BottomNavWrapper,
 } from './js/index';
+import TabNavigator from './js/tab';
 
-const AppNavigator = createSwitchNavigator(
-  {
-    Landing: { screen: props => <Landing {...props} /> },
-    Homepage: { screen: Homepage },
-    ViroApp: { screen: ViroApp },
-    MainScene: { screen: MainScene },
-    AppJs: { screen: AppJs },
-    ViewerDashboard: { screen: ViewerDashboard },
-    CreatorDashboard: { screen: CreatorDashboard },
-    SinglePortal: { screen: SinglePortal },
-    PreviewPortal: { screen: PreviewPortal },
-    CreationPage: { screen: CreationPage }
-  },
-  {
-    initialRouteName: 'Landing'
-  }
-);
+const CreatorNavigator = createSwitchNavigator({
+  CreatorDashboard: { screen: CreatorDashboard },
+  CreationPage: { screen: CreationPage },
+  PreviewPortal: { screen: PreviewPortal },
+  SinglePortal: { screen: SinglePortal },
+  ViroApp: { screen: ViroApp },
+  MainScene: { screen: MainScene },
+});
+const ViewerNavigator = createSwitchNavigator({
+  ViewerDashboard: { screen: ViewerDashboard },
+  SinglePortal: { screen: SinglePortal },
+  ViroApp: { screen: ViroApp },
+  MainScene: { screen: MainScene },
+});
+
+// const TabNavigator = createMaterialBottomTabNavigator({
+//   Homepage: {
+//     screen: Landing,
+//     navigationOptions: {
+//       tabBarLabel: 'Home',
+//     },
+//   },
+//   Creator: {
+//     screen: CreatorNavigator,
+//     navigationOptions: {
+//       tabBarLabel: 'Creator',
+//     },
+//   },
+//   Viewer: {
+//     screen: ViewerNavigator,
+//     navigationOptions: {
+//       tabBarLabel: 'Viewer',
+//     },
+//   },
+// });
+
+const AppNavigator = createSwitchNavigator({
+  Landing: { screen: props => <Landing {...props} /> },
+  TabNavigator: { screen: TabNavigator },
+  // Homepage: { screen: Homepage },
+  // ViroApp: { screen: ViroApp },
+  // MainScene: { screen: MainScene },
+  // AppJs: { screen: AppJs },
+  // ViewerDashboard: { screen: ViewerDashboard },
+  // CreatorDashboard: { screen: CreatorDashboard },
+  // SinglePortal: { screen: SinglePortal },
+  // PreviewPortal: { screen: PreviewPortal },
+  // CreationPage: { screen: CreationPage },
+});
 
 const AppContainer = createAppContainer(AppNavigator);
 
 var localStyles = StyleSheet.create({
   viroContainer: {
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   outer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   inner: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   titleText: {
     paddingTop: 30,
     paddingBottom: 20,
     color: '#fff',
     textAlign: 'center',
-    fontSize: 25
+    fontSize: 25,
   },
   buttonText: {
     color: '#fff',
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
   },
   buttons: {
     height: 80,
@@ -174,7 +209,7 @@ var localStyles = StyleSheet.create({
     backgroundColor: '#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#fff',
   },
   exitButton: {
     height: 50,
@@ -186,8 +221,8 @@ var localStyles = StyleSheet.create({
     backgroundColor: '#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#fff'
-  }
+    borderColor: '#fff',
+  },
 });
 
 module.exports = ViroSample;
