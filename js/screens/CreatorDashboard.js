@@ -3,11 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
-  TextInput,
   ActivityIndicator,
   FlatList,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
 
 import axios from 'axios';
@@ -20,16 +18,15 @@ class CreatorDashboard extends Component {
     super(props);
     this.state = {
       items: [],
-      userId: 0,
+      userId: 0
     };
   }
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     this.setState({ userId: userId });
-    console.log('userID:>>>>>', userId);
     try {
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
+        `http://10.1.85.96:8080/api/portals/user/${userId}`
       );
       this.setState({ items: data });
     } catch (error) {
@@ -79,27 +76,27 @@ class CreatorDashboard extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#D6D3F0',
+    backgroundColor: '#D6D3F0'
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   title: {
     fontWeight: 'bold',
     fontFamily: 'Academy Engraved LET',
     fontSize: 30,
     color: '#0B3142',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   cardText: {
     padding: 1,
     fontSize: 12,
     color: '#0B3142',
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   card: {
     backgroundColor: '#D6D3F0',
@@ -109,7 +106,7 @@ const styles = StyleSheet.create({
     width: '25%',
     shadowColor: '#0B3142',
     shadowOpacity: 0.2,
-    shadowRadius: 1,
-  },
+    shadowRadius: 1
+  }
 });
 export default withNavigation(CreatorDashboard);

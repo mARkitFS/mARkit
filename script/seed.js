@@ -59,13 +59,13 @@ async function seed() {
     }),
     Element.create({
       id: 3,
-      name: 'teapot',
+      name: 'alduin',
       type: 'OBJ',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Chaynik.obj',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.obj',
       userId: 1,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/teapot-teacup-jug-rose-tea-teapot.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Alduin_thumbnail.jpg'
     })
   ]);
 
@@ -231,12 +231,27 @@ async function seed() {
     ElementRes.create({
       elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Chaynik.mtl'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.mtl'
     }),
     ElementRes.create({
       elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Chaynik.png'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin.jpg'
+    }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin_n.jpg'
+    }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes.jpg'
+    }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes_g.jpg'
     })
   ]);
 

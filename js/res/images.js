@@ -35,25 +35,37 @@ const images = {
       url:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png'
     },
-    party_event: {
+
+    alduin: {
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-      resources: [],
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.obj',
+      resources: [
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.mtl',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin_n.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes_g.jpg'
+      ],
       url:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Alduin_thumbnail.jpg'
     },
-    beach: {
+    shuttle: {
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-      resources: [],
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter.obj',
+      resources: [
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter.mtl',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-spstob_3.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-spstob_2.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-spstob_1.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-posz.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-posy.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-posx.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-negz.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-negy.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-negx.jpg'
+      ],
       url:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
-    },
-    beach_vacation: {
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
-      url:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/space-shuttle-orbiter-thumbnail.jpg'
     }
   },
 
