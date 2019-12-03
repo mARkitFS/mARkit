@@ -12,7 +12,7 @@ class CreationPage extends Component {
       allElements: [],
       selectedBackground: {},
       selectedElements: [],
-      userId: 0,
+      userId: 0
     };
     this.renderBackground = this.renderBackground.bind(this);
     this.renderElement = this.renderElement.bind(this);
@@ -22,15 +22,13 @@ class CreationPage extends Component {
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
-      `https://vast-falls-27580.herokuapp.com/api/backgrounds`
+      `http://10.1.85.96:8080/api/backgrounds`
     );
-    const elements = await axios.get(
-      `https://vast-falls-27580.herokuapp.com/api/elements`
-    );
+    const elements = await axios.get(`http://10.1.85.96:8080/api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
-      userId: userId,
+      userId: userId
     });
   }
 
@@ -45,7 +43,7 @@ class CreationPage extends Component {
             source={{ uri: images.backgroundThumbnails[item.name].uri }}
             style={{
               width: 70,
-              height: 70,
+              height: 70
             }}
           />
         </View>
@@ -54,7 +52,7 @@ class CreationPage extends Component {
             title="add"
             onPress={() =>
               this.setState({
-                selectedBackground: { ...item, type: 'background' },
+                selectedBackground: { ...item, type: 'background' }
               })
             }
           />
@@ -84,23 +82,26 @@ class CreationPage extends Component {
     this.setState({
       selectedElements: [
         ...prevSelected.slice(0, dropThisIndex),
-        ...prevSelected.slice(dropThisIndex + 1),
-      ],
+        ...prevSelected.slice(dropThisIndex + 1)
+      ]
     });
   }
 
   renderElement({ item }) {
+    console.log({ item });
     return (
-      <View key={item.id}>
+      <View key={item.id} style={{ flex: 1, flexDirection: 'row' }}>
+        {/* item name view */}
         <View>
           <Text>{item.name}</Text>
         </View>
+        {/* image view */}
         <View style={{ flex: 1 }}>
           <Image
             source={{ uri: images.element[item.name].url }}
             style={{
               width: 90,
-              height: 90,
+              height: 90
             }}
           />
         </View>
@@ -111,8 +112,8 @@ class CreationPage extends Component {
               this.setState(prevState => ({
                 selectedElements: [
                   ...prevState.selectedElements,
-                  { ...item, type: 'element' },
-                ],
+                  { ...item, type: 'element' }
+                ]
               }))
             }
           />
@@ -130,7 +131,7 @@ class CreationPage extends Component {
     }
     this.props.navigation.navigate('PreviewPortal', {
       items: [this.state.selectedBackground, ...this.state.selectedElements],
-      userId: this.state.userId,
+      userId: this.state.userId
     });
   }
 
