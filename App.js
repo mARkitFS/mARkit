@@ -105,6 +105,7 @@ export default class ViroSample extends Component {
 import {
   MainScene,
   ViroApp,
+  Landing,
   Homepage,
   AppJs,
   ViewerDashboard,
@@ -116,7 +117,8 @@ import {
 
 const AppNavigator = createSwitchNavigator(
   {
-    Homepage: { screen: props => <Homepage {...props} /> },
+    Landing: { screen: props => <Landing {...props} /> },
+    Homepage: { screen: Homepage },
     ViroApp: { screen: ViroApp },
     MainScene: { screen: MainScene },
     AppJs: { screen: AppJs },
@@ -127,7 +129,7 @@ const AppNavigator = createSwitchNavigator(
     CreationPage: { screen: CreationPage }
   },
   {
-    initialRouteName: 'Homepage'
+    initialRouteName: 'Landing'
   }
 );
 
