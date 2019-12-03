@@ -103,69 +103,12 @@ export default class ViroSample extends Component {
   }
 }
 
-import {
-  MainScene,
-  ViroApp,
-  Landing,
-  Homepage,
-  AppJs,
-  ViewerDashboard,
-  SinglePortal,
-  PreviewPortal,
-  CreationPage,
-  CreatorDashboard,
-  BottomNavWrapper,
-} from './js/index';
+import { Landing, Homepage } from './js/index';
 import TabNavigator from './js/tab';
-
-const CreatorNavigator = createSwitchNavigator({
-  CreatorDashboard: { screen: CreatorDashboard },
-  CreationPage: { screen: CreationPage },
-  PreviewPortal: { screen: PreviewPortal },
-  SinglePortal: { screen: SinglePortal },
-  ViroApp: { screen: ViroApp },
-  MainScene: { screen: MainScene },
-});
-const ViewerNavigator = createSwitchNavigator({
-  ViewerDashboard: { screen: ViewerDashboard },
-  SinglePortal: { screen: SinglePortal },
-  ViroApp: { screen: ViroApp },
-  MainScene: { screen: MainScene },
-});
-
-// const TabNavigator = createMaterialBottomTabNavigator({
-//   Homepage: {
-//     screen: Landing,
-//     navigationOptions: {
-//       tabBarLabel: 'Home',
-//     },
-//   },
-//   Creator: {
-//     screen: CreatorNavigator,
-//     navigationOptions: {
-//       tabBarLabel: 'Creator',
-//     },
-//   },
-//   Viewer: {
-//     screen: ViewerNavigator,
-//     navigationOptions: {
-//       tabBarLabel: 'Viewer',
-//     },
-//   },
-// });
 
 const AppNavigator = createSwitchNavigator({
   Landing: { screen: props => <Landing {...props} /> },
   TabNavigator: { screen: TabNavigator },
-  // Homepage: { screen: Homepage },
-  // ViroApp: { screen: ViroApp },
-  // MainScene: { screen: MainScene },
-  // AppJs: { screen: AppJs },
-  // ViewerDashboard: { screen: ViewerDashboard },
-  // CreatorDashboard: { screen: CreatorDashboard },
-  // SinglePortal: { screen: SinglePortal },
-  // PreviewPortal: { screen: PreviewPortal },
-  // CreationPage: { screen: CreationPage },
 });
 
 const AppContainer = createAppContainer(AppNavigator);
