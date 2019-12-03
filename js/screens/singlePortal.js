@@ -23,7 +23,7 @@ export default class SinglePortal extends Component {
       elements: [],
       viro360Type: Viro360Video,
       loop: true,
-      portal: {}
+      portal: {},
     };
   }
 
@@ -35,10 +35,10 @@ export default class SinglePortal extends Component {
     const portalId = portal.id;
     try {
       const element = await axios.get(
-        `http://10.1.85.88:8080/api/elementprops/portal/${portalId}`
+        `http://192.168.1.156:8080/api/elementprops/portal/${portalId}`
       );
       const background = await axios.get(
-        `http://10.1.85.88:8080/api/backgrounds/${portal.backgroundId}`
+        `http://192.168.1.156:8080/api/backgrounds/${portal.backgroundId}`
       );
       let Viro360Type =
         background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
@@ -55,7 +55,7 @@ export default class SinglePortal extends Component {
         loop: background.data.loop,
         portal: portal,
         screen: screen,
-        userId: userId
+        userId: userId,
       });
     } catch (err) {
       console.error(err);
@@ -72,7 +72,6 @@ export default class SinglePortal extends Component {
         </View>
 
         <View>
-       
           <TouchableOpacity
             onPress={() => {
               console.log(
@@ -86,7 +85,7 @@ export default class SinglePortal extends Component {
                 loop: this.state.loop,
                 viro360Type: this.state.viro360Type,
                 screen: this.state.screen,
-                userId: this.state.userId
+                userId: this.state.userId,
               });
             }}
           >
