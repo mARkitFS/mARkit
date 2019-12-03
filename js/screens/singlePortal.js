@@ -16,7 +16,7 @@ export default class SinglePortal extends Component {
       elements: [],
       viro360Type: Viro360Video,
       loop: true,
-      portal: {}
+      portal: {},
     };
   }
   async componentDidMount() {
@@ -47,7 +47,7 @@ export default class SinglePortal extends Component {
         loop: background.data.loop,
         portal: portal,
         screen: screen,
-        userId: userId
+        userId: userId,
       });
     } catch (err) {
       console.error(err);
@@ -87,7 +87,7 @@ export default class SinglePortal extends Component {
                 loop: this.state.loop,
                 viro360Type: this.state.viro360Type,
                 screen: this.state.screen,
-                userId: this.state.userId
+                userId: this.state.userId,
               });
             }}
           >

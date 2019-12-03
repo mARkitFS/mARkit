@@ -7,7 +7,7 @@ import {
   TextInput,
   ActivityIndicator,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 import axios from 'axios';
@@ -20,7 +20,7 @@ class CreatorDashboard extends Component {
     super(props);
     this.state = {
       items: [],
-      userId: 0
+      userId: 0,
     };
   }
   async componentDidMount() {
@@ -45,27 +45,29 @@ class CreatorDashboard extends Component {
         </View>
       );
     }
-    const { navigate } = this.props.navigation
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.loader}>
-        <View >
+        <View>
           <Text style={styles.title}> Welcome to the Creator Dashboard! </Text>
         </View>
         <FlatList
-            style={styles.container}
-            data={this.state.items}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => (
-              <DashboardItem
-                item={item}
-                screen="CreatorDashboard"
-                userId={this.state.userId}
-              />
-            )}
-          />
+          style={styles.container}
+          data={this.state.items}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <DashboardItem
+              item={item}
+              screen="CreatorDashboard"
+              userId={this.state.userId}
+            />
+          )}
+        />
         <TouchableOpacity
-          style = {styles.card}
-          onPress={() => navigate('CreationPage', { userId: this.state.userId })}
+          style={styles.card}
+          onPress={() =>
+            navigate('CreationPage', { userId: this.state.userId })
+          }
         >
           <Text style={styles.cardText}> Create New Portal </Text>
         </TouchableOpacity>
@@ -77,27 +79,27 @@ class CreatorDashboard extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#D6D3F0'
+    backgroundColor: '#D6D3F0',
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',
     fontFamily: 'Academy Engraved LET',
     fontSize: 30,
     color: '#0B3142',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   cardText: {
     padding: 1,
     fontSize: 12,
     color: '#0B3142',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   card: {
     backgroundColor: '#D6D3F0',
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     width: '25%',
     shadowColor: '#0B3142',
     shadowOpacity: 0.2,
-    shadowRadius: 1
-  }
+    shadowRadius: 1,
+  },
 });
 export default withNavigation(CreatorDashboard);

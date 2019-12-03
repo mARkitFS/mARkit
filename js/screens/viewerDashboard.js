@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   ActivityIndicator,
-  FlatList
+  FlatList,
 } from 'react-native';
 import axios from 'axios';
 import DashboardItem from './dashboardItem';
@@ -18,7 +18,9 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const { data } = await axios.get(`https://vast-falls-27580.herokuapp.com/api/portals`);
+      const { data } = await axios.get(
+        `https://vast-falls-27580.herokuapp.com/api/portals`
+      );
       this.setState({ items: data });
     } catch (err) {
       console.error(err);
@@ -35,7 +37,7 @@ export default class Table extends Component {
     }
     return (
       <View style={styles.loader}>
-        <View >
+        <View>
           <Text style={styles.title}> Welcome to the Viewer Dashboard! </Text>
         </View>
         <FlatList
@@ -54,19 +56,19 @@ export default class Table extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#D6D3F0'
+    backgroundColor: '#D6D3F0',
   },
   title: {
     fontWeight: 'bold',
     fontFamily: 'Academy Engraved LET',
     fontSize: 30,
     color: '#0B3142',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });

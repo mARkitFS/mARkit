@@ -21,7 +21,7 @@ export default class PreviewPortal extends Component {
       items: [],
       portal: {},
       text: '',
-      userId: 0
+      userId: 0,
     };
   }
 
@@ -30,7 +30,7 @@ export default class PreviewPortal extends Component {
     let userId = this.props.navigation.state.params.userId;
     this.setState({
       items: items,
-      userId: userId
+      userId: userId,
     });
   }
 
@@ -47,7 +47,7 @@ export default class PreviewPortal extends Component {
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
       backgroundId: this.state.items[0].id,
-      userId: this.state.userId
+      userId: this.state.userId,
     };
     try {
       const newPortal = await axios.post(
@@ -64,7 +64,7 @@ export default class PreviewPortal extends Component {
       this.addElementProps(newPortal.data.id);
       this.setState({
         portal: data,
-        saveButton: `Portal ${data.name} created`
+        saveButton: `Portal ${data.name} created`,
       });
     } catch (err) {
       if (err.response.data === 'Validation error') {
@@ -81,11 +81,12 @@ export default class PreviewPortal extends Component {
       .filter(el => el.type != 'background')
       .map(el => el.id);
     elementArr.forEach(async el => {
+        let position = this.getRandomPosition()
       let elementPropsObj = {
         elementId: el,
         portalId: portalId,
         scale: [0.01, 0.01, 0.01],
-        position: [1, 1.5, -5]
+        position: position,
       };
       try {
         const newElementProps = await axios.post(
@@ -93,9 +94,21 @@ export default class PreviewPortal extends Component {
           elementPropsObj
         );
         console.log('newElementProps: ', newElementProps);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     });
   }
+
+  getRandomPosition(){
+    let positionArr = []
+    for (let i = 0; i < 3; i++){
+      let num = (Math.random() * (8 - (i*2))) - 3
+      positionArr.unshift(num)
+    }
+    return positionArr
+  }
+
 
   addPortels(portalId) {
     let elementArr = this.state.items
@@ -105,7 +118,7 @@ export default class PreviewPortal extends Component {
     setElementArr.forEach(async el => {
       let portelObj = {
         elementId: el,
-        portalId: portalId
+        portalId: portalId,
       };
       try {
         const newPortel = await axios.post(
@@ -113,7 +126,9 @@ export default class PreviewPortal extends Component {
           portelObj
         );
         console.log('newPortel: ', newPortel);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     });
   }
 
@@ -153,7 +168,7 @@ export default class PreviewPortal extends Component {
             this.props.navigation.navigate('SinglePortal', {
               portal: this.state.portal,
               userId: this.state.userId,
-              screen: 'CreatorDashboard'
+              screen: 'CreatorDashboard',
             });
           }}
         />
@@ -171,24 +186,24 @@ export default class PreviewPortal extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#D6D3F0'
+    backgroundColor: '#D6D3F0',
   },
   input: {
     height: 60,
     width: 250,
-    backgroundColor: '#D6D3F0'
+    backgroundColor: '#D6D3F0',
   },
   loader: {
     flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',
     fontFamily: 'Academy Engraved LET',
     fontSize: 16,
     color: '#0B3142',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
