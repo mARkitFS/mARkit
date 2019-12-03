@@ -3,8 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
-  TextInput,
   ActivityIndicator,
   FlatList,
 } from 'react-native';
@@ -20,7 +18,9 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const { data } = await axios.get(`http://10.1.85.95:8080/api/portals`);
+      const { data } = await axios.get(
+        `https://vast-falls-27580.herokuapp.com/api/portals`
+      );
       this.setState({ items: data });
     } catch (err) {
       console.error(err);
@@ -28,7 +28,6 @@ export default class Table extends Component {
   }
 
   render() {
-    console.log('portals on state', this.state.portals);
     if (this.state.items.length === 0) {
       return (
         <View style={styles.loader}>
@@ -38,20 +37,9 @@ export default class Table extends Component {
     }
     return (
       <View style={styles.loader}>
-        <Text>Search Portals: </Text>
-        <TextInput
-          style={{ height: 40, width: 150 }}
-          placeholder="Portal name"
-          onChangeText={text => this.setState({ text })}
-          value={this.state.text}
-        />
-        <Button
-          title="Search"
-          onPress={() => {
-            console.log('state: ', this.state);
-            //set state to portals that match search
-          }}
-        />
+        <View>
+          <Text style={styles.title}> Welcome to the Viewer Dashboard! </Text>
+        </View>
         <FlatList
           style={styles.container}
           data={this.state.items}
@@ -68,8 +56,14 @@ export default class Table extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#F5FCFF',
-    // backgroundColor: '#b2b2ff'
+    backgroundColor: '#D6D3F0',
+  },
+  title: {
+    fontWeight: 'bold',
+    fontFamily: 'Academy Engraved LET',
+    fontSize: 30,
+    color: '#0B3142',
+    textAlign: 'center',
   },
   loader: {
     flex: 2,

@@ -24,7 +24,7 @@ export default class PreviewPortal extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     let items = this.props.navigation.state.params.items;
     let userId = this.props.navigation.state.params.userId;
     this.setState({
@@ -44,11 +44,11 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
-        'http://10.1.85.95:8080/api/portals/add',
+        'https://vast-falls-27580.herokuapp.com/api/portals/add',
         portalObj
       );
       const { data } = await axios.get(
-        `http://10.1.85.95:8080/api/portals/${newPortal.data.id}`
+        `https://vast-falls-27580.herokuapp.com/api/portals/${newPortal.data.id}`
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -76,11 +76,13 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
-          'http://10.1.85.95:8080/api/elementprops/add',
+          'https://vast-falls-27580.herokuapp.com/api/elementprops/add',
           elementPropsObj
         );
         console.log('newElementProps: ', newElementProps);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     });
   }
 
@@ -96,11 +98,13 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'http://10.1.85.95:8080/api/portels/add',
+          'https://vast-falls-27580.herokuapp.com/api/portels/add',
           portelObj
         );
         console.log('newPortel: ', newPortel);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     });
   }
 
@@ -114,9 +118,14 @@ export default class PreviewPortal extends Component {
     }
     return (
       <View style={styles.loader}>
-        <Text>Preview your portal selections: </Text>
+        <View>
+          <Text style={styles.title}>
+            {' '}
+            Preview your portal item selections:{' '}
+          </Text>
+        </View>
         <TextInput
-          style={{ height: 40, width: 150 }}
+          style={styles.input}
           placeholder="Portal name"
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
@@ -153,11 +162,24 @@ export default class PreviewPortal extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#D6D3F0',
+  },
+  input: {
+    height: 60,
+    width: 250,
+    backgroundColor: '#D6D3F0',
   },
   loader: {
-    flex: 1,
+    flex: 2,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  title: {
+    fontWeight: 'bold',
+    fontFamily: 'Academy Engraved LET',
+    fontSize: 16,
+    color: '#0B3142',
+    textAlign: 'center',
   },
 });

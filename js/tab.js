@@ -30,31 +30,42 @@ const ViewerNavigator = createSwitchNavigator({
   MainScene: { screen: MainScene },
 });
 
-const TabNavigator = createMaterialBottomTabNavigator({
-  Homepage: {
-    screen: Landing,
-    navigationOptions: {
-      tabBarLabel: 'Home',
+const TabNavigator = createMaterialBottomTabNavigator(
+  {
+    Homepage: {
+      screen: Homepage,
+      navigationOptions: {
+        tabBarLabel: 'Homepage',
+      },
+    },
+    Creator: {
+      screen: CreatorNavigator,
+      navigationOptions: {
+        tabBarLabel: 'Creator',
+      },
+    },
+    Viewer: {
+      screen: ViewerNavigator,
+      navigationOptions: {
+        tabBarLabel: 'Viewer',
+      },
     },
   },
-  Creator: {
-    screen: CreatorNavigator,
-    navigationOptions: {
-      tabBarLabel: 'Creator',
+  {
+    shifting: false,
+    activeColor: '#000000',
+    inactiveColor: '#404040',
+    barStyle: {
+      backgroundColor: '#F0F0F0',
     },
-  },
-  Viewer: {
-    screen: ViewerNavigator,
-    navigationOptions: {
-      tabBarLabel: 'Viewer',
-    },
-  },
-});
-
-const AppContainer = createAppContainer(TabNavigator);
-
-export default class BottomNavWrapper extends Component {
-  render() {
-    return <AppContainer />;
+    initialRouteName: 'Homepage',
+    backBehavior: 'none',
   }
-}
+);
+export default createAppContainer(TabNavigator);
+
+// export default class BottomNavWrapper extends Component {
+//   render() {
+//     return <AppContainer />;
+//   }
+// }

@@ -56,6 +56,16 @@ async function seed() {
       userId: 1,
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/fox.jpeg'
+    }),
+    Element.create({
+      id: 3,
+      name: 'teapot',
+      type: 'OBJ',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Chaynik.obj',
+      userId: 1,
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/teapot-teacup-jug-rose-tea-teapot.jpg'
     })
   ]);
 
