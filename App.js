@@ -13,6 +13,7 @@ import { StyleSheet } from 'react-native';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { ViroVRSceneNavigator } from 'react-viro';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 /*
  TODO: Insert your API key below
@@ -113,13 +114,12 @@ import {
   CreationPage,
   CreatorDashboard,
   Landing,
-  BottomNavWrapper
+  BottomNavWrapper,
 } from './js/index';
-// import BottomNavWrapper from './js/tab';
 
 const AppNavigator = createSwitchNavigator(
   {
-    Homepage: { screen: props => <Homepage {...props} /> },
+    // Homepage: { screen: props => <Homepage {...props} /> },
     // ViroApp: { screen: ViroApp },
     // MainScene: { screen: MainScene },
     // AppJs: { screen: AppJs },
@@ -127,14 +127,35 @@ const AppNavigator = createSwitchNavigator(
     // CreatorDashboard: { screen: CreatorDashboard },
     // SinglePortal: { screen: SinglePortal },
     // PreviewPortal: { screen: PreviewPortal },
-    // CreationPage: { screen: CreationPage }
-    // Landing: { screen: Landing },
+    // CreationPage: { screen: CreationPage },
+    Landing: { screen: Landing },
     BottomNavWrapper: { screen: BottomNavWrapper },
   },
   {
-    initialRouteName: 'Homepage',
+    backBehavior: 'none',
   }
 );
+
+const TabNavigator = createMaterialBottomTabNavigator({
+  Homepage: {
+    screen: Landing,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+    },
+  },
+  Creator: {
+    screen: CreatorDashboard,
+    navigationOptions: {
+      tabBarLabel: 'Creator',
+    },
+  },
+  Viewer: {
+    screen: ViewerDashboard,
+    navigationOptions: {
+      tabBarLabel: 'Viewer',
+    },
+  },
+});
 
 const AppContainer = createAppContainer(AppNavigator);
 

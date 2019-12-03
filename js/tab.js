@@ -32,7 +32,7 @@ const ViewerNavigator = createSwitchNavigator({
 
 const TabNavigator = createMaterialBottomTabNavigator({
   Homepage: {
-    screen: Homepage,
+    screen: Landing,
     navigationOptions: {
       tabBarLabel: 'Home',
     },
@@ -43,12 +43,12 @@ const TabNavigator = createMaterialBottomTabNavigator({
       tabBarLabel: 'Creator',
     },
   },
-  // Viewer: {
-  //   screen: ViewerNavigator,
-  //   navigationOptions: {
-  //     tabBarLabel: 'Viewer',
-  //   },
-  // },
+  Viewer: {
+    screen: ViewerNavigator,
+    navigationOptions: {
+      tabBarLabel: 'Viewer',
+    },
+  },
 });
 
 const AppContainer = createAppContainer(TabNavigator);
