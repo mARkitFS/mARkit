@@ -35,12 +35,6 @@ export default class PreviewPortal extends Component {
   }
 
   async addPortal() {
-    if (this.state.text.length < 1) {
-      Alert.alert(
-        'Unique portal name required',
-        'Please provide a portal name!'
-      );
-    }
     let portalObj = {
       name: this.state.text,
       type: 'custom',
@@ -68,10 +62,17 @@ export default class PreviewPortal extends Component {
       });
     } catch (err) {
       if (err.response.data === 'Validation error') {
-        Alert.alert(
-          'Portal name is not unique',
-          'The portal name you entered already exists. Please choose another portal name!'
-        );
+        if (this.state.text.length < 1) {
+          Alert.alert(
+            'Portal name is required',
+            'Please provide a portal name!'
+          );
+        } else {
+          Alert.alert(
+            'Portal name is not unique',
+            'The portal name you entered already exists. Please choose another portal name.'
+          );
+        }
       }
     }
   }
