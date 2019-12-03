@@ -37,14 +37,6 @@ class Homepage extends React.Component {
             your own and get started creating your experience.{' '}
           </Text>
         </TouchableOpacity>
-        <Button
-          title="Viewer Dashboard"
-          onPress={() => navigate('ViewerDashboard')}
-        />
-        <Button
-          title="Creator Dashboard"
-          onPress={() => navigate('CreatorDashboard', { userId: 1 })}
-        />
       </View>
     );
   }
