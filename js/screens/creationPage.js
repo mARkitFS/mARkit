@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, FlatList, Image } from 'react-native';
+import { View, Text, Button, FlatList, Image, Alert } from 'react-native';
 import axios from 'axios';
 import { images } from '../res/images';
 
@@ -16,14 +16,17 @@ class CreationPage extends Component {
     };
     this.renderBackground = this.renderBackground.bind(this);
     this.renderElement = this.renderElement.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
-      `http://10.1.85.88:8080/api/backgrounds`
+      `https://vast-falls-27580.herokuapp.com/api/backgrounds`
     );
-    const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
+    const elements = await axios.get(
+      `https://vast-falls-27580.herokuapp.com/api/elements`
+    );
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
@@ -71,6 +74,13 @@ class CreationPage extends Component {
     const dropThisIndex = prevSelected.findIndex(
       element => element.id === elementId
     );
+    if (dropThisIndex < 0) {
+      Alert.alert(
+        'Nothing to remove',
+        'You do not have any instances of this element in your portal.'
+      );
+      return;
+    }
     this.setState({
       selectedElements: [
         ...prevSelected.slice(0, dropThisIndex),
@@ -87,7 +97,7 @@ class CreationPage extends Component {
         </View>
         <View style={{ flex: 1 }}>
           <Image
-            source={{ uri: images.element[item.name].uri }}
+            source={{ uri: images.element[item.name].url }}
             style={{
               width: 90,
               height: 90
@@ -110,6 +120,18 @@ class CreationPage extends Component {
         </View>
       </View>
     );
+  }
+
+  handleSubmit() {
+    console.log('state: ', this.state);
+    if (this.state.selectedBackground.length < 1) {
+      Alert.alert('Background required', 'Please select a background!');
+      return;
+    }
+    this.props.navigation.navigate('PreviewPortal', {
+      items: [this.state.selectedBackground, ...this.state.selectedElements],
+      userId: this.state.userId
+    });
   }
 
   render() {
@@ -147,18 +169,7 @@ class CreationPage extends Component {
         </View>
         <View style={{ flex: 1, position: 'absolute', alignSelf: 'flex-end' }}>
           {/* view for previewbutton */}
-          <Button
-            title="Preview your work"
-            onPress={() => {
-              console.log('state: ', this.state);
-              this.props.navigation.navigate('PreviewPortal', {
-                items: [
-                  this.state.selectedBackground,
-                  ...this.state.selectedElements
-                ], userId: this.state.userId
-              });
-            }}
-          />
+          <Button title="Preview your work" onPress={this.handleSubmit} />
         </View>
       </View>
     );
