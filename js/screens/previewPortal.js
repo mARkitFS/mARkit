@@ -6,7 +6,8 @@ import {
   View,
   ActivityIndicator,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from 'react-native';
 import PreviewImage from './previewImage';
 import { images } from '../res/images';
@@ -34,6 +35,12 @@ export default class PreviewPortal extends Component {
   }
 
   async addPortal() {
+    if (this.state.text.length < 1) {
+      Alert.alert(
+        'Unique portal name required',
+        'Please provide a portal name!'
+      );
+    }
     let portalObj = {
       name: this.state.text,
       type: 'custom',
@@ -114,8 +121,11 @@ export default class PreviewPortal extends Component {
     }
     return (
       <View style={styles.loader}>
-        <View >
-          <Text style={styles.title}> Preview your portal item selections: </Text>
+        <View>
+          <Text style={styles.title}>
+            {' '}
+            Preview your portal item selections:{' '}
+          </Text>
         </View>
         <TextInput
           style={styles.input}
@@ -174,5 +184,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#0B3142',
     textAlign: 'center'
-  },
+  }
 });
