@@ -68,11 +68,12 @@ export default class PreviewPortal extends Component {
       .filter(el => el.type != 'background')
       .map(el => el.id);
     elementArr.forEach(async el => {
+        let position = this.getRandomPosition()
       let elementPropsObj = {
         elementId: el,
         portalId: portalId,
         scale: [0.01, 0.01, 0.01],
-        position: [1, 1.5, -5],
+        position: position,
       };
       try {
         const newElementProps = await axios.post(
@@ -85,6 +86,16 @@ export default class PreviewPortal extends Component {
       }
     });
   }
+
+  getRandomPosition(){
+    let positionArr = []
+    for (let i = 0; i < 3; i++){
+      let num = (Math.random() * (8 - (i*2))) - 3
+      positionArr.unshift(num)
+    }
+    return positionArr
+  }
+
 
   addPortels(portalId) {
     let elementArr = this.state.items
