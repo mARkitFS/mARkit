@@ -25,8 +25,8 @@ router.get('/user/:userId', async (req, res, next) => {
   try {
     const portal = await Portal.findAll({
       where: {
-        userId: req.params.userId,
-      },
+        userId: req.params.userId
+      }
     });
     res.json(portal);
   } catch (err) {
@@ -34,13 +34,15 @@ router.get('/user/:userId', async (req, res, next) => {
   }
 });
 
-router.post('/add', async (req, res, next)=>{
-  try{
-    console.log('req body of portals post:>>>>>> ',req.body)
-    const newPortal = await Portal.create(req.body)
-    console.log('newPortal:>>>>',newPortal.dataValues)
-    res.json(newPortal.dataValues)
-  }catch(err){
-    next(err)
-    }
-  })
+router.post('/add', async (req, res, next) => {
+  try {
+    console.log('req body of portals post:>>>>>> ', req.body);
+    // if the name provided in req.body already exists, respond with error
+    // get all existing names
+    const newPortal = await Portal.create(req.body);
+    console.log('newPortal:>>>>', newPortal.dataValues);
+    res.json(newPortal.dataValues);
+  } catch (err) {
+    next(err);
+  }
+});

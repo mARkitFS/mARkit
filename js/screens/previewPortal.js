@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   FlatList,
   StyleSheet,
+  Alert
 } from 'react-native';
 import PreviewImage from './previewImage';
 import { images } from '../res/images';
@@ -34,6 +35,12 @@ export default class PreviewPortal extends Component {
   }
 
   async addPortal() {
+    if (this.state.text.length < 1) {
+      Alert.alert(
+        'Unique portal name required',
+        'Please provide a portal name!'
+      );
+    }
     let portalObj = {
       name: this.state.text,
       type: 'custom',
@@ -47,6 +54,7 @@ export default class PreviewPortal extends Component {
         'https://vast-falls-27580.herokuapp.com/api/portals/add',
         portalObj
       );
+
       const { data } = await axios.get(
         `https://vast-falls-27580.herokuapp.com/api/portals/${newPortal.data.id}`
       );
@@ -59,7 +67,12 @@ export default class PreviewPortal extends Component {
         saveButton: `Portal ${data.name} created`,
       });
     } catch (err) {
-      console.log(err);
+      if (err.response.data === 'Validation error') {
+        Alert.alert(
+          'Portal name is not unique',
+          'The portal name you entered already exists. Please choose another portal name!'
+        );
+      }
     }
   }
 

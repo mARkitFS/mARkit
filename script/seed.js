@@ -227,6 +227,16 @@ async function seed() {
       elementId: 1,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.png'
+    }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Chaynik.mtl'
+    }),
+    ElementRes.create({
+      elementId: 3,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Chaynik.png'
     })
   ]);
 
