@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import DashboardItem from './dashboardItem';
-import {images} from '../res/images';
+import { images } from '../res/images';
 
 // creating a row class to instantiate a row from
 export default class Table extends Component {
   constructor(props) {
     super(props);
-    this.state = {items: []};
+    this.state = { items: [] };
   }
   async componentDidMount() {
     try {
@@ -24,7 +24,7 @@ export default class Table extends Component {
       );
       this.setState({ items: data });
 =======
-      const {data} = await axios.get(`http://10.1.85.96:8080/api/portals`);
+      const {data} = await axios.get(`http://10.1.85.88:8080/api/portals`);
       this.setState({items: data});
 >>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
     } catch (err) {
@@ -49,7 +49,7 @@ export default class Table extends Component {
           style={styles.container}
           data={this.state.items}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <DashboardItem item={item} screen="ViewerDashboard" />
           )}
         />

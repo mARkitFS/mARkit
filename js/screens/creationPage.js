@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text, Button, FlatList, Image, Alert} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Button, FlatList, Image, Alert } from 'react-native';
 import axios from 'axios';
-import {images} from '../res/images';
+import { images } from '../res/images';
 import BackgroundItem from './backgroundItem';
 import ElementItem from './elementItem';
 
@@ -26,12 +26,12 @@ class CreationPage extends Component {
   }
 
   async componentDidMount() {
-    let {userId} = this.props.navigation.state.params;
+    let { userId } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
 <<<<<<< HEAD
       `http://10.1.85.88:8080/api/backgrounds`
 =======
-      `http://10.1.85.96:8080/api/backgrounds`,
+      `http://10.1.85.88:8080/api/backgrounds`,
 >>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
     );
     const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
@@ -42,7 +42,7 @@ class CreationPage extends Component {
     });
   }
 
-  renderBackground({item}) {
+  renderBackground({ item }) {
     return (
       <BackgroundItem
         item={item}
@@ -52,18 +52,18 @@ class CreationPage extends Component {
     );
   }
   removeBackground() {
-    this.setState({selectedBackground: {}});
+    this.setState({ selectedBackground: {} });
   }
   addBackground(item) {
     this.setState({
-      selectedBackground: {...item, type: 'background'},
+      selectedBackground: { ...item, type: 'background' },
     });
   }
   addElement(item) {
     this.setState(prevState => ({
       selectedElements: [
         ...prevState.selectedElements,
-        {...item, type: 'element'},
+        { ...item, type: 'element' },
       ],
     }));
   }
@@ -90,7 +90,7 @@ class CreationPage extends Component {
     });
   }
 
-  renderElement({item}) {
+  renderElement({ item }) {
     return (
       <ElementItem
         item={item}
@@ -116,7 +116,7 @@ class CreationPage extends Component {
     console.log('state on creation page', this.state);
     return (
       // wrapper view
-      <View style={{marginTop: 40}}>
+      <View style={{ marginTop: 40 }}>
         {/* wrapper for background */}
         <View>
           {/* background header view */}
@@ -145,7 +145,7 @@ class CreationPage extends Component {
             />
           </View>
         </View>
-        <View style={{flex: 1, position: 'absolute', alignSelf: 'flex-end'}}>
+        <View style={{ flex: 1, position: 'absolute', alignSelf: 'flex-end' }}>
           {/* view for previewbutton */}
           <Button title="Preview your work" onPress={this.handleSubmit} />
         </View>

@@ -13,10 +13,10 @@ const colors = require('colors');
     `http://10.1.85.88:8080/api/backgrounds`
   );
 =======
-    `http://10.1.85.96:8080/api/elements/format/${portalId}`,
+    `http://10.1.85.88:8080/api/elements/format/${portalId}`,
   );
 
-  const background = await axios.get(`http://10.1.85.96:8080/api/backgrounds`);
+  const background = await axios.get(`http://10.1.85.88:8080/api/backgrounds`);
 >>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
 
   const portal = await axios.get(`http://10.1.85.88:8080/api/portals`);
