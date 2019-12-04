@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ActivityIndicator,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 import axios from 'axios';
 import DashboardItem from './dashboardItem';
-import { withNavigation } from 'react-navigation';
+import {withNavigation} from 'react-navigation';
 
 // creating a row class to instantiate a row from
 class CreatorDashboard extends Component {
@@ -18,17 +18,17 @@ class CreatorDashboard extends Component {
     super(props);
     this.state = {
       items: [],
-      userId: 0
+      userId: 0,
     };
   }
   async componentDidMount() {
-    let { userId } = this.props.navigation.state.params;
-    this.setState({ userId: userId });
+    let {userId} = this.props.navigation.state.params;
+    this.setState({userId: userId});
     try {
-      const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
+      const {data} = await axios.get(
+        `http://10.1.85.96:8080/api/portals/user/${userId}`,
       );
-      this.setState({ items: data });
+      this.setState({items: data});
     } catch (error) {
       console.error(error);
     }
@@ -42,7 +42,7 @@ class CreatorDashboard extends Component {
         </View>
       );
     }
-    const { navigate } = this.props.navigation;
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.loader}>
         <View>
@@ -52,7 +52,7 @@ class CreatorDashboard extends Component {
           style={styles.container}
           data={this.state.items}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <DashboardItem
               item={item}
               screen="CreatorDashboard"
@@ -62,10 +62,7 @@ class CreatorDashboard extends Component {
         />
         <TouchableOpacity
           style={styles.card}
-          onPress={() =>
-            navigate('CreationPage', { userId: this.state.userId })
-          }
-        >
+          onPress={() => navigate('CreationPage', {userId: this.state.userId})}>
           <Text style={styles.cardText}> Create New Portal </Text>
         </TouchableOpacity>
       </View>
@@ -98,7 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#0B3142',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   card: {
     backgroundColor: '#D7D3F9',
@@ -111,6 +108,5 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     borderRadius: 20,
   },
-
 });
 export default withNavigation(CreatorDashboard);
