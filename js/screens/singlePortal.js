@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { images } from '../res/images';
+import React, {Component} from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {images} from '../res/images';
 import axios from 'axios';
 // this is the view you get when clicking a portal from the viewer dashboard
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
 // display a thumbnail (clickable, on click navigates to MainScene)
 // components: name of portal, list of elements,thumbnail
 // const portalId = 1;
-import { Viro360Video, Viro360Image } from 'react-viro';
+import {Viro360Video, Viro360Image} from 'react-viro';
 export default class SinglePortal extends Component {
   constructor(props) {
     super(props);
@@ -20,17 +20,24 @@ export default class SinglePortal extends Component {
     };
   }
   async componentDidMount() {
-    const { navigation } = this.props;
-    const { portal } = navigation.state.params;
-    const { screen } = navigation.state.params;
-    const { userId } = navigation.state.params;
+    const {navigation} = this.props;
+    const {portal} = navigation.state.params;
+    const {screen} = navigation.state.params;
+    const {userId} = navigation.state.params;
     const portalId = portal.id;
     try {
       const element = await axios.get(
+<<<<<<< HEAD
         `http://10.1.85.88:8080/api/elementprops/portal/${portalId}`
       );
       const background = await axios.get(
         `http://10.1.85.88:8080/api/backgrounds/${portal.backgroundId}`
+=======
+        `http://10.1.85.96:8080/api/elementprops/portal/${portalId}`,
+      );
+      const background = await axios.get(
+        `http://10.1.85.96:8080/api/backgrounds/${portal.backgroundId}`,
+>>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
       );
       let Viro360Type =
         background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
@@ -58,14 +65,22 @@ export default class SinglePortal extends Component {
     const image = images.portalThumbnails[this.state.portal.name] ? (
       <Image
         source={images.portalThumbnails[this.state.portal.name]}
-        style={{ width: 340, height: 232 }}
+        style={{width: 340, height: 232}}
       />
     ) : (
+<<<<<<< HEAD
         <Image
           source={images.portalThumbnails.default}
           style={{ width: 340, height: 232 }}
         />
       );
+=======
+      <Image
+        source={images.portalThumbnails.default}
+        style={{width: 340, height: 232}}
+      />
+    );
+>>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
     const returnComponent = this.state.background ? (
       // wrapper view
       <View>
@@ -78,7 +93,7 @@ export default class SinglePortal extends Component {
             onPress={() => {
               console.log(
                 'state.portal when navigating from single portal to viro app',
-                this.state.portal
+                this.state.portal,
               );
               this.props.navigation.navigate('ViroApp', {
                 portal: this.state.portal,
@@ -89,8 +104,7 @@ export default class SinglePortal extends Component {
                 screen: this.state.screen,
                 userId: this.state.userId,
               });
-            }}
-          >
+            }}>
             <View>{image}</View>
           </TouchableOpacity>
         </View>

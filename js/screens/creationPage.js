@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { View, Text, Button, FlatList, Image, Alert } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, Button, FlatList, Image, Alert} from 'react-native';
 import axios from 'axios';
-import { images } from '../res/images';
+import {images} from '../res/images';
+import BackgroundItem from './backgroundItem';
+import ElementItem from './elementItem';
 
 // this page will contain all the tools available to creators
 class CreationPage extends Component {
@@ -12,57 +14,58 @@ class CreationPage extends Component {
       allElements: [],
       selectedBackground: {},
       selectedElements: [],
-      userId: 0
+      userId: 0,
     };
     this.renderBackground = this.renderBackground.bind(this);
     this.renderElement = this.renderElement.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addBackground = this.addBackground.bind(this);
+    this.removeBackground = this.removeBackground.bind(this);
+    this.addElement = this.addElement.bind(this);
+    this.removeElement = this.removeElement.bind(this);
   }
 
   async componentDidMount() {
-    let { userId } = this.props.navigation.state.params;
+    let {userId} = this.props.navigation.state.params;
     const backgrounds = await axios.get(
+<<<<<<< HEAD
       `http://10.1.85.88:8080/api/backgrounds`
+=======
+      `http://10.1.85.96:8080/api/backgrounds`,
+>>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
     );
     const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
-      userId: userId
+      userId: userId,
     });
   }
 
-  renderBackground({ item }) {
+  renderBackground({item}) {
     return (
-      <View key={item.id}>
-        <View>
-          <Text>{item.name}</Text>
-        </View>
-        <View style={{ flex: 1 }}>
-          <Image
-            source={{ uri: images.backgroundThumbnails[item.name].uri }}
-            style={{
-              width: 70,
-              height: 70
-            }}
-          />
-        </View>
-        <View>
-          <Button
-            title="add"
-            onPress={() =>
-              this.setState({
-                selectedBackground: { ...item, type: 'background' }
-              })
-            }
-          />
-          <Button
-            title="remove"
-            onPress={() => this.setState({ selectedBackground: {} })}
-          />
-        </View>
-      </View>
+      <BackgroundItem
+        item={item}
+        addBackground={this.addBackground}
+        removeBackground={this.removeBackground}
+      />
     );
+  }
+  removeBackground() {
+    this.setState({selectedBackground: {}});
+  }
+  addBackground(item) {
+    this.setState({
+      selectedBackground: {...item, type: 'background'},
+    });
+  }
+  addElement(item) {
+    this.setState(prevState => ({
+      selectedElements: [
+        ...prevState.selectedElements,
+        {...item, type: 'element'},
+      ],
+    }));
   }
   removeElement(elementId) {
     // filter out one item with the given ID
@@ -70,56 +73,30 @@ class CreationPage extends Component {
     // find the first idx of such an item, return sliced fragments without it.
     // reduce the array of items into an array of itemIDs, use the indexOf to slice
     const dropThisIndex = prevSelected.findIndex(
-      element => element.id === elementId
+      element => element.id === elementId,
     );
     if (dropThisIndex < 0) {
       Alert.alert(
         'Nothing to remove',
-        'You do not have any instances of this element in your portal.'
+        'You do not have any instances of this element in your portal.',
       );
       return;
     }
     this.setState({
       selectedElements: [
         ...prevSelected.slice(0, dropThisIndex),
-        ...prevSelected.slice(dropThisIndex + 1)
-      ]
+        ...prevSelected.slice(dropThisIndex + 1),
+      ],
     });
   }
 
-  renderElement({ item }) {
-    console.log({ item });
+  renderElement({item}) {
     return (
-      <View key={item.id} style={{ flex: 1, flexDirection: 'row' }}>
-        {/* item name view */}
-        <View>
-          <Text>{item.name}</Text>
-        </View>
-        {/* image view */}
-        <View style={{ flex: 1 }}>
-          <Image
-            source={{ uri: images.element[item.name].url }}
-            style={{
-              width: 90,
-              height: 90
-            }}
-          />
-        </View>
-        <View>
-          <Button
-            title="add"
-            onPress={() =>
-              this.setState(prevState => ({
-                selectedElements: [
-                  ...prevState.selectedElements,
-                  { ...item, type: 'element' }
-                ]
-              }))
-            }
-          />
-          <Button title="remove" onPress={() => this.removeElement(item.id)} />
-        </View>
-      </View>
+      <ElementItem
+        item={item}
+        addElement={this.addElement}
+        removeElement={this.removeElement}
+      />
     );
   }
 
@@ -131,7 +108,7 @@ class CreationPage extends Component {
     }
     this.props.navigation.navigate('PreviewPortal', {
       items: [this.state.selectedBackground, ...this.state.selectedElements],
-      userId: this.state.userId
+      userId: this.state.userId,
     });
   }
 
@@ -139,7 +116,7 @@ class CreationPage extends Component {
     console.log('state on creation page', this.state);
     return (
       // wrapper view
-      <View style={{ marginTop: 40 }}>
+      <View style={{marginTop: 40}}>
         {/* wrapper for background */}
         <View>
           {/* background header view */}
@@ -168,7 +145,7 @@ class CreationPage extends Component {
             />
           </View>
         </View>
-        <View style={{ flex: 1, position: 'absolute', alignSelf: 'flex-end' }}>
+        <View style={{flex: 1, position: 'absolute', alignSelf: 'flex-end'}}>
           {/* view for previewbutton */}
           <Button title="Preview your work" onPress={this.handleSubmit} />
         </View>

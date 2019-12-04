@@ -12,7 +12,7 @@ const {
 } = require('../server/db/models');
 
 async function seed() {
-  await db.sync({ force: true });
+  await db.sync({force: true});
   console.log('db synced!');
 
   const users = await Promise.all([
@@ -42,21 +42,31 @@ async function seed() {
       name: 'fox',
       type: 'OBJ',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.obj',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/fox/low-poly-fox-by-pixelmannen.obj',
       userId: 1,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/fox.jpeg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/fox/fox.jpeg',
     }),
     Element.create({
       id: 3,
       name: 'alduin',
       type: 'OBJ',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.obj',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin-dragon.obj',
       userId: 1,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/Alduin_thumbnail.jpg'
-    })
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_thumbnail.jpg',
+    }),
+    Element.create({
+      id: 4,
+      name: 'mario',
+      type: 'OBJ',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mario-sculpture.obj',
+      userId: 1,
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mariothumbnail.jpeg',
+    }),
   ]);
 
   const backgrounds = await Promise.all([
@@ -65,45 +75,45 @@ async function seed() {
       name: 'beach',
       type: 'Viro360Image',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg',
       loop: false,
       userId: 1,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg',
     }),
     Background.create({
       id: 1,
       name: 'party',
       type: 'Viro360Video',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit//master/js/res/Kaleidoscope.mp4',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit//master/graphics/backgrounds/Kaleidoscope.mp4',
       loop: true,
       userId: 1,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
     }),
     Background.create({
       id: 3,
       name: 'theater',
       type: 'Viro360Image',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater.jpg',
       loop: false,
       userId: 2,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/theater-thumbnail.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater-thumbnail.jpg',
     }),
     Background.create({
       id: 6,
       name: 'space',
       type: 'Viro360Image',
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/ps_space.jpg',
       loop: false,
       userId: 2,
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/ps_space.jpg'
-    })
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/ps_space.jpg',
+    }),
   ]);
 
   const portals = await Promise.all([
@@ -112,7 +122,7 @@ async function seed() {
       backgroundId: 1,
       type: 'custom',
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg',
       userId: 1,
     }),
     Portal.create({
@@ -120,7 +130,7 @@ async function seed() {
       backgroundId: 2,
       type: 'custom',
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/guadalupe_360.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg',
       userId: 2,
     }),
   ]);
@@ -132,9 +142,8 @@ async function seed() {
     }),
     Portel.create({
       elementId: 2,
-      portalId: 2
-    })
-
+      portalId: 2,
+    }),
   ]);
 
   const elementprops = await Promise.all([
@@ -172,46 +181,56 @@ async function seed() {
       elementId: 2,
       portalId: 2,
       position: [-1, 1, -4],
-      scale: [0.01, 0.01, 0.01]
-    })
+      scale: [0.01, 0.01, 0.01],
+    }),
   ]);
 
   const elementres = await Promise.all([
     ElementRes.create({
       elementId: 2,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/low-poly-fox-by-pixelmannen.mtl',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/fox/low-poly-fox-by-pixelmannen.mtl',
     }),
     ElementRes.create({
       elementId: 2,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/texture.png',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/fox/texture.png',
     }),
     ElementRes.create({
       elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin-dragon.mtl'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin-dragon.mtl',
     }),
     ElementRes.create({
       elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin.jpg',
     }),
     ElementRes.create({
       elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduin_n.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_n.jpg',
     }),
     ElementRes.create({
       elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes.jpg'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes.jpg',
     }),
     ElementRes.create({
       elementId: 3,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/alduineyes_g.jpg'
-    })
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes_g.jpg',
+    }),
+    ElementRes.create({
+      elementId: 4,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mario-sculpture.mtl',
+    }),
+    ElementRes.create({
+      elementId: 4,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/marioD.jpg',
+    }),
   ]);
 
   console.log(`seeded ${users.length} users`);
