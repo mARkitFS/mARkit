@@ -5,14 +5,14 @@ const colors = require('colors');
 (async () => {
   const portalId = 1;
   const element = await axios.get(
-    `http://10.1.85.96:8080/api/elements/format/${portalId}`
+    `https://vast-falls-27580.herokuapp.com//api/elements/format/${portalId}`
   );
 
   const background = await axios.get(
-    `http://10.1.85.96:8080/api/backgrounds`
+    `https://vast-falls-27580.herokuapp.com//api/backgrounds`
   );
 
-  const portal = await axios.get(`http://10.1.85.96:8080/api/portals`);
+  const portal = await axios.get(`https://vast-falls-27580.herokuapp.com//api/portals`);
 
   let backgroundFormat = `background: { \n`;
   background.data.forEach(bg => {
