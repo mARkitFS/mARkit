@@ -57,6 +57,16 @@ async function seed() {
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_thumbnail.jpg',
     }),
+    Element.create({
+      id: 4,
+      name: 'mario',
+      type: 'OBJ',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mario-sculpture.obj',
+      userId: 1,
+      imageURL:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mariothumbnail.jpeg',
+    }),
   ]);
 
   const backgrounds = await Promise.all([
@@ -210,6 +220,16 @@ async function seed() {
       elementId: 3,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes_g.jpg',
+    }),
+    ElementRes.create({
+      elementId: 4,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mario-sculpture.mtl',
+    }),
+    ElementRes.create({
+      elementId: 4,
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/marioD.jpg',
     }),
   ]);
 

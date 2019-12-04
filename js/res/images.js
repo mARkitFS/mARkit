@@ -37,16 +37,6 @@ const images = {
       url:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/fox/fox.jpeg',
     },
-    heart: {
-      uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.vrx',
-      resources: [
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart_specular.png',
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/assets/emoji_heart/emoji_heart.png',
-      ],
-      url:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/heart.png',
-    },
 
     alduin: {
       uri:
@@ -60,6 +50,16 @@ const images = {
       ],
       url:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_thumbnail.jpg',
+    },
+    mario: {
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mario-sculpture.obj',
+      url:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/mariothumbnail.jpeg',
+      resources: [
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes_g.jpg',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/mario/marioD.jpg',
+      ],
     },
     beach_vacation: {
       uri:
