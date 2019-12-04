@@ -19,7 +19,7 @@ export default class Table extends Component {
   async componentDidMount() {
     try {
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com//api/portals`
+        `https://vast-falls-27580.herokuapp.com/api/portals`
       );
       this.setState({ items: data });
     } catch (err) {

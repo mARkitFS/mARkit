@@ -27,10 +27,10 @@ export default class SinglePortal extends Component {
     const portalId = portal.id;
     try {
       const element = await axios.get(
-        `https://vast-falls-27580.herokuapp.com//api/elementprops/portal/${portalId}`
+        `https://vast-falls-27580.herokuapp.com/api/elementprops/portal/${portalId}`
       );
       const background = await axios.get(
-        `https://vast-falls-27580.herokuapp.com//api/backgrounds/${portal.backgroundId}`
+        `https://vast-falls-27580.herokuapp.com/api/backgrounds/${portal.backgroundId}`
       );
       let Viro360Type =
         background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;

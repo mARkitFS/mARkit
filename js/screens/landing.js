@@ -8,32 +8,29 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import { withNavigation } from 'react-navigation';
-import { images } from '../res/images';
+import {withNavigation} from 'react-navigation';
+import {images} from '../res/images';
 const Landing = props => {
-  const { navigate } = props.navigation;
+  const {navigate} = props.navigation;
   return (
     <View style={styles.container}>
       <ImageBackground
         style={styles.backgroundImage}
         source={{
           uri:
-            'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/mARkit%20(1).jpg',
-        }}
-      >
+            'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/uiux/mARkit%20(1).jpg',
+        }}>
         <TouchableOpacity
           style={styles.card}
           onPress={() => {
             navigate('Homepage');
-          }}
-        >
+          }}>
           <Image
             style={styles.cardImage}
             source={{
               uri:
-                'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/enter.jpeg',
-            }}
-          ></Image>
+                'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/uiux/enter.jpeg',
+            }}></Image>
         </TouchableOpacity>
       </ImageBackground>
     </View>

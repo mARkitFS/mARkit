@@ -26,7 +26,7 @@ class CreatorDashboard extends Component {
     this.setState({ userId: userId });
     try {
       const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com//api/portals/user/${userId}`
+        `https://vast-falls-27580.herokuapp.com/api/portals/user/${userId}`
       );
       this.setState({ items: data });
     } catch (error) {

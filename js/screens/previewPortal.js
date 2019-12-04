@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Button,
   Text,
@@ -7,10 +7,10 @@ import {
   ActivityIndicator,
   FlatList,
   StyleSheet,
-  Alert
+  Alert,
 } from 'react-native';
 import PreviewImage from './previewImage';
-import { images } from '../res/images';
+import {images} from '../res/images';
 import axios from 'axios';
 
 export default class PreviewPortal extends Component {
@@ -39,18 +39,18 @@ export default class PreviewPortal extends Component {
       name: this.state.text,
       type: 'custom',
       imageURL:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/js/res/portal.png',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png',
       backgroundId: this.state.items[0].id,
       userId: this.state.userId,
     };
     try {
       const newPortal = await axios.post(
-        'https://vast-falls-27580.herokuapp.com//api/portals/add',
-        portalObj
+        'https://vast-falls-27580.herokuapp.com/api/portals/add',
+        portalObj,
       );
 
-      const { data } = await axios.get(
-        `https://vast-falls-27580.herokuapp.com//api/portals/${newPortal.data.id}`
+      const {data} = await axios.get(
+        `https://vast-falls-27580.herokuapp.com/api/portals/${newPortal.data.id}`,
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -65,12 +65,12 @@ export default class PreviewPortal extends Component {
         if (this.state.text.length < 1) {
           Alert.alert(
             'Portal name is required',
-            'Please provide a portal name!'
+            'Please provide a portal name!',
           );
         } else {
           Alert.alert(
             'Portal name is not unique',
-            'The portal name you entered already exists. Please choose another portal name.'
+            'The portal name you entered already exists. Please choose another portal name.',
           );
         }
       }
@@ -82,7 +82,7 @@ export default class PreviewPortal extends Component {
       .filter(el => el.type != 'background')
       .map(el => el.id);
     elementArr.forEach(async el => {
-        let position = this.getRandomPosition()
+      let position = this.getRandomPosition();
       let elementPropsObj = {
         elementId: el,
         portalId: portalId,
@@ -91,8 +91,8 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
-          'https://vast-falls-27580.herokuapp.com//api/elementprops/add',
-          elementPropsObj
+          'https://vast-falls-27580.herokuapp.com/api/elementprops/add',
+          elementPropsObj,
         );
         console.log('newElementProps: ', newElementProps);
       } catch (error) {
@@ -101,15 +101,14 @@ export default class PreviewPortal extends Component {
     });
   }
 
-  getRandomPosition(){
-    let positionArr = []
-    for (let i = 0; i < 3; i++){
-      let num = (Math.random() * (8 - (i*2))) - 3
-      positionArr.unshift(num)
+  getRandomPosition() {
+    let positionArr = [];
+    for (let i = 0; i < 3; i++) {
+      let num = Math.random() * (8 - i * 2) - 3;
+      positionArr.unshift(num);
     }
-    return positionArr
+    return positionArr;
   }
-
 
   addPortels(portalId) {
     let elementArr = this.state.items
@@ -123,8 +122,8 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'https://vast-falls-27580.herokuapp.com//api/portels/add',
-          portelObj
+          'https://vast-falls-27580.herokuapp.com/api/portels/add',
+          portelObj,
         );
         console.log('newPortel: ', newPortel);
       } catch (error) {
@@ -152,7 +151,7 @@ export default class PreviewPortal extends Component {
         <TextInput
           style={styles.input}
           placeholder="Portal name"
-          onChangeText={text => this.setState({ text })}
+          onChangeText={text => this.setState({text})}
           value={this.state.text}
         />
         <Button
@@ -177,7 +176,7 @@ export default class PreviewPortal extends Component {
           style={styles.container}
           data={this.state.items}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <PreviewImage item={item} />}
+          renderItem={({item}) => <PreviewImage item={item} />}
         />
       </View>
     );
