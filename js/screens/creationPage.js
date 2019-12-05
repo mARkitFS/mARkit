@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
-import {View, Text, Button, FlatList, Image, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  Image,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import axios from 'axios';
 import {images} from '../res/images';
 import BackgroundItem from './backgroundItem';
 import ElementItem from './elementItem';
+import {withNavigation} from 'react-navigation';
+import Swipe from './swipe';
 
 // this page will contain all the tools available to creators
 class CreationPage extends Component {
@@ -17,7 +27,7 @@ class CreationPage extends Component {
       userId: 0,
     };
     this.renderBackground = this.renderBackground.bind(this);
-    this.renderElement = this.renderElement.bind(this);
+    // this.renderElements = this.renderElements.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addBackground = this.addBackground.bind(this);
     this.removeBackground = this.removeBackground.bind(this);
@@ -28,9 +38,9 @@ class CreationPage extends Component {
   async componentDidMount() {
     let {userId} = this.props.navigation.state.params;
     const backgrounds = await axios.get(
-      `http://10.1.85.96:8080/api/backgrounds`,
+      `http://192.168.0.112:8080/api/backgrounds`,
     );
-    const elements = await axios.get(`http://10.1.85.96:8080/api/elements`);
+    const elements = await axios.get(`http://192.168.0.112:8080/api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
@@ -86,15 +96,11 @@ class CreationPage extends Component {
     });
   }
 
-  renderElement({item}) {
-    return (
-      <ElementItem
-        item={item}
-        addElement={this.addElement}
-        removeElement={this.removeElement}
-      />
-    );
-  }
+  // renderElements() {
+  //   return this.state.allElements.map((element, idx) => (
+  //     <ElementSwipe element={element} />
+  //   ));
+  // }
 
   handleSubmit() {
     console.log(this.state.selectedBackground, 'this selected background');
@@ -110,6 +116,7 @@ class CreationPage extends Component {
 
   render() {
     console.log('state on creation page', this.state);
+    const {navigate} = this.props.navigation;
     return (
       // wrapper view
       <View style={{marginTop: 40}}>
@@ -127,20 +134,16 @@ class CreationPage extends Component {
             />
           </View>
         </View>
-        {/* wrapper for elements list */}
-        <View>
-          {/* element header view */}
-          <View>
-            <Text>Choose your elements:</Text>
-          </View>
-          {/* view for list of elements */}
-          <View>
-            <FlatList
-              data={this.state.allElements}
-              renderItem={this.renderElement}
-            />
-          </View>
-        </View>
+        {/* element header view */}
+
+        <TouchableOpacity
+          style={{backgroundColor: '#DDDDDD'}}
+          onPress={() =>
+            navigate('Swipe', {items: this.state.allElements, type: 'element'})
+          }>
+          <Text style={{fontSize: 20}}>Choose your elements</Text>
+        </TouchableOpacity>
+
         <View style={{flex: 1, position: 'absolute', alignSelf: 'flex-end'}}>
           {/* view for previewbutton */}
           <Button title="Preview your work" onPress={this.handleSubmit} />
@@ -150,4 +153,4 @@ class CreationPage extends Component {
   }
 }
 
-export default CreationPage;
+export default withNavigation(CreationPage);

@@ -8,12 +8,12 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet} from 'react-native';
 
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { ViroVRSceneNavigator } from 'react-viro';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {ViroVRSceneNavigator} from 'react-viro';
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 
 /*
  TODO: Insert your API key below
@@ -45,7 +45,7 @@ export default class ViroSample extends Component {
     this._getARNavigator = this._getARNavigator.bind(this);
     this._getVRNavigator = this._getVRNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(
-      this
+      this,
     );
     this._exitViro = this._exitViro.bind(this);
   }
@@ -79,7 +79,7 @@ export default class ViroSample extends Component {
     return (
       <ViroVRSceneNavigator
         {...this.state.sharedProps}
-        initialScene={{ scene: InitialVRScene }}
+        initialScene={{scene: InitialVRScene}}
         onExitViro={this._exitViro}
       />
     );
@@ -103,12 +103,12 @@ export default class ViroSample extends Component {
   }
 }
 
-import { Landing, Homepage } from './js/index';
-import TabNavigator from './js/tab';
+import {Landing, Homepage} from './js/index';
+import BottomTabNavigator from './js/tab';
 
 const AppNavigator = createSwitchNavigator({
-  Landing: { screen: props => <Landing {...props} /> },
-  TabNavigator: { screen: TabNavigator },
+  Landing: {screen: props => <Landing {...props} />},
+  BottomTabNavigator: {screen: BottomTabNavigator},
 });
 
 const AppContainer = createAppContainer(AppNavigator);
