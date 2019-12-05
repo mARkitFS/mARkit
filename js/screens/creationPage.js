@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
-import {View, Text, Button, FlatList, Image, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  Image,
+  Alert,
+  StyleSheet,
+} from 'react-native';
 import axios from 'axios';
 import {images} from '../res/images';
 import BackgroundItem from './backgroundItem';
 import ElementItem from './elementItem';
+import styled from 'styled-components';
 
 // this page will contain all the tools available to creators
 class CreationPage extends Component {
@@ -28,9 +37,9 @@ class CreationPage extends Component {
   async componentDidMount() {
     let {userId} = this.props.navigation.state.params;
     const backgrounds = await axios.get(
-      `http://10.1.85.96:8080/api/backgrounds`,
+      `http://10.1.85.95:8080/api/backgrounds`,
     );
-    const elements = await axios.get(`http://10.1.85.96:8080/api/elements`);
+    const elements = await axios.get(`http://10.1.85.95:8080/api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
@@ -112,11 +121,11 @@ class CreationPage extends Component {
     console.log('state on creation page', this.state);
     return (
       // wrapper view
-      <View style={{marginTop: 40}}>
+      <View style={{marginTop: 60}}>
         {/* wrapper for background */}
         <View>
           {/* background header view */}
-          <View>
+          <View style={{marginBottom: 10}}>
             <Text>Choose your background:</Text>
           </View>
           {/* view for list of backgrounds */}
@@ -128,9 +137,9 @@ class CreationPage extends Component {
           </View>
         </View>
         {/* wrapper for elements list */}
-        <View>
+        <View style={{marginTop: 20}}>
           {/* element header view */}
-          <View>
+          <View style={{marginBottom: 10}}>
             <Text>Choose your elements:</Text>
           </View>
           {/* view for list of elements */}
@@ -141,10 +150,16 @@ class CreationPage extends Component {
             />
           </View>
         </View>
-        <View style={{flex: 1, position: 'absolute', alignSelf: 'flex-end'}}>
-          {/* view for previewbutton */}
-          <Button title="Preview your work" onPress={this.handleSubmit} />
-        </View>
+        {/* view for previewbutton */}
+        <Button
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            jusifyContent: 'center',
+          }}
+          title="Preview your work"
+          onPress={this.handleSubmit}
+        />
       </View>
     );
   }

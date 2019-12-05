@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Button,
   Text,
@@ -7,14 +7,14 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import { images } from '../res/images';
-import { withNavigation } from 'react-navigation';
+import {images} from '../res/images';
+import {withNavigation} from 'react-navigation';
 
 class DashboardItem extends Component {
   render() {
     console.log(
       'images portal thumbnails in dashboard item: ',
-      images.portalThumbnails
+      images.portalThumbnails,
     );
     const image = images.portalThumbnails[this.props.item.name] ? (
       <Image
@@ -37,12 +37,12 @@ class DashboardItem extends Component {
               screen: this.props.screen,
               userId: this.props.userId,
             });
-          }}
-        >
+          }}>
           {image}
           <Text
-            style={styles.cardText}
-          >{`Enter the ${this.props.item.name} portal!`}</Text>
+            style={
+              styles.cardText
+            }>{`Enter the ${this.props.item.name} portal!`}</Text>
         </TouchableOpacity>
       </View>
     );
