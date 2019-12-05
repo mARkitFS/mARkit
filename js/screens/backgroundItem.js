@@ -17,7 +17,7 @@ const BackgroundItem = function(props) {
       </View>
       <View style={{flex: 1}}>
         <Image
-          source={{uri: images.backgroundThumbnails[item.name].uri}}
+          source={{uri: images.background[item.name].url}}
           style={{
             width: 70,
             height: 70,

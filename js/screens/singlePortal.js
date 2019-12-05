@@ -27,17 +27,10 @@ export default class SinglePortal extends Component {
     const portalId = portal.id;
     try {
       const element = await axios.get(
-<<<<<<< HEAD
         `http://10.1.85.88:8080/api/elementprops/portal/${portalId}`
       );
       const background = await axios.get(
         `http://10.1.85.88:8080/api/backgrounds/${portal.backgroundId}`
-=======
-        `http://10.1.85.88:8080/api/elementprops/portal/${portalId}`,
-      );
-      const background = await axios.get(
-        `http://10.1.85.88:8080/api/backgrounds/${portal.backgroundId}`,
->>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
       );
       let Viro360Type =
         background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
@@ -68,19 +61,11 @@ export default class SinglePortal extends Component {
         style={{ width: 340, height: 232 }}
       />
     ) : (
-<<<<<<< HEAD
-        <Image
-          source={images.portalThumbnails.default}
-          style={{ width: 340, height: 232 }}
-        />
-      );
-=======
       <Image
         source={images.portalThumbnails.default}
         style={{width: 340, height: 232}}
       />
     );
->>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
     const returnComponent = this.state.background ? (
       // wrapper view
       <View>

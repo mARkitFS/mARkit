@@ -28,13 +28,11 @@ class CreationPage extends Component {
   async componentDidMount() {
     let { userId } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
-<<<<<<< HEAD
       `http://10.1.85.88:8080/api/backgrounds`
-=======
-      `http://10.1.85.88:8080/api/backgrounds`,
->>>>>>> 146c2328d9f4362f9d5d2b526e8a9df6dbd06db1
     );
+    console.log('CDM background ajax call: ', backgrounds)
     const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
+    console.log('CDM element ajax call: ', elements)
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
