@@ -5,34 +5,48 @@ const colors = require('colors');
 (async () => {
   const portalId = 1;
   const element = await axios.get(
-    `http://10.1.85.96:8080/api/elements/format/${portalId}`,
+    `http://10.1.85.88:8080/api/elements/format/${portalId}`
   );
 
-  const background = await axios.get(`http://10.1.85.96:8080/api/backgrounds`);
+  const background = await axios.get(
+    `http://10.1.85.88:8080/api/backgrounds`
+  );
 
-  const portal = await axios.get(`http://10.1.85.96:8080/api/portals`);
+  const portal = await axios.get(`http://10.1.85.88:8080/api/portals`);
+
+  let defaultPortal = `default: {
+    uri:
+      'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal-2-aperture-laboratories-video-game-clip-art-portal.jpg'
+  }`
 
   let backgroundFormat = `background: { \n`;
   background.data.forEach(bg => {
     backgroundFormat += `         ${bg.name}: {
-                uri: '${bg.uri}'
-            }, \n`;
+                uri: '${bg.uri}',
+                url: '${bg.imageURL}'
+            }, \n`
+
   });
 
   let elementFormat = `element: { \n`;
   element.data.forEach(el => {
     elementFormat += `       ${el.name}: {
               uri: '${el.uri}',
-              resources: [${el.elementres.map(elres => `'${elres.uri}'\n`)} ]
+              resources: [${el.elementres.map(elres => `'${elres.uri}'\n`)} ],
+              url: '${el.imageURL}' \n
           }, \n`;
   });
 
-  let thumbnailFormat = `thumbnails: { \n`;
+  let thumbnailFormat = `portalThumbnails: { \n
+    ${defaultPortal}, \n`;
   portal.data.forEach(pt => {
     thumbnailFormat += `       ${pt.name}: {
               uri: '${pt.imageURL}'
-          }, \n`;
+          }, \n
+        `;
   });
+
+
 
   const ex = `{\n
         ${backgroundFormat}  },\n
