@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Button,
   Text,
@@ -10,7 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import PreviewImage from './previewImage';
-import {images} from '../res/images';
+import { images } from '../res/images';
 import axios from 'axios';
 
 export default class PreviewPortal extends Component {
@@ -45,12 +45,13 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
-        'http://10.1.85.95:8080/api/portals/add',
-        portalObj,
+
+        'http://10.1.85.88:8080/api/portals/add',
+        portalObj
       );
 
-      const {data} = await axios.get(
-        `http://10.1.85.95:8080/api/portals/${newPortal.data.id}`,
+      const { data } = await axios.get(
+        `http://10.1.85.88:8080/api/portals/${newPortal.data.id}`
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -91,8 +92,9 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
-          'http://10.1.85.95:8080/api/elementprops/add',
-          elementPropsObj,
+
+          'http://10.1.85.88:8080/api/elementprops/add',
+          elementPropsObj
         );
         console.log('newElementProps: ', newElementProps);
       } catch (error) {
@@ -122,8 +124,9 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'http://10.1.85.95:8080/api/portels/add',
-          portelObj,
+
+          'http://10.1.85.88:8080/api/portels/add',
+          portelObj
         );
         console.log('newPortel: ', newPortel);
       } catch (error) {
@@ -151,7 +154,7 @@ export default class PreviewPortal extends Component {
         <TextInput
           style={styles.input}
           placeholder="Portal name"
-          onChangeText={text => this.setState({text})}
+          onChangeText={text => this.setState({ text })}
           value={this.state.text}
         />
         <Button
@@ -176,7 +179,7 @@ export default class PreviewPortal extends Component {
           style={styles.container}
           data={this.state.items}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <PreviewImage item={item} />}
+          renderItem={({ item }) => <PreviewImage item={item} />}
         />
       </View>
     );

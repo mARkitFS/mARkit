@@ -12,6 +12,7 @@ import {
   CreationPage,
   CreatorDashboard,
 } from './index';
+import Swipe from '../js/screens/swipe';
 
 const CreatorNavigator = createSwitchNavigator({
   CreatorDashboard: {screen: CreatorDashboard},
@@ -20,6 +21,7 @@ const CreatorNavigator = createSwitchNavigator({
   SinglePortal: {screen: SinglePortal},
   ViroApp: {screen: ViroApp},
   MainScene: {screen: MainScene},
+  Swipe: {screen: Swipe},
 });
 const ViewerNavigator = createSwitchNavigator({
   ViewerDashboard: {screen: ViewerDashboard},
@@ -62,8 +64,4 @@ const TabNavigator = createMaterialBottomTabNavigator(
 );
 export default createAppContainer(TabNavigator);
 
-// export default class BottomNavWrapper extends Component {
-//   render() {
-//     return <AppContainer />;
-//   }
-// }
+
