@@ -1,0 +1,44 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl padding
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.089804 0.089804 0.089804
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump padding_bump.jpg
+map_Kd padding_color.jpg
+
+newmtl pillows
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump pillows_bump.jpg
+map_Kd pillows_color.jpg
+
+newmtl shell
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.584314 0.584314 0.584314
+Ks 0.089804 0.089804 0.089804
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd shell_color.jpg
+
+newmtl shell_trim
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.541176 0.000000 0.000000
+Ks 0.089804 0.089804 0.089804
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd trim_color.jpg

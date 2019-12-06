@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import {
   View,
@@ -9,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
+
 import BackgroundItem from './backgroundItem';
 import {withNavigation} from 'react-navigation';
 
@@ -37,10 +39,13 @@ class CreationPage extends Component {
       selectedElements,
       selectedBackground,
     } = this.props.navigation.state.params;
+
     const backgrounds = await axios.get(
-      `http://10.1.85.96:8080/api/backgrounds`,
+      `http://10.1.85.88:8080/api/backgrounds`
     );
-    const elements = await axios.get(`http://10.1.85.96:8080/api/elements`);
+    console.log('CDM background ajax call: ', backgrounds)
+    const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
+    console.log('CDM element ajax call: ', elements)
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
@@ -58,7 +63,7 @@ class CreationPage extends Component {
     }
   }
 
-  renderBackground({item}) {
+  renderBackground({ item }) {
     return (
       <BackgroundItem
         item={item}
@@ -68,49 +73,13 @@ class CreationPage extends Component {
     );
   }
   removeBackground() {
-    this.setState({selectedBackground: {}});
+    this.setState({ selectedBackground: {} });
   }
   addBackground(item) {
     this.setState({
-      selectedBackground: {...item, type: 'background'},
+      selectedBackground: { ...item, type: 'background' },
     });
   }
-  // addElement(item) {
-  //   this.setState(prevState => ({
-  //     selectedElements: [
-  //       ...prevState.selectedElements,
-  //       {...item, type: 'element'},
-  //     ],
-  //   }));
-  // }
-  // removeElement(elementId) {
-  //   // filter out one item with the given ID
-  //   const prevSelected = this.state.selectedElements.slice(0);
-  //   // find the first idx of such an item, return sliced fragments without it.
-  //   // reduce the array of items into an array of itemIDs, use the indexOf to slice
-  //   const dropThisIndex = prevSelected.findIndex(
-  //     element => element.id === elementId,
-  //   );
-  //   if (dropThisIndex < 0) {
-  //     Alert.alert(
-  //       'Nothing to remove',
-  //       'You do not have any instances of this element in your portal.',
-  //     );
-  //     return;
-  //   }
-  //   this.setState({
-  //     selectedElements: [
-  //       ...prevSelected.slice(0, dropThisIndex),
-  //       ...prevSelected.slice(dropThisIndex + 1),
-  //     ],
-  //   });
-  // }
-
-  // renderElements() {
-  //   return this.state.allElements.map((element, idx) => (
-  //     <ElementSwipe element={element} />
-  //   ));
-  // }
 
   handleSubmit() {
     console.log(this.state.selectedBackground, 'this selected background');
@@ -143,6 +112,7 @@ class CreationPage extends Component {
           flexDirection: 'column',
           justifyContent: 'space-around',
         }}>
+
         {/* wrapper for background */}
         <View style={{margin: 10}}>
           <TouchableOpacity
@@ -182,6 +152,7 @@ class CreationPage extends Component {
         </View>
 
         <View style={{flex: 1, alignSelf: 'flex-end'}}>
+
           {/* view for previewbutton */}
           <Button title="Preview your work" onPress={this.handleSubmit} />
         </View>
