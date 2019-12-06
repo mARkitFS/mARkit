@@ -9,10 +9,12 @@ const colors = require('colors');
   );
 
   const background = await axios.get(
+
     `http://10.1.85.88:8080/api/backgrounds`
   );
 
   const portal = await axios.get(`http://10.1.85.88:8080/api/portals`);
+
 
   let defaultPortal = `default: {
     uri:
