@@ -45,6 +45,7 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
+
         'http://10.1.85.88:8080/api/portals/add',
         portalObj
       );
@@ -91,6 +92,7 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
+
           'http://10.1.85.88:8080/api/elementprops/add',
           elementPropsObj
         );
@@ -122,6 +124,7 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
+
           'http://10.1.85.88:8080/api/portels/add',
           portelObj
         );

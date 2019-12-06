@@ -5,6 +5,7 @@ const colors = require('colors');
 (async () => {
   const portalId = 1;
   const element = await axios.get(
+
     `http://10.1.85.88:8080/api/elements/format/${portalId}`
   );
 

@@ -64,8 +64,4 @@ const TabNavigator = createMaterialBottomTabNavigator(
 );
 export default createAppContainer(TabNavigator);
 
-// export default class BottomNavWrapper extends Component {
-//   render() {
-//     return <AppContainer />;
-//   }
-// }
+

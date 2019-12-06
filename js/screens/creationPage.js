@@ -7,11 +7,16 @@ import {
   FlatList,
   Image,
   Alert,
+  StyleSheet,
   TouchableOpacity,
+
 } from 'react-native';
 import axios from 'axios';
 
 import BackgroundItem from './backgroundItem';
+import ElementItem from './elementItem';
+import styled from 'styled-components';
+
 import {withNavigation} from 'react-navigation';
 
 // this page will contain all the tools available to creators
@@ -41,11 +46,10 @@ class CreationPage extends Component {
     } = this.props.navigation.state.params;
 
     const backgrounds = await axios.get(
+
       `http://10.1.85.88:8080/api/backgrounds`
     );
-    console.log('CDM background ajax call: ', backgrounds)
     const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
-    console.log('CDM element ajax call: ', elements)
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
@@ -105,6 +109,7 @@ class CreationPage extends Component {
     const {navigate} = this.props.navigation;
     return (
       // wrapper view
+
       <View
         style={{
           marginTop: 40,

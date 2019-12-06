@@ -10,17 +10,21 @@ const BackgroundItem = function(props) {
       style={{
         flex: 1,
         flexDirection: 'row',
+        alignContent: 'space-between',
         margin: 3,
+        justifyContent: 'space-between',
+        display: 'flex',
       }}>
       <View>
         <Text>{item.name}</Text>
       </View>
-      <View style={{flex: 1}}>
+      <View>
         <Image
           source={{uri: images.background[item.name].url}}
           style={{
             width: 70,
             height: 70,
+            borderRadius: 10,
           }}
         />
       </View>
