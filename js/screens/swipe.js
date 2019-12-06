@@ -6,6 +6,7 @@ import {
   Image,
   Dimensions,
   PanResponder,
+  TouchableOpacity,
 } from 'react-native';
 import {images} from '../res/images';
 
@@ -18,6 +19,7 @@ export default class Swipe extends Component {
     this.position = new Animated.ValueXY();
     this.state = {
       curIdx: 0,
+      arrayLength: 0,
       panResponder: PanResponder.create({
         onStartShouldSetPanResponder: (evt, gestureState) => true,
         onPanResponderMove: (evt, gestureState) => {
@@ -28,6 +30,9 @@ export default class Swipe extends Component {
             Animated.spring(this.position, {
               toValue: {x: SCREEN_WIDTH + 100, y: gestureState.dy},
             }).start(() => {
+              if (this.state.curIdx >= this.state.arrayLength) {
+                this.setState({curIdx: -1});
+              }
               this.setState({curIdx: this.state.curIdx + 1}, () => {
                 this.position.setValue({x: 0, y: 0});
               });
@@ -36,6 +41,9 @@ export default class Swipe extends Component {
             Animated.spring(this.position, {
               toValue: {x: -SCREEN_WIDTH - 100, y: gestureState.dy},
             }).start(() => {
+              if (this.state.curIdx >= this.state.arrayLength) {
+                this.setState({curIdx: -1});
+              }
               this.setState({curIdx: this.state.curIdx + 1}, () => {
                 this.position.setValue({x: 0, y: 0});
               });
@@ -48,7 +56,11 @@ export default class Swipe extends Component {
           }
         },
       }),
+      selectedElements: [],
+      selectedBackground: {},
     };
+    this.add = this.add.bind(this);
+
     this.rotate = this.position.x.interpolate({
       inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
       outputRange: ['-10deg', '0deg', '10deg'],
@@ -72,17 +84,42 @@ export default class Swipe extends Component {
       extrapolate: 'clamp',
     });
   }
+  componentDidMount() {
+    this.setState({
+      arrayLength: this.props.navigation.state.params.items.length,
+    });
+  }
+
+  add(item) {
+    if (item.type === 'element') {
+      this.setState(prevState => ({
+        selectedElements: [
+          ...prevState.selectedElements,
+          {...item, type: 'element'},
+        ],
+      }));
+    }
+  }
 
   renderItems = () => {
-    const {items} = this.props.navigation.state.params;
-    const {type} = this.props.navigation.state.params;
-    console.log('type: ', type, 'items: ', items);
+    const {
+      items,
+      type,
+      add,
+      remove,
+      userId,
+    } = this.props.navigation.state.params;
+    const {navigate} = this.props.navigation;
+    console.log('length of array: ', items.length);
+    console.log('current index in state: ', this.state.curIdx);
+
     return items
       .map((item, idx) => {
         if (idx < this.state.curIdx) {
           return null;
         }
-        if (idx === this.state.curIdx) {
+
+        if (idx === this.state.curIdx && idx < items.length) {
           return (
             <Animated.View
               {...this.state.panResponder.panHandlers}
@@ -97,47 +134,6 @@ export default class Swipe extends Component {
                   backgroundColor: '#f5f5f5',
                 },
               ]}>
-              {/* UI goes here */}
-              <Animated.View
-                style={{
-                  position: 'absolute',
-                  top: 20,
-                  bottom: 20,
-                  zIndex: 1000,
-                  left: 20,
-                }}>
-                <Text
-                  style={{
-                    borderWidth: 1,
-                    borderColor: 'green',
-                    color: 'green',
-                    fontSize: 25,
-                    fontWeight: 800,
-                    padding: 10,
-                  }}>
-                  Add one
-                </Text>
-              </Animated.View>
-              <Animated.View
-                style={{
-                  position: 'absolute',
-                  top: 20,
-                  bottom: 20,
-                  zIndex: 1000,
-                  right: 20,
-                }}>
-                <Text
-                  style={{
-                    borderWidth: 1,
-                    borderColor: 'green',
-                    color: 'green',
-                    fontSize: 25,
-                    fontWeight: 800,
-                    padding: 10,
-                  }}>
-                  Remove one
-                </Text>
-              </Animated.View>
               {/* image goes here */}
               <Image
                 style={{
@@ -149,6 +145,92 @@ export default class Swipe extends Component {
                 }}
                 source={{uri: images[type][item.name].url}}
               />
+              {/* UI goes here */}
+              <Animated.View style={{flex: 1, flexDirection: 'row'}}>
+                <Animated.View
+                  style={{
+                    // position: 'absolute',
+                    top: 20,
+                    bottom: 20,
+                    zIndex: 1000,
+                    left: 20,
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => this.add({...item, type: type})}>
+                    <Text
+                      style={{
+                        borderWidth: 1,
+                        borderColor: 'green',
+                        color: 'green',
+                        fontSize: 25,
+                        fontWeight: 800,
+                        padding: 10,
+                      }}>
+                      Add one
+                    </Text>
+                  </TouchableOpacity>
+                </Animated.View>
+                <Animated.View
+                  style={{
+                    // position: 'absolute',
+                    top: 20,
+                    bottom: 20,
+                    zIndex: 1000,
+                    right: 20,
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'flex-end',
+                  }}>
+                  <TouchableOpacity onPress={() => remove(item)}>
+                    <Text
+                      style={{
+                        borderWidth: 1,
+                        borderColor: 'green',
+                        color: 'green',
+                        fontSize: 25,
+                        fontWeight: 800,
+                        padding: 10,
+                        alignSelf: 'center',
+                      }}>
+                      Remove one
+                    </Text>
+                  </TouchableOpacity>
+                </Animated.View>
+                <Animated.View
+                  style={{
+                    position: 'absolute',
+                    bottom: 20,
+                    zIndex: 1000,
+                    flex: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigate('CreationPage', {
+                        userId: userId,
+                        selectedElements: this.state.selectedElements,
+                        selectedBackground: this.state.selectedBackground,
+                      })
+                    }>
+                    <Text
+                      style={{
+                        borderWidth: 1,
+                        borderColor: 'green',
+                        color: 'green',
+                        fontSize: 25,
+                        fontWeight: 800,
+                        padding: 10,
+                        alignSelf: 'center',
+                      }}>
+                      Back to creation page
+                    </Text>
+                  </TouchableOpacity>
+                </Animated.View>
+              </Animated.View>
             </Animated.View>
           );
         } else {
@@ -174,17 +256,21 @@ export default class Swipe extends Component {
                   zIndex: 1000,
                   left: 20,
                 }}>
-                <Text
-                  style={{
-                    borderWidth: 1,
-                    borderColor: 'green',
-                    color: 'green',
-                    fontSize: 25,
-                    fontWeight: 800,
-                    padding: 10,
-                  }}>
-                  Add one
-                </Text>
+                <TouchableOpacity
+                  style={{height: 30, width: 80}}
+                  onPress={() => this.add({...item, type: type})}>
+                  <Text
+                    style={{
+                      borderWidth: 1,
+                      borderColor: 'green',
+                      color: 'green',
+                      fontSize: 25,
+                      fontWeight: 800,
+                      padding: 10,
+                    }}>
+                    Add one
+                  </Text>
+                </TouchableOpacity>
               </Animated.View>
               <Animated.View
                 style={{
@@ -194,17 +280,21 @@ export default class Swipe extends Component {
                   zIndex: 1000,
                   right: 20,
                 }}>
-                <Text
-                  style={{
-                    borderWidth: 1,
-                    borderColor: 'green',
-                    color: 'green',
-                    fontSize: 25,
-                    fontWeight: 800,
-                    padding: 10,
-                  }}>
-                  Remove one
-                </Text>
+                <TouchableOpacity
+                  style={{height: 30, width: 80}}
+                  onPress={() => console.log('remove ', item)}>
+                  <Text
+                    style={{
+                      borderWidth: 1,
+                      borderColor: 'green',
+                      color: 'green',
+                      fontSize: 25,
+                      fontWeight: 800,
+                      padding: 10,
+                    }}>
+                    Remove one
+                  </Text>
+                </TouchableOpacity>
               </Animated.View>
               {/* animation goes here */}
               <Image
@@ -217,6 +307,27 @@ export default class Swipe extends Component {
                 }}
                 source={{uri: images[type][item.name].url}}
               />
+              <Animated.View
+                style={{
+                  position: 'absolute',
+                  bottom: 20,
+                  zIndex: 1000,
+                  flex: 1,
+                }}>
+                <TouchableOpacity onPress={() => navigate('CreationPage')}>
+                  <Text
+                    style={{
+                      borderWidth: 1,
+                      borderColor: 'green',
+                      color: 'green',
+                      fontSize: 25,
+                      fontWeight: 800,
+                      padding: 10,
+                    }}>
+                    Back to creation page
+                  </Text>
+                </TouchableOpacity>
+              </Animated.View>
             </Animated.View>
           );
         }

@@ -36,7 +36,11 @@ class CreationPage extends Component {
   }
 
   async componentDidMount() {
-    let {userId} = this.props.navigation.state.params;
+    let {
+      userId,
+      selectedElements,
+      selectedBackground,
+    } = this.props.navigation.state.params;
     const backgrounds = await axios.get(
       `http://10.1.85.96:8080/api/backgrounds`,
     );
@@ -46,6 +50,16 @@ class CreationPage extends Component {
       allElements: elements.data,
       userId: userId,
     });
+    if (selectedElements) {
+      this.setState({
+        selectedElements: [...selectedElements],
+      });
+    }
+    if (selectedBackground) {
+      this.setState({
+        selectedBackground: selectedBackground,
+      });
+    }
   }
 
   renderBackground({item}) {
@@ -139,7 +153,13 @@ class CreationPage extends Component {
         <TouchableOpacity
           style={{backgroundColor: '#DDDDDD'}}
           onPress={() =>
-            navigate('Swipe', {items: this.state.allElements, type: 'element'})
+            navigate('Swipe', {
+              items: this.state.allElements,
+              type: 'element',
+              add: this.addElement,
+              remove: this.removeElement,
+              userId: this.state.userId,
+            })
           }>
           <Text style={{fontSize: 20}}>Choose your elements</Text>
         </TouchableOpacity>
