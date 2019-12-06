@@ -7,6 +7,7 @@ import {
   Dimensions,
   PanResponder,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {images} from '../res/images';
 
@@ -60,6 +61,7 @@ export default class Swipe extends Component {
       selectedBackground: {},
     };
     this.add = this.add.bind(this);
+    this.remove = this.remove.bind(this);
 
     this.rotate = this.position.x.interpolate({
       inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
@@ -85,6 +87,18 @@ export default class Swipe extends Component {
     });
   }
   componentDidMount() {
+    const {
+      selectedBackground,
+      selectedElements,
+    } = this.props.navigation.state.params;
+    if (selectedBackground) {
+      this.setState({selectedBackground: selectedBackground});
+    }
+    if (selectedElements) {
+      this.setState({
+        selectedElements: [...this.state.selectedElements, ...selectedElements],
+      });
+    }
     this.setState({
       arrayLength: this.props.navigation.state.params.items.length,
     });
@@ -98,17 +112,40 @@ export default class Swipe extends Component {
           {...item, type: 'element'},
         ],
       }));
+    } else if (item.type === 'background') {
+      this.setState({
+        selectedBackground: item,
+      });
     }
   }
-
+  remove(item) {
+    if (item.type === 'element') {
+      // filter out one item with the given ID
+      const prevSelected = [...this.state.selectedElements];
+      // find the first idx of such an item, return sliced fragments without it.
+      // reduce the array of items into an array of itemIDs, use the indexOf to slice
+      const dropThisIndex = prevSelected.findIndex(
+        element => element.id === item.id,
+      );
+      if (dropThisIndex < 0) {
+        Alert.alert(
+          'Nothing to remove',
+          'You do not have any instances of this element in your portal.',
+        );
+        return;
+      }
+      this.setState({
+        selectedElements: [
+          ...prevSelected.slice(0, dropThisIndex),
+          ...prevSelected.slice(dropThisIndex + 1),
+        ],
+      });
+    } else if (item.type === 'background') {
+      this.setState({selectedBackground: {}});
+    }
+  }
   renderItems = () => {
-    const {
-      items,
-      type,
-      add,
-      remove,
-      userId,
-    } = this.props.navigation.state.params;
+    const {items, type, userId} = this.props.navigation.state.params;
     const {navigate} = this.props.navigation;
     console.log('length of array: ', items.length);
     console.log('current index in state: ', this.state.curIdx);
@@ -184,7 +221,8 @@ export default class Swipe extends Component {
                     flexDirection: 'row',
                     justifyContent: 'flex-end',
                   }}>
-                  <TouchableOpacity onPress={() => remove(item)}>
+                  <TouchableOpacity
+                    onPress={() => this.remove({...item, type: type})}>
                     <Text
                       style={{
                         borderWidth: 1,
@@ -248,54 +286,6 @@ export default class Swipe extends Component {
                   backgroundColor: '#f5f5f5',
                 },
               ]}>
-              <Animated.View
-                style={{
-                  position: 'absolute',
-                  top: 20,
-                  bottom: 20,
-                  zIndex: 1000,
-                  left: 20,
-                }}>
-                <TouchableOpacity
-                  style={{height: 30, width: 80}}
-                  onPress={() => this.add({...item, type: type})}>
-                  <Text
-                    style={{
-                      borderWidth: 1,
-                      borderColor: 'green',
-                      color: 'green',
-                      fontSize: 25,
-                      fontWeight: 800,
-                      padding: 10,
-                    }}>
-                    Add one
-                  </Text>
-                </TouchableOpacity>
-              </Animated.View>
-              <Animated.View
-                style={{
-                  position: 'absolute',
-                  top: 20,
-                  bottom: 20,
-                  zIndex: 1000,
-                  right: 20,
-                }}>
-                <TouchableOpacity
-                  style={{height: 30, width: 80}}
-                  onPress={() => console.log('remove ', item)}>
-                  <Text
-                    style={{
-                      borderWidth: 1,
-                      borderColor: 'green',
-                      color: 'green',
-                      fontSize: 25,
-                      fontWeight: 800,
-                      padding: 10,
-                    }}>
-                    Remove one
-                  </Text>
-                </TouchableOpacity>
-              </Animated.View>
               {/* animation goes here */}
               <Image
                 style={{
@@ -307,6 +297,7 @@ export default class Swipe extends Component {
                 }}
                 source={{uri: images[type][item.name].url}}
               />
+
               <Animated.View
                 style={{
                   position: 'absolute',
@@ -314,7 +305,14 @@ export default class Swipe extends Component {
                   zIndex: 1000,
                   flex: 1,
                 }}>
-                <TouchableOpacity onPress={() => navigate('CreationPage')}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigate('CreationPage', {
+                      userId: userId,
+                      selectedElements: this.state.selectedElements,
+                      selectedBackground: this.state.selectedBackground,
+                    })
+                  }>
                   <Text
                     style={{
                       borderWidth: 1,

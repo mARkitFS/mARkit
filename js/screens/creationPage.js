@@ -9,11 +9,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
-import {images} from '../res/images';
 import BackgroundItem from './backgroundItem';
-import ElementItem from './elementItem';
 import {withNavigation} from 'react-navigation';
-import Swipe from './swipe';
 
 // this page will contain all the tools available to creators
 class CreationPage extends Component {
@@ -31,8 +28,7 @@ class CreationPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addBackground = this.addBackground.bind(this);
     this.removeBackground = this.removeBackground.bind(this);
-    this.addElement = this.addElement.bind(this);
-    this.removeElement = this.removeElement.bind(this);
+    // this.removeElement = this.removeElement.bind(this);
   }
 
   async componentDidMount() {
@@ -79,36 +75,36 @@ class CreationPage extends Component {
       selectedBackground: {...item, type: 'background'},
     });
   }
-  addElement(item) {
-    this.setState(prevState => ({
-      selectedElements: [
-        ...prevState.selectedElements,
-        {...item, type: 'element'},
-      ],
-    }));
-  }
-  removeElement(elementId) {
-    // filter out one item with the given ID
-    const prevSelected = this.state.selectedElements.slice(0);
-    // find the first idx of such an item, return sliced fragments without it.
-    // reduce the array of items into an array of itemIDs, use the indexOf to slice
-    const dropThisIndex = prevSelected.findIndex(
-      element => element.id === elementId,
-    );
-    if (dropThisIndex < 0) {
-      Alert.alert(
-        'Nothing to remove',
-        'You do not have any instances of this element in your portal.',
-      );
-      return;
-    }
-    this.setState({
-      selectedElements: [
-        ...prevSelected.slice(0, dropThisIndex),
-        ...prevSelected.slice(dropThisIndex + 1),
-      ],
-    });
-  }
+  // addElement(item) {
+  //   this.setState(prevState => ({
+  //     selectedElements: [
+  //       ...prevState.selectedElements,
+  //       {...item, type: 'element'},
+  //     ],
+  //   }));
+  // }
+  // removeElement(elementId) {
+  //   // filter out one item with the given ID
+  //   const prevSelected = this.state.selectedElements.slice(0);
+  //   // find the first idx of such an item, return sliced fragments without it.
+  //   // reduce the array of items into an array of itemIDs, use the indexOf to slice
+  //   const dropThisIndex = prevSelected.findIndex(
+  //     element => element.id === elementId,
+  //   );
+  //   if (dropThisIndex < 0) {
+  //     Alert.alert(
+  //       'Nothing to remove',
+  //       'You do not have any instances of this element in your portal.',
+  //     );
+  //     return;
+  //   }
+  //   this.setState({
+  //     selectedElements: [
+  //       ...prevSelected.slice(0, dropThisIndex),
+  //       ...prevSelected.slice(dropThisIndex + 1),
+  //     ],
+  //   });
+  // }
 
   // renderElements() {
   //   return this.state.allElements.map((element, idx) => (
@@ -129,42 +125,63 @@ class CreationPage extends Component {
   }
 
   render() {
+    const selectedBackground = this.state.selectedBackground.name
+      ? this.state.selectedBackground
+      : null;
+    const selectedElements =
+      this.state.selectedElements.length > 0
+        ? [...this.state.selectedElements]
+        : null;
     console.log('state on creation page', this.state);
     const {navigate} = this.props.navigation;
     return (
       // wrapper view
-      <View style={{marginTop: 40}}>
+      <View
+        style={{
+          marginTop: 40,
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-around',
+        }}>
         {/* wrapper for background */}
-        <View>
-          {/* background header view */}
-          <View>
-            <Text>Choose your background:</Text>
-          </View>
-          {/* view for list of backgrounds */}
+        <View style={{margin: 10}}>
+          <TouchableOpacity
+            style={{backgroundColor: '#DDDDDD'}}
+            onPress={() =>
+              navigate('Swipe', {
+                items: this.state.allBackgrounds,
+                type: 'background',
+                userId: this.state.userId,
+                selectedElements,
+              })
+            }>
+            <Text style={{fontSize: 20}}>Choose your background</Text>
+          </TouchableOpacity>
+          {/* view for list of backgrounds
           <View>
             <FlatList
               data={this.state.allBackgrounds}
               renderItem={this.renderBackground}
             />
-          </View>
+          </View> */}
         </View>
         {/* element header view */}
+        <View style={{margin: 10}}>
+          <TouchableOpacity
+            style={{backgroundColor: '#DDDDDD'}}
+            onPress={() =>
+              navigate('Swipe', {
+                items: this.state.allElements,
+                type: 'element',
+                userId: this.state.userId,
+                selectedBackground,
+              })
+            }>
+            <Text style={{fontSize: 20}}>Choose your elements</Text>
+          </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity
-          style={{backgroundColor: '#DDDDDD'}}
-          onPress={() =>
-            navigate('Swipe', {
-              items: this.state.allElements,
-              type: 'element',
-              add: this.addElement,
-              remove: this.removeElement,
-              userId: this.state.userId,
-            })
-          }>
-          <Text style={{fontSize: 20}}>Choose your elements</Text>
-        </TouchableOpacity>
-
-        <View style={{flex: 1, position: 'absolute', alignSelf: 'flex-end'}}>
+        <View style={{flex: 1, alignSelf: 'flex-end'}}>
           {/* view for previewbutton */}
           <Button title="Preview your work" onPress={this.handleSubmit} />
         </View>
