@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   FlatList,
   TouchableOpacity,
+  Animated,
 } from 'react-native';
 
 import axios from 'axios';
@@ -32,6 +33,15 @@ class CreatorDashboard extends Component {
     } catch (error) {
       console.error(error);
     }
+
+    Animated.timing(this.animatedValue, {
+      toValue: 150,
+      duration: 1500,
+    }).start();
+  }
+
+  componentWillMount() {
+    this.animatedValue = new Animated.Value(0);
   }
 
   render() {
@@ -43,8 +53,19 @@ class CreatorDashboard extends Component {
       );
     }
     const {navigate} = this.props.navigation;
+    const interpolatedColor = this.animatedValue.interpolate({
+      inputRange: [0, 150],
+      outputRange: ['black', 'aqua'],
+    });
     return (
-      <View style={styles.loader}>
+      <Animated.View
+        style={{
+          flex: 2,
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: interpolatedColor,
+        }}>
         <View>
           <Text style={styles.title}> Welcome to the Creator Dashboard! </Text>
         </View>
@@ -65,7 +86,7 @@ class CreatorDashboard extends Component {
           onPress={() => navigate('CreationPage', {userId: this.state.userId})}>
           <Text style={styles.cardText}> Create New Portal </Text>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     );
   }
 }
@@ -75,20 +96,19 @@ const styles = StyleSheet.create({
     // marginTop: 30,
     // backgroundColor: '#D6D3F0',
   },
-  loader: {
-    flex: 2,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#D6D3F0',
-  },
+  // loader: {
+  //   flex: 2,
+  //   flexDirection: 'column',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   backgroundColor: 'blue',
+  // },
   title: {
     fontWeight: 'bold',
-    fontFamily: 'Academy Engraved LET',
     fontSize: 30,
     color: '#0B3142',
     textAlign: 'center',
-    marginTop: 40,
+    marginTop: 60,
   },
   cardText: {
     padding: 1,

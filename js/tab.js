@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import React, {Component} from 'react';
+import {View, Text} from 'react-native';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import {
   MainScene,
   ViroApp,
@@ -14,18 +14,18 @@ import {
 } from './index';
 
 const CreatorNavigator = createSwitchNavigator({
-  CreatorDashboard: { screen: CreatorDashboard },
-  CreationPage: { screen: CreationPage },
-  PreviewPortal: { screen: PreviewPortal },
-  SinglePortal: { screen: SinglePortal },
-  ViroApp: { screen: ViroApp },
-  MainScene: { screen: MainScene },
+  CreatorDashboard: {screen: CreatorDashboard},
+  CreationPage: {screen: CreationPage},
+  PreviewPortal: {screen: PreviewPortal},
+  SinglePortal: {screen: SinglePortal},
+  ViroApp: {screen: ViroApp},
+  MainScene: {screen: MainScene},
 });
 const ViewerNavigator = createSwitchNavigator({
-  ViewerDashboard: { screen: ViewerDashboard },
-  SinglePortal: { screen: SinglePortal },
-  ViroApp: { screen: ViroApp },
-  MainScene: { screen: MainScene },
+  ViewerDashboard: {screen: ViewerDashboard},
+  SinglePortal: {screen: SinglePortal},
+  ViroApp: {screen: ViroApp},
+  MainScene: {screen: MainScene},
 });
 
 const TabNavigator = createMaterialBottomTabNavigator(
@@ -58,7 +58,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     },
     initialRouteName: 'Homepage',
     backBehavior: 'none',
-  }
+  },
 );
 export default createAppContainer(TabNavigator);
 
