@@ -94,16 +94,8 @@ class CreatorDashboard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: 30,
-    // backgroundColor: '#D6D3F0',
+
   },
-  // loader: {
-  //   flex: 2,
-  //   flexDirection: 'column',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   backgroundColor: 'blue',
-  // },
   title: {
     fontWeight: 'bold',
     fontSize: 30,
