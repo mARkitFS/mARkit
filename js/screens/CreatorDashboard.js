@@ -55,7 +55,7 @@ class CreatorDashboard extends Component {
     const {navigate} = this.props.navigation;
     const interpolatedColor = this.animatedValue.interpolate({
       inputRange: [0, 150],
-      outputRange: ['black', 'rgb(157, 9, 232)'],
+      outputRange: ['black', 'aqua'],
     });
     return (
       <Animated.View
