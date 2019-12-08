@@ -51,7 +51,7 @@ class DashboardItem extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#0B3142',
+    backgroundColor: '#FAF0FC',
     borderRadius: 10,
     marginBottom: 20,
     marginTop: 10,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   cardText: {
     padding: 5,
     fontSize: 16,
-    color: 'white',
+    color: '#0B3142',
     fontWeight: 'bold',
   },
 });

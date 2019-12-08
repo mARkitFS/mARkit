@@ -26,9 +26,8 @@ class CreatorDashboard extends Component {
     let {userId} = this.props.navigation.state.params;
     this.setState({userId: userId});
     try {
-
-      const { data } = await axios.get(
-        `http://10.1.85.88:8080/api/portals/user/${userId}`
+      const {data} = await axios.get(
+        `http://192.168.1.156:8080/api/portals/user/${userId}`,
       );
       this.setState({items: data});
     } catch (error) {
@@ -46,6 +45,7 @@ class CreatorDashboard extends Component {
   }
 
   render() {
+    console.log('<<<<<< myprops', this.props);
     if (this.state.items.length === 0) {
       return (
         <View style={styles.loader}>
@@ -56,7 +56,7 @@ class CreatorDashboard extends Component {
     const {navigate} = this.props.navigation;
     const interpolatedColor = this.animatedValue.interpolate({
       inputRange: [0, 150],
-      outputRange: ['black', 'aqua'],
+      outputRange: ['black', '#0B3142'],
     });
     return (
       <Animated.View
@@ -93,33 +93,38 @@ class CreatorDashboard extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
+  container: {},
   title: {
     fontWeight: 'bold',
     fontSize: 30,
-    color: '#0B3142',
+    color: 'white',
     textAlign: 'center',
     marginTop: 60,
   },
   cardText: {
     padding: 1,
-    fontSize: 12,
-    color: '#0B3142',
+    fontSize: 16,
+    color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
   },
   card: {
-    backgroundColor: '#D7D3F9',
-    marginBottom: 10,
-    marginTop: 10,
-    marginRight: '50%',
-    width: '25%',
-    shadowColor: '#0B3142',
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-    borderRadius: 20,
+    // backgroundColor: '#FDB327',
+    // marginBottom: 10,
+    // marginTop: 10,
+    // marginRight: '50%',
+    // width: '25%',
+    // shadowColor: '#0B3142',
+    // shadowOpacity: 0.2,
+    // shadowRadius: 1,
+    // borderRadius: 20,
+    width: 400,
+    backgroundColor: '#FDB327',
+    paddingTop: 10,
+    paddingBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
   },
 });
 export default withNavigation(CreatorDashboard);

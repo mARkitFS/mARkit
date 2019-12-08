@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import {withNavigation} from 'react-navigation';
 import {images} from '../res/images';
+import {Wave, Random} from 'react-animated-text';
+
 const Landing = props => {
   const {navigate} = props.navigation;
   return (
@@ -20,18 +22,21 @@ const Landing = props => {
           uri:
             'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/uiux/mARkit%20(1).jpg',
         }}>
-        <TouchableOpacity
-          style={styles.card}
-          onPress={() => {
-            navigate('Homepage');
-          }}>
-          <Image
+        <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 36}}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigate('Homepage');
+            }}>
+            <Text style={styles.cardText}>E N T E R </Text>
+            {/* <Image
             style={styles.cardImage}
             source={{
               uri:
                 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/uiux/enter.jpeg',
-            }}></Image>
-        </TouchableOpacity>
+            }}></Image> */}
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -45,9 +50,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
   },
   button: {
-    fontSize: 20,
-    color: 'green',
-    width: '50%',
+    width: 400,
+    backgroundColor: '#FFAE19',
+    paddingTop: 10,
+    paddingBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
   },
   logoContainer: {
     alignItems: 'center',
@@ -91,8 +100,9 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   cardText: {
-    padding: 10,
-    fontSize: 16,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

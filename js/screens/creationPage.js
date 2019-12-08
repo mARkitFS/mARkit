@@ -47,9 +47,9 @@ class CreationPage extends Component {
 
     const backgrounds = await axios.get(
 
-      `http://10.1.85.88:8080/api/backgrounds`
+      `http://192.168.1.156:8080/api/backgrounds`
     );
-    const elements = await axios.get(`http://10.1.85.88:8080/api/elements`);
+    const elements = await axios.get(`http://192.168.1.156:8080/api/elements`);
     this.setState({
       allBackgrounds: backgrounds.data,
       allElements: elements.data,
