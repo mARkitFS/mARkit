@@ -44,12 +44,10 @@ class CreationPage extends Component {
     } = this.props.navigation.state.params;
     try {
       const backgrounds = await axios.get(
-        `http://192.168.0.112:8080/api/backgrounds`,
+        `http://10.1.85.96:8080/api/backgrounds`,
       );
       console.log('CDM background ajax call: ', backgrounds);
-      const elements = await axios.get(
-        `http://192.168.0.112:8080/api/elements`,
-      );
+      const elements = await axios.get(`http://10.1.85.96:8080/api/elements`);
       console.log('CDM element ajax call: ', elements);
       this.setState({
         allBackgrounds: backgrounds.data,
@@ -78,17 +76,17 @@ class CreationPage extends Component {
       type: 'custom',
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png',
-      backgroundId: this.state.selectedBackground,
+      backgroundId: this.state.selectedBackground.id,
       userId: this.state.userId,
     };
     try {
       const newPortal = await axios.post(
-        'http://192.168.0.112:8080/api/portals/add',
+        'http://10.1.85.96:8080/api/portals/add',
         portalObj,
       );
 
       const {data} = await axios.get(
-        `http://192.168.0.112:8080/api/portals/${newPortal.data.id}`,
+        `http://10.1.85.96:8080/api/portals/${newPortal.data.id}`,
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -126,7 +124,7 @@ class CreationPage extends Component {
       };
       try {
         const newElementProps = await axios.post(
-          'http://192.168.0.112:8080/api/elementprops/add',
+          'http://10.1.85.96:8080/api/elementprops/add',
           elementPropsObj,
         );
         console.log('newElementProps: ', newElementProps);
@@ -155,7 +153,7 @@ class CreationPage extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'http://192.168.0.112:8080/api/portels/add',
+          'http://10.1.85.96:8080/api/portels/add',
           portelObj,
         );
         console.log('newPortel: ', newPortel);

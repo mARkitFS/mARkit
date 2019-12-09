@@ -5,15 +5,15 @@ const colors = require('colors');
 (async () => {
   const portalId = 1;
   const element = await axios.get(
-    `http://192.168.0.112:8080/api/elements/format/${portalId}`
+    `http://10.1.85.96:8080/api/elements/format/${portalId}`
   );
 
   const background = await axios.get(
 
-    `http://192.168.0.112:8080/api/backgrounds`
+    `http://10.1.85.96:8080/api/backgrounds`
   );
 
-  const portal = await axios.get(`http://192.168.0.112:8080/api/portals`);
+  const portal = await axios.get(`http://10.1.85.96:8080/api/portals`);
 
 
   let defaultPortal = `default: {

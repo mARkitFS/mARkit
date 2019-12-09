@@ -26,7 +26,7 @@ class CreatorDashboard extends Component {
     this.setState({userId: userId});
     try {
       const { data } = await axios.get(
-        `http://192.168.0.112:8080/api/portals/user/${userId}`
+        `http://10.1.85.96:8080/api/portals/user/${userId}`
       );
       this.setState({items: data});
     } catch (error) {
