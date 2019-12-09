@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   cardImage: {
     width: '85%',
     height: 150,
-    resizeMode: 'cover',
+    resizeMode: 'center',
   },
   cardText: {
     padding: 5,
