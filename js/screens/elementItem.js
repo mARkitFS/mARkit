@@ -5,18 +5,28 @@ import {images} from '../res/images';
 const ElementItem = function(props) {
   const {item, addElement, removeElement} = props;
   return (
-    <View key={item.id} style={{flex: 1, flexDirection: 'row'}}>
+    <View
+      key={item.id}
+      style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignContent: 'space-between',
+        margin: 3,
+        justifyContent: 'space-between',
+        display: 'flex',
+      }}>
       {/* item name view */}
       <View>
         <Text>{item.name}</Text>
       </View>
       {/* image view */}
-      <View style={{flex: 1}}>
+      <View>
         <Image
           source={{uri: images.element[item.name].url}}
           style={{
-            width: 90,
-            height: 90,
+            width: 70,
+            height: 70,
+            borderRadius: 10,
           }}
         />
       </View>

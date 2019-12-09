@@ -7,8 +7,8 @@ import {
   FlatList,
   Image,
   Alert,
+  StyleSheet,
   TouchableOpacity,
-  ActivityIndicator,
   StyleSheet,
 } from 'react-native';
 import axios from 'axios';

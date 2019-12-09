@@ -6,7 +6,6 @@ import axios from 'axios';
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
 // display a thumbnail (clickable, on click navigates to MainScene)
 // components: name of portal, list of elements,thumbnail
-// const portalId = 1;
 import { Viro360Video, Viro360Image } from 'react-viro';
 export default class SinglePortal extends Component {
   constructor(props) {
