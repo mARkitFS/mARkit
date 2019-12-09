@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { images } from '../res/images';
+import React, {Component} from 'react';
+import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {images} from '../res/images';
 import axios from 'axios';
 // this is the view you get when clicking a portal from the viewer dashboard
 // get portal ID from viewerDashboard, AJAX the portal + all of its elements
 // display a thumbnail (clickable, on click navigates to MainScene)
 // components: name of portal, list of elements,thumbnail
-import { Viro360Video, Viro360Image } from 'react-viro';
+import {Viro360Video, Viro360Image} from 'react-viro';
 export default class SinglePortal extends Component {
   constructor(props) {
     super(props);
@@ -19,17 +19,17 @@ export default class SinglePortal extends Component {
     };
   }
   async componentDidMount() {
-    const { navigation } = this.props;
-    const { portal } = navigation.state.params;
-    const { screen } = navigation.state.params;
-    const { userId } = navigation.state.params;
+    const {navigation} = this.props;
+    const {portal} = navigation.state.params;
+    const {screen} = navigation.state.params;
+    const {userId} = navigation.state.params;
     const portalId = portal.id;
     try {
       const element = await axios.get(
-        `http://192.168.1.156:8080/api/elementprops/portal/${portalId}`
+        `http://192.168.1.156:8080/api/elementprops/portal/${portalId}`,
       );
       const background = await axios.get(
-        `http://192.168.1.156:8080/api/backgrounds/${portal.backgroundId}`
+        `http://192.168.1.156:8080/api/backgrounds/${portal.backgroundId}`,
       );
       let Viro360Type =
         background.data.type === 'Viro360Video' ? Viro360Video : Viro360Image;
@@ -57,7 +57,7 @@ export default class SinglePortal extends Component {
     const image = images.portalThumbnails[this.state.portal.name] ? (
       <Image
         source={images.portalThumbnails[this.state.portal.name]}
-        style={{ width: 340, height: 232 }}
+        style={{width: 340, height: 232}}
       />
     ) : (
       <Image
@@ -67,7 +67,7 @@ export default class SinglePortal extends Component {
     );
     const returnComponent = this.state.background ? (
       // wrapper view
-      <View>
+      <View style={styles.container}>
         {/* title view */}
         <View>
           <Text>{this.state.portal.name}</Text>
@@ -94,8 +94,16 @@ export default class SinglePortal extends Component {
         </View>
       </View>
     ) : (
-        <View />
-      );
+      <View />
+    );
     return returnComponent;
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignSelf: 'center',
+    marginTop: 50,
+    flex: 1,
+  },
+});

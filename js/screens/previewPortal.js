@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Button,
   Text,
@@ -8,9 +8,10 @@ import {
   FlatList,
   StyleSheet,
   Alert,
+  Animated,
 } from 'react-native';
 import PreviewImage from './previewImage';
-import { images } from '../res/images';
+import {images} from '../res/images';
 import axios from 'axios';
 
 export default class PreviewPortal extends Component {
@@ -32,6 +33,15 @@ export default class PreviewPortal extends Component {
       items: items,
       userId: userId,
     });
+
+    Animated.timing(this.animatedValue, {
+      toValue: 150,
+      duration: 1500,
+    }).start();
+  }
+
+  componentWillMount() {
+    this.animatedValue = new Animated.Value(0);
   }
 
   async addPortal() {
@@ -45,13 +55,12 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
-
         'http://192.168.1.156:8080/api/portals/add',
-        portalObj
+        portalObj,
       );
 
-      const { data } = await axios.get(
-        `http://192.168.1.156:8080/api/portals/${newPortal.data.id}`
+      const {data} = await axios.get(
+        `http://192.168.1.156:8080/api/portals/${newPortal.data.id}`,
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -92,9 +101,8 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
-
           'http://192.168.1.156:8080/api/elementprops/add',
-          elementPropsObj
+          elementPropsObj,
         );
         console.log('newElementProps: ', newElementProps);
       } catch (error) {
@@ -124,9 +132,8 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
-
           'http://192.168.1.156:8080/api/portels/add',
-          portelObj
+          portelObj,
         );
         console.log('newPortel: ', newPortel);
       } catch (error) {
@@ -143,8 +150,20 @@ export default class PreviewPortal extends Component {
         </View>
       );
     }
+    const interpolatedColor = this.animatedValue.interpolate({
+      inputRange: [0, 150],
+      outputRange: ['black', '#0B3142'],
+    });
     return (
-      <View style={styles.loader}>
+      <Animated.View
+        style={{
+          marginTop: 50,
+          flex: 2,
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: interpolatedColor,
+        }}>
         <View>
           <Text style={styles.title}>
             {' '}
@@ -153,8 +172,8 @@ export default class PreviewPortal extends Component {
         </View>
         <TextInput
           style={styles.input}
-          placeholder="Portal name"
-          onChangeText={text => this.setState({ text })}
+          placeholder="Enter Portal Name"
+          onChangeText={text => this.setState({text})}
           value={this.state.text}
         />
         <Button
@@ -179,9 +198,9 @@ export default class PreviewPortal extends Component {
           style={styles.container}
           data={this.state.items}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <PreviewImage item={item} />}
+          renderItem={({item}) => <PreviewImage item={item} />}
         />
-      </View>
+      </Animated.View>
     );
   }
 }
@@ -189,24 +208,28 @@ export default class PreviewPortal extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#D6D3F0',
+    // backgroundColor: '#D6D3F0',
   },
   input: {
     height: 60,
     width: 250,
-    backgroundColor: '#D6D3F0',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    borderRadius: 10,
+    marginTop: 20,
   },
   loader: {
-    flex: 2,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flex: 2,
+    // flexDirection: 'column',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    marginTop: 50,
   },
   title: {
     fontWeight: 'bold',
-    fontFamily: 'Academy Engraved LET',
-    fontSize: 16,
-    color: '#0B3142',
+    fontSize: 20,
+    color: 'white',
     textAlign: 'center',
+    marginTop: 20,
   },
 });

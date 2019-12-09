@@ -93,7 +93,6 @@ class CreatorDashboard extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {},
   title: {
     fontWeight: 'bold',
     fontSize: 30,
@@ -109,15 +108,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   card: {
-    // backgroundColor: '#FDB327',
-    // marginBottom: 10,
-    // marginTop: 10,
-    // marginRight: '50%',
-    // width: '25%',
-    // shadowColor: '#0B3142',
-    // shadowOpacity: 0.2,
-    // shadowRadius: 1,
-    // borderRadius: 20,
     width: 400,
     backgroundColor: '#FDB327',
     paddingTop: 10,

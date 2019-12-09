@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {
   View,
@@ -9,7 +8,6 @@ import {
   Alert,
   StyleSheet,
   TouchableOpacity,
-
 } from 'react-native';
 import axios from 'axios';
 
@@ -46,8 +44,7 @@ class CreationPage extends Component {
     } = this.props.navigation.state.params;
 
     const backgrounds = await axios.get(
-
-      `http://192.168.1.156:8080/api/backgrounds`
+      `http://192.168.1.156:8080/api/backgrounds`,
     );
     const elements = await axios.get(`http://192.168.1.156:8080/api/elements`);
     this.setState({
@@ -67,7 +64,7 @@ class CreationPage extends Component {
     }
   }
 
-  renderBackground({ item }) {
+  renderBackground({item}) {
     return (
       <BackgroundItem
         item={item}
@@ -77,11 +74,11 @@ class CreationPage extends Component {
     );
   }
   removeBackground() {
-    this.setState({ selectedBackground: {} });
+    this.setState({selectedBackground: {}});
   }
   addBackground(item) {
     this.setState({
-      selectedBackground: { ...item, type: 'background' },
+      selectedBackground: {...item, type: 'background'},
     });
   }
 
@@ -115,9 +112,8 @@ class CreationPage extends Component {
           marginTop: 40,
           flex: 1,
           flexDirection: 'column',
-          justifyContent: 'space-around',
+          // justifyContent: 'space-around',
         }}>
-
         {/* wrapper for background */}
         <View style={{margin: 10}}>
           <TouchableOpacity
@@ -155,11 +151,22 @@ class CreationPage extends Component {
             <Text style={{fontSize: 20}}>Choose your elements</Text>
           </TouchableOpacity>
         </View>
-
         <View style={{flex: 1, alignSelf: 'flex-end'}}>
-
           {/* view for previewbutton */}
-          <Button title="Preview your work" onPress={this.handleSubmit} />
+          <TouchableOpacity
+            // title="Preview your work"
+            onPress={this.handleSubmit}
+            style={{
+              width: 400,
+              backgroundColor: '#FDB327',
+              paddingTop: 10,
+              paddingBottom: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 5,
+            }}>
+            <Text>Preview your work</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
