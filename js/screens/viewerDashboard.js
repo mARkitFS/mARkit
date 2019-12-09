@@ -20,7 +20,7 @@ export default class Table extends Component {
     try {
 
       const { data } = await axios.get(
-        `http://10.1.85.88:8080/api/portals`
+        `http://10.1.85.96:8080/api/portals`
       );
       this.setState({ items: data });
     } catch (err) {
