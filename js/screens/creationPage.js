@@ -43,27 +43,33 @@ class CreationPage extends Component {
       selectedElements,
       selectedBackground,
     } = this.props.navigation.state.params;
-
-    const backgrounds = await axios.get(
-      `http://192.168.0.112:8080/api/backgrounds`,
-    );
-    console.log('CDM background ajax call: ', backgrounds);
-    const elements = await axios.get(`http://192.168.0.112:8080/api/elements`);
-    console.log('CDM element ajax call: ', elements);
-    this.setState({
-      allBackgrounds: backgrounds.data,
-      allElements: elements.data,
-      userId: userId,
-    });
-    if (selectedElements) {
+    try {
+      const backgrounds = await axios.get(
+        `http://192.168.0.112:8080/api/backgrounds`,
+      );
+      console.log('CDM background ajax call: ', backgrounds);
+      const elements = await axios.get(
+        `http://192.168.0.112:8080/api/elements`,
+      );
+      console.log('CDM element ajax call: ', elements);
       this.setState({
-        selectedElements: [...selectedElements],
+        allBackgrounds: backgrounds.data,
+        allElements: elements.data,
+        userId: userId,
       });
-    }
-    if (selectedBackground) {
-      this.setState({
-        selectedBackground: selectedBackground,
-      });
+      if (Array.isArray(selectedElements)) {
+        console.log('hitting selected elements if block ', selectedElements)
+        this.setState({
+          selectedElements: [...selectedElements],
+        });
+      }
+      if (selectedBackground) {
+        this.setState({
+          selectedBackground: selectedBackground,
+        });
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -191,6 +197,7 @@ class CreationPage extends Component {
   }
 
   render() {
+    console.log('state at creation page: ', this.state);
     const selectedBackgroundDisplay = this.state.selectedBackground.name ? (
       <View style={styles.container}>
         <View style={styles.title}>
