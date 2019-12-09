@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   FlatList,
   Animated,
+  TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
 import DashboardItem from './dashboardItem';
@@ -62,6 +63,19 @@ export default class Table extends Component {
         }}>
         <View>
           <Text style={styles.title}> Welcome to the Viewer Dashboard! </Text>
+        </View>
+        <View>
+          <Text style={styles.title}> Top Categories: </Text>
+          <TouchableOpacity
+            onPress={() => navigate('FilteredDashboard', {userId: 1})}>
+            <Text>Events</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Kids Activities</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Night Life</Text>
+          </TouchableOpacity>
         </View>
         <FlatList
           style={styles.container}
