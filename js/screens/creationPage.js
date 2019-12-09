@@ -184,10 +184,10 @@ class CreationPage extends Component {
       Alert.alert('Background required', 'Please select a background!');
       return;
     }
-    this.props.navigation.navigate('PreviewPortal', {
-      items: [this.state.selectedBackground, ...this.state.selectedElements],
-      userId: this.state.userId,
-    });
+    // this.props.navigation.navigate('PreviewPortal', {
+    //   items: [this.state.selectedBackground, ...this.state.selectedElements],
+    //   userId: this.state.userId,
+    // });
   }
 
   render() {
@@ -202,9 +202,21 @@ class CreationPage extends Component {
       <View />
     );
     const selectedElements =
-      this.state.selectedElements.length > 0
-        ? [...this.state.selectedElements]
-        : null;
+      this.state.selectedElements.length > 0 ? (
+        <View style={styles.container}>
+          <View style={styles.title}>
+            <Text>Selected elements:</Text>
+          </View>
+          <FlatList
+            style={styles.container}
+            data={this.state.selectedElements}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => <PreviewImage item={item} />}
+          />
+        </View>
+      ) : (
+        <View />
+      );
     console.log('state on creation page', this.state);
     const {navigate} = this.props.navigation;
     return (

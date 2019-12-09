@@ -91,17 +91,19 @@ export default class Swipe extends Component {
       selectedBackground,
       selectedElements,
     } = this.props.navigation.state.params;
+    console.log(selectedBackground)
     if (selectedBackground) {
       this.setState({selectedBackground: selectedBackground});
     }
     if (selectedElements) {
+      if (this.state.selectedElements.length) {
+        selectedElements = [...selectedElements, this.state.selectedElements]
+      }
       this.setState({
-        selectedElements: [...this.state.selectedElements, ...selectedElements],
+        selectedElements: selectedElements,
       });
     }
-    this.setState({
-      arrayLength: this.props.navigation.state.params.items.length,
-    });
+
   }
 
   add(item) {
@@ -147,7 +149,6 @@ export default class Swipe extends Component {
   renderItems = () => {
     const {items, type, userId} = this.props.navigation.state.params;
     const {navigate} = this.props.navigation;
-    console.log('length of array: ', items.length);
     console.log('current index in state: ', this.state.curIdx);
 
     return items
@@ -333,6 +334,9 @@ export default class Swipe extends Component {
       .reverse();
   };
   render = () => {
+    const {items, type, userId} = this.props.navigation.state.params;
+
+    console.log('bringing props: ', items);
     return (
       <View>
         <View style={{height: 60}}>{/* header view */}</View>
