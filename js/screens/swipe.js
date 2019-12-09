@@ -42,9 +42,6 @@ export default class Swipe extends Component {
             Animated.spring(this.position, {
               toValue: {x: -SCREEN_WIDTH - 100, y: gestureState.dy},
             }).start(() => {
-              // if (this.state.curIdx >= this.state.arrayLength) {
-              //   this.setState({curIdx: -1});
-              // }
               this.setState({curIdx: this.state.curIdx + 1}, () => {
                 this.position.setValue({x: 0, y: 0});
               });
@@ -91,19 +88,18 @@ export default class Swipe extends Component {
       selectedBackground,
       selectedElements,
     } = this.props.navigation.state.params;
-    console.log(selectedBackground)
+    console.log(selectedBackground);
     if (selectedBackground) {
       this.setState({selectedBackground: selectedBackground});
     }
     if (selectedElements) {
       if (this.state.selectedElements.length) {
-        selectedElements = [...selectedElements, this.state.selectedElements]
+        selectedElements = [...selectedElements, this.state.selectedElements];
       }
       this.setState({
         selectedElements: selectedElements,
       });
     }
-
   }
 
   add(item) {
@@ -298,34 +294,91 @@ export default class Swipe extends Component {
                 }}
                 source={{uri: images[type][item.name].url}}
               />
-
-              <Animated.View
-                style={{
-                  position: 'absolute',
-                  bottom: 20,
-                  zIndex: 1000,
-                  flex: 1,
-                }}>
-                <TouchableOpacity
-                  onPress={() =>
-                    navigate('CreationPage', {
-                      userId: userId,
-                      selectedElements: this.state.selectedElements,
-                      selectedBackground: this.state.selectedBackground,
-                    })
-                  }>
-                  <Text
-                    style={{
-                      borderWidth: 1,
-                      borderColor: 'green',
-                      color: 'green',
-                      fontSize: 25,
-                      fontWeight: 800,
-                      padding: 10,
-                    }}>
-                    Back to creation page
-                  </Text>
-                </TouchableOpacity>
+              <Animated.View style={{flex: 1, flexDirection: 'row'}}>
+                <Animated.View
+                  style={{
+                    // position: 'absolute',
+                    top: 20,
+                    bottom: 20,
+                    zIndex: 1000,
+                    left: 20,
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => this.add({...item, type: type})}>
+                    <Text
+                      style={{
+                        borderWidth: 1,
+                        borderColor: 'green',
+                        color: 'green',
+                        fontSize: 25,
+                        fontWeight: 800,
+                        padding: 10,
+                      }}>
+                      Add one
+                    </Text>
+                  </TouchableOpacity>
+                </Animated.View>
+                <Animated.View
+                  style={{
+                    // position: 'absolute',
+                    top: 20,
+                    bottom: 20,
+                    zIndex: 1000,
+                    right: 20,
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'flex-end',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => this.remove({...item, type: type})}>
+                    <Text
+                      style={{
+                        borderWidth: 1,
+                        borderColor: 'green',
+                        color: 'green',
+                        fontSize: 25,
+                        fontWeight: 800,
+                        padding: 10,
+                        alignSelf: 'center',
+                      }}>
+                      Remove one
+                    </Text>
+                  </TouchableOpacity>
+                </Animated.View>
+                <Animated.View
+                  style={{
+                    position: 'absolute',
+                    bottom: 20,
+                    zIndex: 1000,
+                    flex: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigate('CreationPage', {
+                        userId: userId,
+                        selectedElements: this.state.selectedElements,
+                        selectedBackground: this.state.selectedBackground,
+                      })
+                    }>
+                    <Text
+                      style={{
+                        borderWidth: 1,
+                        borderColor: 'green',
+                        color: 'green',
+                        fontSize: 25,
+                        fontWeight: 800,
+                        padding: 10,
+                        alignSelf: 'center',
+                      }}>
+                      Back to creation page
+                    </Text>
+                  </TouchableOpacity>
+                </Animated.View>
               </Animated.View>
             </Animated.View>
           );
