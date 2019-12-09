@@ -19,8 +19,12 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const {data} = await axios.get(`http://10.1.85.95:8080/api/portals`);
-      this.setState({items: data});
+
+
+      const { data } = await axios.get(
+        `http://10.1.85.96:8080/api/portals`
+      );
+      this.setState({ items: data });
     } catch (err) {
       console.error(err);
     }
