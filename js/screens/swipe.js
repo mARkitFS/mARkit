@@ -193,15 +193,18 @@ export default class Swipe extends Component {
                     justifyContent: 'flex-start',
                   }}>
                   <TouchableOpacity
-                    onPress={() => this.add({...item, type: type})}>
+                    onPress={() => this.add({...item, type: type})}
+                    style={{borderRadius: 1}}>
                     <Text
                       style={{
                         borderWidth: 1,
-                        borderColor: 'green',
-                        color: 'green',
+                        borderColor: '#0B3142',
+                        color: '#0B3142',
                         fontSize: 25,
                         fontWeight: 800,
                         padding: 10,
+                        borderRadius: 5,
+                        backgroundColor: '#FDB327',
                       }}>
                       Add one
                     </Text>
@@ -223,12 +226,14 @@ export default class Swipe extends Component {
                     <Text
                       style={{
                         borderWidth: 1,
-                        borderColor: 'green',
-                        color: 'green',
+                        borderColor: '#0B3142',
+                        color: '#0B3142',
                         fontSize: 25,
                         fontWeight: 800,
                         padding: 10,
                         alignSelf: 'center',
+                        borderRadius: 5,
+                        backgroundColor: '#FDB327',
                       }}>
                       Remove one
                     </Text>
@@ -254,12 +259,15 @@ export default class Swipe extends Component {
                     <Text
                       style={{
                         borderWidth: 1,
-                        borderColor: 'green',
-                        color: 'green',
+                        borderColor: '#0B3142',
+                        color: '#0B3142',
                         fontSize: 25,
                         fontWeight: 800,
                         padding: 10,
-                        alignSelf: 'center',
+                        width: 400,
+                        textAlign: 'center',
+                        borderRadius: 5,
+                        backgroundColor: '#FDB327',
                       }}>
                       Back to creation page
                     </Text>

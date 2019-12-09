@@ -9,7 +9,6 @@ import {
   Alert,
   StyleSheet,
   TouchableOpacity,
-  StyleSheet,
 } from 'react-native';
 import axios from 'axios';
 
@@ -42,6 +41,7 @@ class CreationPage extends Component {
       selectedElements,
       selectedBackground,
     } = this.props.navigation.state.params;
+
     try {
       const backgrounds = await axios.get(
         `http://10.1.85.96:8080/api/backgrounds`,
@@ -163,23 +163,6 @@ class CreationPage extends Component {
     });
   }
 
-  // renderBackground({ item }) {
-  //   return (
-  //     <BackgroundItem
-  //       item={item}
-  //       addBackground={this.addBackground}
-  //       removeBackground={this.removeBackground}
-  //     />
-  //   );
-  // }
-  // removeBackground() {
-  //   this.setState({ selectedBackground: {} });
-  // }
-  // addBackground(item) {
-  //   this.setState({
-  //     selectedBackground: { ...item, type: 'background' },
-  //   });
-  // }
 
   handleSubmit() {
     console.log(this.state.selectedBackground, 'this selected background');
@@ -187,10 +170,7 @@ class CreationPage extends Component {
       Alert.alert('Background required', 'Please select a background!');
       return;
     }
-    // this.props.navigation.navigate('PreviewPortal', {
-    //   items: [this.state.selectedBackground, ...this.state.selectedElements],
-    //   userId: this.state.userId,
-    // });
+
   }
 
   render() {

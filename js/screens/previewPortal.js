@@ -8,6 +8,7 @@ import {
   FlatList,
   StyleSheet,
   Alert,
+  Animated,
 } from 'react-native';
 import PreviewImage from './previewImage';
 import {images} from '../res/images';
@@ -32,6 +33,15 @@ export default class PreviewPortal extends Component {
       items: items,
       userId: userId,
     });
+
+    Animated.timing(this.animatedValue, {
+      toValue: 150,
+      duration: 1500,
+    }).start();
+  }
+
+  componentWillMount() {
+    this.animatedValue = new Animated.Value(0);
   }
 
   async addPortal() {
@@ -45,11 +55,13 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
+
         'http://10.1.85.96:8080/api/portals/add',
         portalObj,
       );
 
       const {data} = await axios.get(
+
         `http://10.1.85.96:8080/api/portals/${newPortal.data.id}`,
       );
 
@@ -91,6 +103,7 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
+
           'http://10.1.85.96:8080/api/elementprops/add',
           elementPropsObj,
         );
@@ -122,6 +135,7 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
+
           'http://10.1.85.96:8080/api/portels/add',
           portelObj,
         );
@@ -140,8 +154,20 @@ export default class PreviewPortal extends Component {
         </View>
       );
     }
+    const interpolatedColor = this.animatedValue.interpolate({
+      inputRange: [0, 150],
+      outputRange: ['black', '#0B3142'],
+    });
     return (
-      <View style={styles.loader}>
+      <Animated.View
+        style={{
+          marginTop: 50,
+          flex: 2,
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: interpolatedColor,
+        }}>
         <View>
           <Text style={styles.title}>
             {' '}
@@ -150,6 +176,7 @@ export default class PreviewPortal extends Component {
         </View>
         <TextInput
           style={styles.input}
+
           placeholder="Portal name"
           onChangeText={text => this.setState({text})}
           value={this.state.text}
@@ -178,7 +205,7 @@ export default class PreviewPortal extends Component {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => <PreviewImage item={item} />}
         />
-      </View>
+      </Animated.View>
     );
   }
 }
@@ -186,24 +213,23 @@ export default class PreviewPortal extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-    backgroundColor: '#D6D3F0',
   },
   input: {
     height: 60,
     width: 250,
-    backgroundColor: '#D6D3F0',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    borderRadius: 10,
+    marginTop: 20,
   },
   loader: {
-    flex: 2,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 50,
   },
   title: {
     fontWeight: 'bold',
-    fontFamily: 'Academy Engraved LET',
-    fontSize: 16,
-    color: '#0B3142',
+    fontSize: 20,
+    color: 'white',
     textAlign: 'center',
+    marginTop: 20,
   },
 });

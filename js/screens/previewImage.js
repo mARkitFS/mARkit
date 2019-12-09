@@ -22,7 +22,6 @@ export default class PreviewImage extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#0B3142',
     marginBottom: 20,
     marginLeft: '5%',
     width: '85%',
