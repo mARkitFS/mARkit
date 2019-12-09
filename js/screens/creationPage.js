@@ -14,7 +14,6 @@ import {
 import axios from 'axios';
 
 import PreviewImage from './previewImage';
-import BackgroundItem from './backgroundItem';
 import {withNavigation} from 'react-navigation';
 
 // this page will contain all the tools available to creators
@@ -58,7 +57,7 @@ class CreationPage extends Component {
         userId: userId,
       });
       if (Array.isArray(selectedElements)) {
-        console.log('hitting selected elements if block ', selectedElements)
+        console.log('hitting selected elements if block ', selectedElements);
         this.setState({
           selectedElements: [...selectedElements],
         });
@@ -224,59 +223,90 @@ class CreationPage extends Component {
       ) : (
         <View />
       );
-    console.log('state on creation page', this.state);
     const {navigate} = this.props.navigation;
+    const backgroundProp = this.state.selectedBackground.name
+      ? this.state.selectedBackground
+      : null;
     return (
       // wrapper view
-      <View
-        style={{
-          marginTop: 40,
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-        }}>
-        {/* wrapper for background */}
-        <View style={{margin: 10}}>
-          <TouchableOpacity
-            style={{backgroundColor: '#DDDDDD'}}
-            onPress={() =>
-              navigate('Swipe', {
-                items: this.state.allBackgrounds,
-                type: 'background',
+      <View style={{flex: 1, flexDirection: 'column'}}>
+        <View>
+          <TextInput
+            style={styles.input}
+            placeholder="Portal name"
+            onChangeText={text => this.setState({text})}
+            value={this.state.text}
+          />
+          <Button
+            title={this.state.saveButton}
+            onPress={() => {
+              console.log('state: ', this.state);
+              this.addPortal();
+            }}
+          />
+          <Button
+            title="View Portal"
+            onPress={() => {
+              console.log('portal id when navigating', this.state.portal.id);
+              this.props.navigation.navigate('SinglePortal', {
+                portal: this.state.portal,
                 userId: this.state.userId,
-                selectedElements,
-              })
-            }>
-            <Text style={{fontSize: 20}}>Choose your background</Text>
-          </TouchableOpacity>
-          {selectedBackgroundDisplay}
-          {/* view for list of backgrounds
+                screen: 'CreatorDashboard',
+              });
+            }}
+          />
+        </View>
+        <View
+          style={{
+            marginTop: 40,
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+          }}>
+          {/* wrapper for background */}
+          <View style={{margin: 10}}>
+            <TouchableOpacity
+              style={{backgroundColor: '#DDDDDD'}}
+              onPress={() =>
+                navigate('Swipe', {
+                  items: this.state.allBackgrounds,
+                  type: 'background',
+                  userId: this.state.userId,
+                  selectedElements,
+                })
+              }>
+              <Text style={{fontSize: 20}}>Choose your background</Text>
+            </TouchableOpacity>
+            {selectedBackgroundDisplay}
+            {/* view for list of backgrounds
           <View>
             <FlatList
               data={this.state.allBackgrounds}
               renderItem={this.renderBackground}
             />
-          </View> */}
-        </View>
-        {/* element header view */}
-        <View style={{margin: 10}}>
-          <TouchableOpacity
-            style={{backgroundColor: '#DDDDDD'}}
-            onPress={() =>
-              navigate('Swipe', {
-                items: this.state.allElements,
-                type: 'element',
-                userId: this.state.userId,
-                selectedBackground,
-              })
-            }>
-            <Text style={{fontSize: 20}}>Choose your elements</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{flex: 1, alignSelf: 'flex-end'}}>
-          {/* view for previewbutton */}
-          <Button title="Preview your work" onPress={this.handleSubmit} />
+          */}
+          </View>
+          {/* element header view */}
+          <View style={{margin: 10}}>
+            <TouchableOpacity
+              style={{backgroundColor: '#DDDDDD'}}
+              onPress={() =>
+                navigate('Swipe', {
+                  items: this.state.allElements,
+                  type: 'element',
+                  userId: this.state.userId,
+                  selectedBackground: backgroundProp,
+                  selectedElements: this.state.selectedElements,
+                })
+              }>
+              <Text>Select your elements</Text>
+            </TouchableOpacity>
+            <View>{selectedElements}</View>
+          </View>
+          <View style={{flex: 1, alignSelf: 'flex-end'}}>
+            {/* view for previewbutton */}
+            <Button title="Preview your work" onPress={this.handleSubmit} />
+          </View>
         </View>
       </View>
     );

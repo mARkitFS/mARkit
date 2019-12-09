@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
-import { Button, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import { images } from '../res/images';
+import React, {Component} from 'react';
+import {Button, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {images} from '../res/images';
 
 export default class PreviewImage extends Component {
   render() {
     return (
-        <TouchableOpacity style = {styles.card}>
-          <Image style={styles.cardImage} source = {{uri: images[this.props.item.type][this.props.item.name].url}}></Image>
-          <Text style={styles.cardText}>{`${this.props.item.type}: ${this.props.item.name}`}</Text>
-        </TouchableOpacity>
-    )
+      <TouchableOpacity style={styles.card}>
+        <Image
+          style={styles.cardImage}
+          source={{
+            uri: images[this.props.item.type][this.props.item.name].url,
+          }}></Image>
+        <Text
+          style={
+            styles.cardText
+          }>{`${this.props.item.type}: ${this.props.item.name}`}</Text>
+      </TouchableOpacity>
+    );
   }
 }
 
@@ -24,26 +31,25 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     shadowOffset: {
       width: 3,
-      height: 3
-    }
+      height: 3,
+    },
   },
   cardImage: {
     width: '85%',
     height: 150,
-    resizeMode: 'cover'
+    resizeMode: 'center',
   },
   cardText: {
     padding: 5,
     fontSize: 16,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   title: {
     fontWeight: 'bold',
     fontFamily: 'Academy Engraved LET',
     fontSize: 30,
     color: '#0B3142',
-    textAlign: 'center'
+    textAlign: 'center',
   },
-
-})
+});

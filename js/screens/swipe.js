@@ -42,9 +42,9 @@ export default class Swipe extends Component {
             Animated.spring(this.position, {
               toValue: {x: -SCREEN_WIDTH - 100, y: gestureState.dy},
             }).start(() => {
-              if (this.state.curIdx >= this.state.arrayLength) {
-                this.setState({curIdx: -1});
-              }
+              // if (this.state.curIdx >= this.state.arrayLength) {
+              //   this.setState({curIdx: -1});
+              // }
               this.setState({curIdx: this.state.curIdx + 1}, () => {
                 this.position.setValue({x: 0, y: 0});
               });
