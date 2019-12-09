@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Alert,
   Animated,
+  TouchableOpacity,
 } from 'react-native';
 import PreviewImage from './previewImage';
 import {images} from '../res/images';
@@ -170,21 +171,47 @@ export default class PreviewPortal extends Component {
             Preview your portal item selections:{' '}
           </Text>
         </View>
+        <FlatList
+          style={styles.container}
+          data={this.state.items}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => <PreviewImage item={item} />}
+        />
         <TextInput
           style={styles.input}
           placeholder="Enter Portal Name"
           onChangeText={text => this.setState({text})}
           value={this.state.text}
         />
-        <Button
-          title={this.state.saveButton}
+        <TouchableOpacity
+          // title={this.state.saveButton}
+          style={{
+            width: 400,
+            backgroundColor: '#FDB327',
+            paddingTop: 10,
+            paddingBottom: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+            marginBottom: 10,
+          }}
           onPress={() => {
             console.log('state: ', this.state);
             this.addPortal();
+          }}>
+          <Text>{this.state.saveButton}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          // title="View Portal"
+          style={{
+            width: 400,
+            backgroundColor: '#FDB327',
+            paddingTop: 10,
+            paddingBottom: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
           }}
-        />
-        <Button
-          title="View Portal"
           onPress={() => {
             console.log('portal id when navigating', this.state.portal.id);
             this.props.navigation.navigate('SinglePortal', {
@@ -192,14 +219,9 @@ export default class PreviewPortal extends Component {
               userId: this.state.userId,
               screen: 'CreatorDashboard',
             });
-          }}
-        />
-        <FlatList
-          style={styles.container}
-          data={this.state.items}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <PreviewImage item={item} />}
-        />
+          }}>
+          <Text style={{fontSize: 20}}>View Portal</Text>
+        </TouchableOpacity>
       </Animated.View>
     );
   }
@@ -211,12 +233,13 @@ const styles = StyleSheet.create({
     // backgroundColor: '#D6D3F0',
   },
   input: {
-    height: 60,
+    height: 30,
     width: 250,
     backgroundColor: 'white',
     textAlign: 'center',
     borderRadius: 10,
     marginTop: 20,
+    marginBottom: 10,
   },
   loader: {
     // flex: 2,

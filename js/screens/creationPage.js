@@ -8,6 +8,7 @@ import {
   Alert,
   StyleSheet,
   TouchableOpacity,
+  Animated,
 } from 'react-native';
 import axios from 'axios';
 
@@ -62,6 +63,15 @@ class CreationPage extends Component {
         selectedBackground: selectedBackground,
       });
     }
+
+    Animated.timing(this.animatedValue, {
+      toValue: 150,
+      duration: 1500,
+    }).start();
+  }
+
+  componentWillMount() {
+    this.animatedValue = new Animated.Value(0);
   }
 
   renderBackground({item}) {
@@ -104,20 +114,24 @@ class CreationPage extends Component {
         : null;
     console.log('state on creation page', this.state);
     const {navigate} = this.props.navigation;
+    const interpolatedColor = this.animatedValue.interpolate({
+      inputRange: [0, 150],
+      outputRange: ['black', '#0B3142'],
+    });
     return (
       // wrapper view
-
-      <View
+      <Animated.View
         style={{
           marginTop: 40,
           flex: 1,
-          flexDirection: 'column',
+          // flexDirection: 'column',
+          backgroundColor: interpolatedColor,
           // justifyContent: 'space-around',
         }}>
         {/* wrapper for background */}
         <View style={{margin: 10}}>
           <TouchableOpacity
-            style={{backgroundColor: '#DDDDDD'}}
+            style={{backgroundColor: '#FDB327', margin: 10, borderRadius: 10}}
             onPress={() =>
               navigate('Swipe', {
                 items: this.state.allBackgrounds,
@@ -126,7 +140,9 @@ class CreationPage extends Component {
                 selectedElements,
               })
             }>
-            <Text style={{fontSize: 20}}>Choose your background</Text>
+            <Text style={{fontSize: 20, textAlign: 'center'}}>
+              Choose your background
+            </Text>
           </TouchableOpacity>
           {/* view for list of backgrounds
           <View>
@@ -139,7 +155,7 @@ class CreationPage extends Component {
         {/* element header view */}
         <View style={{margin: 10}}>
           <TouchableOpacity
-            style={{backgroundColor: '#DDDDDD'}}
+            style={{backgroundColor: '#FDB327', margin: 10, borderRadius: 10}}
             onPress={() =>
               navigate('Swipe', {
                 items: this.state.allElements,
@@ -148,10 +164,12 @@ class CreationPage extends Component {
                 selectedBackground,
               })
             }>
-            <Text style={{fontSize: 20}}>Choose your elements</Text>
+            <Text style={{fontSize: 20, textAlign: 'center'}}>
+              Choose your elements
+            </Text>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 1, alignSelf: 'flex-end'}}>
+        <View style={{flex: 1, justifyContent: 'flex-end'}}>
           {/* view for previewbutton */}
           <TouchableOpacity
             // title="Preview your work"
@@ -164,11 +182,12 @@ class CreationPage extends Component {
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 5,
+              marginLeft: 7,
             }}>
-            <Text>Preview your work</Text>
+            <Text style={{fontSize: 20}}>Preview your work</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </Animated.View>
     );
   }
 }

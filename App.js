@@ -9,8 +9,8 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-
+import {StyleSheet, YellowBox} from 'react-native';
+console.disableYellowBox = true;
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {ViroVRSceneNavigator} from 'react-viro';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
