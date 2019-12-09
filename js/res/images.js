@@ -5,21 +5,13 @@ const images =  {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg',
                 url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg'
             }, 
-         theater: {
-                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater.jpg',
-                url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater-thumbnail.jpg'
-            }, 
-         cheshire: {
-                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/chesh.mp4',
-                url: ''
-            }, 
-         alps: {
-                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/alps.mp4',
-                url: ''
-            }, 
          party: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/graphics/backgrounds/Kaleidoscope.mp4',
                 url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+            }, 
+         theater: {
+                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater.jpg',
+                url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater-thumbnail.jpg'
             }, 
          space: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/ps_space.jpg',
@@ -32,6 +24,14 @@ const images =  {
          interior: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/interior%20360%20image.jpg',
                 url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/interior%20360%20image.jpg'
+            }, 
+         cheshire: {
+                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/chesh.mp4',
+                url: ''
+            }, 
+         alps: {
+                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/alps.mp4',
+                url: ''
             }, 
   },
 
@@ -46,9 +46,9 @@ const images =  {
           }, 
        alduin: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin-dragon.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin-dragon.mtl'
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_n.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin.jpg'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_n.jpg'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin-dragon.mtl'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes_g.jpg'
  ],
@@ -84,14 +84,14 @@ const images =  {
           }, 
        ballChair: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair.mtl'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_bump.jpg'
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_specular.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_color.jpg'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_specular.jpg'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_bump.jpg'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair.mtl'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/pillows_bump.jpg'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/pillows_color.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/shell_color.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/trim_color.jpg'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/pillows_color.jpg'
  ],
               url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair-thumbnail.jpg' 
 
@@ -114,19 +114,12 @@ const images =  {
           }, 
        alice: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/alice-madness-returns.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM.tga'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM2.tga'
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM2.tga'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM.tga'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/alice-madness-returns.mtl'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/eye.tga'
  ],
               url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/aliceThumbnail.png' 
-
-          }, 
-       heart: {
-              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/heart/heart.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/heart/heart.mtl'
- ],
-              url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/heart/heartThumbnail.jpg' 
 
           }, 
        goku: {
@@ -136,18 +129,25 @@ const images =  {
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_30.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_29.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_28.png'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_27.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_26.png'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_27.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_25.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_24.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_23.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_22.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_21.png'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_19.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_20.png'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_19.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_18.png'
  ],
               url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/GokuThumbnail.jpg' 
+
+          }, 
+       heart: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/heart/heart.obj',
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/heart/heart.mtl'
+ ],
+              url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/heart/heartThumbnail.jpg' 
 
           }, 
  },
@@ -158,12 +158,12 @@ const images =  {
     uri:
       'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal-2-aperture-laboratories-video-game-clip-art-portal.jpg'
   }, 
-       party_event: {
-              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
+       beach_vacation: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg'
           }, 
 
-               beach_vacation: {
-              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg'
+               party_event: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
           }, 
 
          }
