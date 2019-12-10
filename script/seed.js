@@ -183,7 +183,7 @@ async function seed() {
       imageURL:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater-thumbnail.jpg',
     }),
-     Background.create({
+    Background.create({
       id: 4,
       name: 'space',
       type: 'Viro360Image',
@@ -224,8 +224,7 @@ async function seed() {
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/chesh.mp4',
       loop: true,
       userId: 2,
-      imageURL:
-        '',
+      imageURL: '',
     }),
     Background.create({
       id: 8,
@@ -235,8 +234,18 @@ async function seed() {
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/alps.mp4',
       loop: true,
       userId: 2,
+      imageURL: '',
+    }),
+    Background.create({
+      id: 9,
+      name: 'public',
+      type: 'Viro360Image',
+      uri:
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/IMG_0635.JPG',
+      loop: false,
+      userId: 2,
       imageURL:
-        '',
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/IMG_0635.JPG',
     }),
   ]);
 
@@ -489,17 +498,18 @@ async function seed() {
       elementId: 12,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_30.png',
-    }), 
+    }),
     ElementRes.create({
       elementId: 12,
       uri:
-        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_29.png'
+        'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_29.png',
     }),
     ElementRes.create({
       elementId: 12,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_28.png',
-    }), ElementRes.create({
+    }),
+    ElementRes.create({
       elementId: 12,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_27.png',
@@ -513,7 +523,8 @@ async function seed() {
       elementId: 12,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_25.png',
-    }), ElementRes.create({
+    }),
+    ElementRes.create({
       elementId: 12,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_24.png',
@@ -527,7 +538,8 @@ async function seed() {
       elementId: 12,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_22.png',
-    }), ElementRes.create({
+    }),
+    ElementRes.create({
       elementId: 12,
       uri:
         'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_21.png',

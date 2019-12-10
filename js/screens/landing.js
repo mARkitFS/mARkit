@@ -2,15 +2,12 @@ import React from 'react';
 import {
   View,
   Text,
-  Button,
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import {withNavigation} from 'react-navigation';
-import {images} from '../res/images';
-import {Wave, Random} from 'react-animated-text';
+
 
 const Landing = props => {
   const {navigate} = props.navigation;
