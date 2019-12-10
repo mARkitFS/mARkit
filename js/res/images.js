@@ -1,17 +1,9 @@
 const images =  {
 
         background: { 
-         beach: {
-                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg',
-                url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg'
-            }, 
          party: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit//master/graphics/backgrounds/Kaleidoscope.mp4',
                 url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
-            }, 
-         theater: {
-                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater.jpg',
-                url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater-thumbnail.jpg'
             }, 
          space: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/ps_space.jpg',
@@ -21,6 +13,10 @@ const images =  {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/comicon%20360%20image.jpg',
                 url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/comicon%20360%20image.jpg'
             }, 
+         theater: {
+                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater.jpg',
+                url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/theater-thumbnail.jpg'
+            }, 
          interior: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/interior%20360%20image.jpg',
                 url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/interior%20360%20image.jpg'
@@ -28,6 +24,14 @@ const images =  {
          cheshire: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/chesh.mp4',
                 url: ''
+            }, 
+         public: {
+                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/IMG_0635.JPG',
+                url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/IMG_0635.JPG'
+            }, 
+         beach: {
+                uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg',
+                url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg'
             }, 
          alps: {
                 uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/alps.mp4',
@@ -46,9 +50,9 @@ const images =  {
           }, 
        alduin: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin-dragon.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_n.jpg'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin.jpg'
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin-dragon.mtl'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduin_n.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alduin/alduineyes_g.jpg'
  ],
@@ -84,14 +88,14 @@ const images =  {
           }, 
        ballChair: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_specular.jpg'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_color.jpg'
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair.mtl'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_bump.jpg'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair.mtl'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_color.jpg'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/padding_specular.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/pillows_bump.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/pillows_color.jpg'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/shell_color.jpg'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/trim_color.jpg'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/shell_color.jpg'
  ],
               url: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/ball-chair/ball-chair-thumbnail.jpg' 
 
@@ -114,8 +118,8 @@ const images =  {
           }, 
        alice: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/alice-madness-returns.obj',
-              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM2.tga'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM.tga'
+              resources: ['https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM.tga'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/Alice_DM2.tga'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/alice-madness-returns.mtl'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/alice/eye.tga'
  ],
@@ -129,8 +133,8 @@ const images =  {
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_30.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_29.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_28.png'
-,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_26.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_27.png'
+,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_26.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_25.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_24.png'
 ,'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/elements/goku/Dolphin.exe_Tue_Mar_22_01-00-09_2011_23.png'
@@ -160,6 +164,18 @@ const images =  {
   }, 
        beach_vacation: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg'
+          }, 
+
+               Publicevent: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png'
+          }, 
+
+               Dragonbroad: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png'
+          }, 
+
+               Something: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png'
           }, 
 
                party_event: {

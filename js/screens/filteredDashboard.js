@@ -23,11 +23,11 @@ class FilteredDashboard extends Component {
     };
   }
   async componentDidMount() {
-    let {userId} = this.props.navigation.state.params;
+    let userId = 1;
     this.setState({userId: userId});
     try {
       const {data} = await axios.get(
-        `http://10.1.85.95:8080/api/portals/user/${userId}`,
+        `http://10.1.85.96:8080/api/portals/user/${userId}`,
       );
       this.setState({items: data});
     } catch (error) {
@@ -82,11 +82,6 @@ class FilteredDashboard extends Component {
             />
           )}
         />
-        <TouchableOpacity
-          style={styles.card}
-          onPress={() => navigate('CreationPage', {userId: this.state.userId})}>
-          <Text style={styles.cardText}> Create New Portal </Text>
-        </TouchableOpacity>
       </Animated.View>
     );
   }
