@@ -20,7 +20,11 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
+<<<<<<< HEAD
       const {data} = await axios.get(`http://10.1.85.96:8080/api/portals`);
+=======
+      const {data} = await axios.get(`http://10.1.85.95:8080/api/portals`);
+>>>>>>> master
       this.setState({items: data});
     } catch (err) {
       console.error(err);
@@ -57,9 +61,10 @@ export default class Table extends Component {
           justifyContent: 'center',
           backgroundColor: interpolatedColor,
         }}>
-        <View>
+        <View style={{flex: 1}}>
           <Text style={styles.title}> Welcome to the Viewer Dashboard! </Text>
         </View>
+<<<<<<< HEAD
         <View>
           <Text style={styles.title}> Top Categories: </Text>
           <TouchableOpacity
@@ -74,15 +79,45 @@ export default class Table extends Component {
           <TouchableOpacity>
             <Text>Night Life</Text>
           </TouchableOpacity>
+=======
+        <View style={{flex: 1, margin: 5}}>
+          <Text style={styles.subtitle}> Top Categories: </Text>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              height: 100,
+              padding: 0,
+              height: 5,
+            }}>
+            <TouchableOpacity
+              style={styles.labelOpacity}
+              onPress={() => navigate('FilteredDashboard', {userId: 1})}>
+              <Text style={{fontSize: 20, textAlign: 'center'}}>Events</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.labelOpacity}>
+              <Text style={{fontSize: 20, textAlign: 'center'}}>
+                Kids Activities
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.labelOpacity}>
+              <Text style={{fontSize: 20, textAlign: 'center'}}>
+                Night Life
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <FlatList
-          style={styles.container}
-          data={this.state.items}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <DashboardItem item={item} screen="ViewerDashboard" />
-          )}
-        />
+        <View style={{flex: 2}}>
+          <FlatList
+            style={styles.container}
+            data={this.state.items}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <DashboardItem item={item} screen="ViewerDashboard" />
+            )}
+          />
+>>>>>>> master
+        </View>
       </Animated.View>
     );
   }
@@ -95,5 +130,18 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     marginTop: 40,
+  },
+  subtitle: {
+    fontWeight: 'normal',
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center',
+    marginTop: 40,
+  },
+  labelOpacity: {
+    backgroundColor: '#FDB327',
+    margin: 10,
+    borderRadius: 10,
+    height: 30,
   },
 });

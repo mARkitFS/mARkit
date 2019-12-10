@@ -27,7 +27,11 @@ class FilteredDashboard extends Component {
     this.setState({userId: userId});
     try {
       const {data} = await axios.get(
+<<<<<<< HEAD
         `http://10.1.85.96:8080/api/portals/user/${userId}`,
+=======
+        `http://10.1.85.95:8080/api/portals/user/${userId}`,
+>>>>>>> master
       );
       this.setState({items: data});
     } catch (error) {

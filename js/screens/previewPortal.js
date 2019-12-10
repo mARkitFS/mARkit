@@ -56,12 +56,20 @@ export default class PreviewPortal extends Component {
     };
     try {
       const newPortal = await axios.post(
+<<<<<<< HEAD
         'http://10.1.85.96:8080/api/portals/add',
+=======
+        'http://10.1.85.95:8080/api/portals/add',
+>>>>>>> master
         portalObj,
       );
 
       const {data} = await axios.get(
+<<<<<<< HEAD
         `http://10.1.85.96:8080/api/portals/${newPortal.data.id}`,
+=======
+        `http://10.1.85.95:8080/api/portals/${newPortal.data.id}`,
+>>>>>>> master
       );
       console.log('newPortal:>>>>', newPortal.data);
       this.addPortels(newPortal.data.id);
@@ -101,7 +109,11 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newElementProps = await axios.post(
+<<<<<<< HEAD
           'http://10.1.85.96:8080/api/elementprops/add',
+=======
+          'http://10.1.85.95:8080/api/elementprops/add',
+>>>>>>> master
           elementPropsObj,
         );
         console.log('newElementProps: ', newElementProps);
@@ -132,7 +144,11 @@ export default class PreviewPortal extends Component {
       };
       try {
         const newPortel = await axios.post(
+<<<<<<< HEAD
           'http://10.1.85.96:8080/api/portels/add',
+=======
+          'http://10.1.85.95:8080/api/portels/add',
+>>>>>>> master
           portelObj,
         );
         console.log('newPortel: ', newPortel);

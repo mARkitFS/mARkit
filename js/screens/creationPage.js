@@ -30,10 +30,7 @@ class CreationPage extends Component {
       portal: {},
       text: '',
     };
-    // this.renderBackground = this.renderBackground.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.addBackground = this.addBackground.bind(this);
-    // this.removeBackground = this.removeBackground.bind(this);
   }
 
   async componentDidMount() {
@@ -45,10 +42,10 @@ class CreationPage extends Component {
 
     try {
       const backgrounds = await axios.get(
-        `http://10.1.85.96:8080/api/backgrounds`,
+        `http://10.1.85.95:8080/api/backgrounds`,
       );
       console.log('CDM background ajax call: ', backgrounds);
-      const elements = await axios.get(`http://10.1.85.96:8080/api/elements`);
+      const elements = await axios.get(`http://10.1.85.95:8080/api/elements`);
       console.log('CDM element ajax call: ', elements);
       this.setState({
         allBackgrounds: backgrounds.data,
@@ -82,12 +79,12 @@ class CreationPage extends Component {
     };
     try {
       const newPortal = await axios.post(
-        'http://10.1.85.96:8080/api/portals/add',
+        'http://10.1.85.95:8080/api/portals/add',
         portalObj,
       );
 
       const {data} = await axios.get(
-        `http://10.1.85.96:8080/api/portals/${newPortal.data.id}`,
+        `http://10.1.85.95:8080/api/portals/${newPortal.data.id}`,
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -134,7 +131,7 @@ class CreationPage extends Component {
       };
       try {
         const newElementProps = await axios.post(
-          'http://10.1.85.96:8080/api/elementprops/add',
+          'http://10.1.85.95:8080/api/elementprops/add',
           elementPropsObj,
         );
         console.log('newElementProps: ', newElementProps);
@@ -163,7 +160,7 @@ class CreationPage extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'http://10.1.85.96:8080/api/portels/add',
+          'http://10.1.85.95:8080/api/portels/add',
           portelObj,
         );
         console.log('newPortel: ', newPortel);
@@ -240,14 +237,7 @@ class CreationPage extends Component {
               Choose your background
             </Text>
           </TouchableOpacity>
-          {/* view for list of backgrounds
-
-          <View>
-            <FlatList
-              data={this.state.allBackgrounds}
-              renderItem={this.renderBackground}
-            />
-          </View> */}
+          {/* view for list of backgrounds */}
         </View>
         {/* element header view */}
         <View style={{margin: 10}}>
