@@ -5,6 +5,7 @@ export {default as Landing} from './screens/landing';
 export {default as ViroApp} from './ARPortals/viroApp';
 export {default as ViewerDashboard} from './screens/viewerDashboard';
 export {default as CreatorDashboard} from './screens/CreatorDashboard';
+export {default as FilteredDashboard} from './screens/filteredDashboard';
 export {default as SinglePortal} from './screens/singlePortal';
 export {default as PreviewPortal} from './screens/previewPortal';
 export {default as CreationPage} from './screens/creationPage';

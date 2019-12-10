@@ -166,6 +166,18 @@ const images =  {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/guadalupe_360.jpg'
           }, 
 
+               Publicevent: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png'
+          }, 
+
+               Dragonbroad: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png'
+          }, 
+
+               Something: {
+              uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/defaults/portal.png'
+          }, 
+
                party_event: {
               uri: 'https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/backgrounds/abstract-kaleidoscope-background-beautiful-multicolor-260nw-1084042973.jpg'
           }, 

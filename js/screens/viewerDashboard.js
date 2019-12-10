@@ -20,7 +20,7 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-      const {data} = await axios.get(`http://10.1.85.96:8080/api/portals`);
+      const {data} = await axios.get(`http://10.1.85.95:8080/api/portals`);
       this.setState({items: data});
     } catch (err) {
       console.error(err);
@@ -72,7 +72,9 @@ export default class Table extends Component {
             }}>
             <TouchableOpacity
               style={styles.labelOpacity}
-              onPress={() => navigate('FilteredDashboard', {userId: 1})}>
+              onPress={() =>
+                this.props.navigation.navigate('FilteredDashboard', {userId: 1})
+              }>
               <Text style={{fontSize: 20, textAlign: 'center'}}>Events</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.labelOpacity}>

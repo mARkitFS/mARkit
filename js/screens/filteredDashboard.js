@@ -14,7 +14,7 @@ import DashboardItem from './dashboardItem';
 import {withNavigation} from 'react-navigation';
 
 // creating a row class to instantiate a row from
-class CreatorDashboard extends Component {
+class FilteredDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +23,7 @@ class CreatorDashboard extends Component {
     };
   }
   async componentDidMount() {
-    let {userId} = this.props.navigation.state.params;
+    let userId = 1;
     this.setState({userId: userId});
     try {
       const {data} = await axios.get(
@@ -68,7 +68,7 @@ class CreatorDashboard extends Component {
           backgroundColor: interpolatedColor,
         }}>
         <View>
-          <Text style={styles.title}> Welcome to the Creator Dashboard! </Text>
+          <Text style={styles.title}> View all of the Events Portals! </Text>
         </View>
         <FlatList
           style={styles.container}
@@ -77,16 +77,11 @@ class CreatorDashboard extends Component {
           renderItem={({item}) => (
             <DashboardItem
               item={item}
-              screen="CreatorDashboard"
+              screen="FilteredDashboard"
               userId={this.state.userId}
             />
           )}
         />
-        <TouchableOpacity
-          style={styles.card}
-          onPress={() => navigate('CreationPage', {userId: this.state.userId})}>
-          <Text style={styles.cardText}> Create New Portal </Text>
-        </TouchableOpacity>
       </Animated.View>
     );
   }
@@ -117,4 +112,4 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
-export default withNavigation(CreatorDashboard);
+export default withNavigation(FilteredDashboard);
