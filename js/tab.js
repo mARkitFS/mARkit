@@ -11,11 +11,13 @@ import {
   PreviewPortal,
   CreationPage,
   CreatorDashboard,
+  FilteredDashboard,
 } from './index';
 import Swipe from '../js/screens/swipe';
 
 const CreatorNavigator = createSwitchNavigator({
   CreatorDashboard: {screen: CreatorDashboard},
+  FilteredDashboard: {screen: FilteredDashboard},
   CreationPage: {screen: CreationPage},
   PreviewPortal: {screen: PreviewPortal},
   SinglePortal: {screen: SinglePortal},
