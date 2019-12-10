@@ -30,10 +30,8 @@ class CreationPage extends Component {
       portal: {},
       text: '',
     };
-    // this.renderBackground = this.renderBackground.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.addBackground = this.addBackground.bind(this);
-    // this.removeBackground = this.removeBackground.bind(this);
+
   }
 
   async componentDidMount() {
@@ -242,14 +240,7 @@ class CreationPage extends Component {
               Choose your background
             </Text>
           </TouchableOpacity>
-          {/* view for list of backgrounds
-
-          <View>
-            <FlatList
-              data={this.state.allBackgrounds}
-              renderItem={this.renderBackground}
-            />
-          </View> */}
+          {/* view for list of backgrounds */}
         </View>
         {/* element header view */}
         <View style={{margin: 10}}>
