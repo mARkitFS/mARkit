@@ -20,11 +20,7 @@ export default class Table extends Component {
   }
   async componentDidMount() {
     try {
-<<<<<<< HEAD
-      const {data} = await axios.get(`http://10.1.85.96:8080/api/portals`);
-=======
       const {data} = await axios.get(`http://10.1.85.95:8080/api/portals`);
->>>>>>> master
       this.setState({items: data});
     } catch (err) {
       console.error(err);
@@ -64,22 +60,6 @@ export default class Table extends Component {
         <View style={{flex: 1}}>
           <Text style={styles.title}> Welcome to the Viewer Dashboard! </Text>
         </View>
-<<<<<<< HEAD
-        <View>
-          <Text style={styles.title}> Top Categories: </Text>
-          <TouchableOpacity
-            onPress={() =>
-              this.props.navigation.navigate('FilteredDashboard', {userId: 1})
-            }>
-            <Text>Events</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>Kids Activities</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>Night Life</Text>
-          </TouchableOpacity>
-=======
         <View style={{flex: 1, margin: 5}}>
           <Text style={styles.subtitle}> Top Categories: </Text>
           <View
@@ -92,7 +72,9 @@ export default class Table extends Component {
             }}>
             <TouchableOpacity
               style={styles.labelOpacity}
-              onPress={() => navigate('FilteredDashboard', {userId: 1})}>
+              onPress={() =>
+                this.props.navigation.navigate('FilteredDashboard', {userId: 1})
+              }>
               <Text style={{fontSize: 20, textAlign: 'center'}}>Events</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.labelOpacity}>
@@ -116,7 +98,6 @@ export default class Table extends Component {
               <DashboardItem item={item} screen="ViewerDashboard" />
             )}
           />
->>>>>>> master
         </View>
       </Animated.View>
     );
