@@ -42,10 +42,10 @@ class CreationPage extends Component {
 
     try {
       const backgrounds = await axios.get(
-        `http://10.1.85.95:8080/api/backgrounds`,
+        `https://vast-falls-27580.herokuapp.com/api/backgrounds`,
       );
       console.log('CDM background ajax call: ', backgrounds);
-      const elements = await axios.get(`http://10.1.85.95:8080/api/elements`);
+      const elements = await axios.get(`https://vast-falls-27580.herokuapp.com/api/elements`);
       console.log('CDM element ajax call: ', elements);
       this.setState({
         allBackgrounds: backgrounds.data,
@@ -79,12 +79,12 @@ class CreationPage extends Component {
     };
     try {
       const newPortal = await axios.post(
-        'http://10.1.85.95:8080/api/portals/add',
+        'https://vast-falls-27580.herokuapp.com/api/portals/add',
         portalObj,
       );
 
       const {data} = await axios.get(
-        `http://10.1.85.95:8080/api/portals/${newPortal.data.id}`,
+        `https://vast-falls-27580.herokuapp.com/api/portals/${newPortal.data.id}`,
       );
 
       console.log('newPortal:>>>>', newPortal.data);
@@ -131,7 +131,7 @@ class CreationPage extends Component {
       };
       try {
         const newElementProps = await axios.post(
-          'http://10.1.85.95:8080/api/elementprops/add',
+          'https://vast-falls-27580.herokuapp.com/api/elementprops/add',
           elementPropsObj,
         );
         console.log('newElementProps: ', newElementProps);
@@ -160,7 +160,7 @@ class CreationPage extends Component {
       };
       try {
         const newPortel = await axios.post(
-          'http://10.1.85.95:8080/api/portels/add',
+          'https://vast-falls-27580.herokuapp.com/api/portels/add',
           portelObj,
         );
         console.log('newPortel: ', newPortel);
@@ -248,7 +248,7 @@ class CreationPage extends Component {
                 items: this.state.allElements,
                 type: 'element',
                 userId: this.state.userId,
-                selectedBackground,
+                selectedBackground: this.state.selectedBackground,
               })
             }>
             <Text style={{fontSize: 20, textAlign: 'center'}}>
@@ -260,7 +260,15 @@ class CreationPage extends Component {
           {/* view for previewbutton */}
           <TouchableOpacity
             // title="Preview your work"
-            onPress={this.handleSubmit}
+            onPress={() =>
+              navigate('PreviewPortal', {
+                items: [
+                  this.state.selectedBackground,
+                  ...this.state.selectedElements,
+                ],
+                userId: this.state.userId,
+              })
+            }
             style={{
               width: 400,
               backgroundColor: '#FDB327',
