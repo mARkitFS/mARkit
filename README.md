@@ -23,9 +23,12 @@ To run mARkit, navigate to the mARkit root directory on your machine. Then run t
 
 `npm run start`
 
-When you run `npm run start`, copy the URL of your NGrok server: 
+When you run `npm run start`, note the URL of your NGrok server: 
 
+![screengrab of ngrok url](https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/readme%20images/Screen%20Shot%202020-01-14%20at%207.01.56%20PM.png)
 
 Then, on your phone, open your Viro Media testbed app. Click on the burger menu on the top left.
 
 > screengrab: viro testbed app with a red circle around the burger menu
+
+> screengrab: inputting ngrok url
