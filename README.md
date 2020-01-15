@@ -29,6 +29,9 @@ When you run `npm run start`, note the URL of your NGrok server:
 
 Then, on your phone, open your Viro Media testbed app. Click on the burger menu on the top left.
 
+![screengrab of viro testbed app]
+(https://raw.githubusercontent.com/mARkitFS/mARkit/master/Viro_Media_Menu%20copy.PNG)
+
 > screengrab: viro testbed app with a red circle around the burger menu
 
 > screengrab: inputting ngrok url
