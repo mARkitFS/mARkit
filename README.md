@@ -15,9 +15,17 @@ Once you have forked and cloned this repo, don't forget to run `npm install` to 
 
 ## Running the app
 
-To run mARkit, navigate to the mARkit root directory on your machine. Then run the following two commands in two different terminal windows:
+To run mARkit, navigate to the mARkit root directory on your machine. Then run the following commands in two terminal windows:
+
+`npm run seed`
 
 `npm run start-server`
 
 `npm run start`
 
+When you run `npm run start`, copy the URL of your NGrok server: 
+
+
+Then, on your phone, open your Viro Media testbed app. Click on the burger menu on the top left.
+
+> screengrab: viro testbed app with a red circle around the burger menu
