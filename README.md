@@ -34,3 +34,24 @@ Then, on your phone, open your Viro Media testbed app. Click on the burger menu 
 Select the Enter Testbed option. Then, enter the NGrok url provided to run the application.
 
 ![screengrab of inputting ngrok url](https://raw.githubusercontent.com/mARkitFS/mARkit/master/graphics/readme%20images/NGrok_input%20copy.PNG)
+
+You should now see our splash page! 
+![mARkit splash page]
+
+## How to see existing portals
+
+Navigate to the viewer's page.
+![the screen where you can choose viewer's or creator's page, with viewer's outlined]
+
+From the list of available portals, touch the one you'd like to see.
+![list of all portals]
+
+The portal screen gives you additional information about the portal. Touch the thumbnail to see the portal.
+![single portal page]
+
+Look at the world through your phone. Your portal will be gliding in midair.
+![screengrab of hovering portal]
+
+Walk into the portal to see inside!
+
+
